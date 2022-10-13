@@ -1,0 +1,7503 @@
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "9SkOJZxuYLYUVJiiS8sKOqoNQDo866uENCyWfUYE2fA=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "+HFQ6ae8IFdKKbG63XVs1tPaFjY4fHdwz6qHQj/RjiY=",
+    "eventSubscriptions": 5
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "44a3d30c-4af4-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "44a3d30c-4af4-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "55b3404c-4af4-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Avatar"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "55b3404c-4af4-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "588e2b60-4af4-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "588e2b60-4af4-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "5f54d534-4af4-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Avatar"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "5f54d534-4af4-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "62975aaa-4af4-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Avatar"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "62975aaa-4af4-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "65318272-4af4-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Leitplanken"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "65318272-4af4-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Leitplanken"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "Q7tnjdu3tnpibYP8RnNXBUGifBq0WdweblFmL5op6kE=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "lM8KYlMSNkoDXdb0cDZldLfwiLAOEzVA662UGyLt9lM=",
+    "eventSubscriptions": 5
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "73f59546-4af4-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "73f59546-4af4-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "780bc2ea-4af4-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "780bc2ea-4af4-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "797d2100-4af4-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "797d2100-4af4-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "7a6d06c0-4af4-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "7a6d06c0-4af4-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "80402dfc-4af4-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Avatar"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "80402dfc-4af4-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera Only"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "C4XAUEu92Wc+CdGgJFvTSP4PZr2gY46/GJR4sP76pwI=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "+QUY0n8eeyex72dkkzsn/gL8XG3EJvTyX3VATd8QAqc=",
+    "eventSubscriptions": 5
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "0ba51aa6-4af5-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "0ba51aa6-4af5-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "0d20a490-4af5-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Avatar"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "0d20a490-4af5-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "15a7097e-4af5-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Avatar"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "15a7097e-4af5-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "1823d984-4af5-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "1823d984-4af5-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "hJN6gPv9d5XRI2RXDuJchZ3g2ECl9gMSdXvQB8XcGUs=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "6MEoJW9rox8eo6wY0Xm6VIMx20Kh7uDjk+TKP6/U8j4=",
+    "eventSubscriptions": 5
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "686a201a-4af5-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "686a201a-4af5-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "69af6f98-4af5-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Avatar"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "69af6f98-4af5-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "6ce940e4-4af5-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Avatar"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "6ce940e4-4af5-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "6f41049e-4af5-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "6f41049e-4af5-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "VVGlcn6OaZSoDdpYXZOlh6Oo9JlciddEBVtvh4GtaKs=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "tHl4rkK36IfR0PL19OyQ+8PMQkI32IIJlY0cG92aS5w=",
+    "eventSubscriptions": 5
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "8269b1c4-4af5-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "8269b1c4-4af5-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "846b9df2-4af5-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Avatar"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "846b9df2-4af5-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "864d7438-4af5-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Avatar"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "864d7438-4af5-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "87d4268a-4af5-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "87d4268a-4af5-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "890f772a-4af5-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Leitplanken"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "890f772a-4af5-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Leitplanken"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Leitplanken"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "cinema"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "8jf7xE7bIJaQDFtvtoNOY5LW1NRI1wuews+KY4vVmxw=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "rXXFUf8MWBC/0gyYtZ4CgwGNYE3tEGpUNmSaNqaPWRk=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "9e616902-4af6-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "9e616902-4af6-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "a05397a8-4af6-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "a05397a8-4af6-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackEnded"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackEnded"
+  },
+  "op": 5
+}
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "tt+md0B/4s79xsOanZLc9WKKrF5O7oGkKNsWtwzkgCc=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "mHzTLDuWw4CWwu1zq4qKkU6gpWR08FpFJobmezfNGUc=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "219242b0-4af7-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "219242b0-4af7-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackEnded"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "d1bdf0da-4af7-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "d1bdf0da-4af7-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "d2dd9b14-4af7-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "d2dd9b14-4af7-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "d4085498-4af7-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Avatar"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "d4085498-4af7-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "d5824bee-4af7-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "d5824bee-4af7-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": true,
+      "inputName": "Desktop Audio"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-26' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:45> exception=AttributeError("'dict' object has no attribute 'inputMuted'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 47, in on_inputmutestatechanged
+    if eventData.inputMuted:
+AttributeError: 'dict' object has no attribute 'inputMuted'
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Desktop Audio"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-28' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:45> exception=AttributeError("'dict' object has no attribute 'inputMuted'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 47, in on_inputmutestatechanged
+    if eventData.inputMuted:
+AttributeError: 'dict' object has no attribute 'inputMuted'
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "lvC+WcHz2J7Ptfq89QI6APp+A2BcurSXu1FWDlkckBo=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "rhCjXW4rY08ZF5jpkaWZqbSBuBP/l9GOnNAblJE7D38=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "e97b5e1a-4af7-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "e97b5e1a-4af7-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": true,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-11' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:45> exception=AttributeError("'dict' object has no attribute 'inputMuted'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 47, in on_inputmutestatechanged
+    if eventData.inputMuted:
+AttributeError: 'dict' object has no attribute 'inputMuted'
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:45> exception=AttributeError("'dict' object has no attribute 'inputMuted'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 47, in on_inputmutestatechanged
+    if eventData.inputMuted:
+AttributeError: 'dict' object has no attribute 'inputMuted'
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "C/fVkGdSeeyjPymXtpv1nzynxRWmGXqFbFoSZKgTmjI=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "T9tjPhAulwxTA9bHnvvso3UuNgwjdRIcNdPsQFfaWPg=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "10ef36f6-4af8-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "10ef36f6-4af8-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": true,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-11' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:46> exception=AttributeError("'dict' object has no attribute 'inputMuted'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 49, in on_inputmutestatechanged
+    if eventData.inputMuted:
+AttributeError: 'dict' object has no attribute 'inputMuted'
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:46> exception=AttributeError("'dict' object has no attribute 'inputMuted'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 49, in on_inputmutestatechanged
+    if eventData.inputMuted:
+AttributeError: 'dict' object has no attribute 'inputMuted'
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": true,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-15' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:46> exception=AttributeError("'dict' object has no attribute 'inputMuted'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 49, in on_inputmutestatechanged
+    if eventData.inputMuted:
+AttributeError: 'dict' object has no attribute 'inputMuted'
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "iVagwb+FbasQNk01C12dIub9fMK3KAk0mJ/O6ZO/uP4=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "VCKCmR9gFK+IyGNjSiJOLciqWDSLVDc5f6qZNx4boq8=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "23edbea8-4af8-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "23edbea8-4af8-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-11' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:46> exception=AttributeError("'dict' object has no attribute 'inputMuted'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 49, in on_inputmutestatechanged
+    if eventData.inputMuted:
+AttributeError: 'dict' object has no attribute 'inputMuted'
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": true,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:46> exception=AttributeError("'dict' object has no attribute 'inputMuted'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 49, in on_inputmutestatechanged
+    if eventData.inputMuted:
+AttributeError: 'dict' object has no attribute 'inputMuted'
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "mo/wBhxcxt1J95mYJCXbTOsQuF0GvyWql4g9PVTp3lo=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "XyseH4Vq4B70GMyJegLfYdzl/QA0Paks/kdsJ0s+4AY=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "439df196-4af8-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "439df196-4af8-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-11' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:46> exception=AttributeError("'dict' object has no attribute 'inputMuted'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 48, in on_inputmutestatechanged
+    print("InputMuteStateChanged: {}, inputMuted={}".format(eventData, eventData.inputMuted))
+AttributeError: 'dict' object has no attribute 'inputMuted'
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": true,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:46> exception=AttributeError("'dict' object has no attribute 'inputMuted'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 48, in on_inputmutestatechanged
+    print("InputMuteStateChanged: {}, inputMuted={}".format(eventData, eventData.inputMuted))
+AttributeError: 'dict' object has no attribute 'inputMuted'
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "kmXwRMEQMQsVawqtsPPgxUdHwdOo6eDR4+6nb8vcBrI=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "L2E2ph14oWBpEj2X7tFaL/TIF/+OH/DzJ7tuNnlmd4s=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "65bff3aa-4af8-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "65bff3aa-4af8-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-11' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:46> exception=AttributeError("'dict' object has no attribute 'inputName'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 52, in on_inputmutestatechanged
+    print("{} is now unmuted".format(eventData.inputName))
+AttributeError: 'dict' object has no attribute 'inputName'
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": true,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:46> exception=AttributeError("'dict' object has no attribute 'inputName'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 50, in on_inputmutestatechanged
+    print("{} is now muted".format(eventData.inputName))
+AttributeError: 'dict' object has no attribute 'inputName'
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "TWZaSU/Z79Tl7EMdLo77Os6AfuWpdzKCKC+7wVYlRo4=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "LS1KHqZ0uS0KIEqgA0aVI8MIKKqe9pnuKsJYdQ2gN3o=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "b2b158ac-4af8-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "b2b158ac-4af8-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-11' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:47> exception=AttributeError("'dict' object has no attribute 'inputName'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 53, in on_inputmutestatechanged
+    print("{} is now unmuted".format(eventData.inputName))
+AttributeError: 'dict' object has no attribute 'inputName'
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": true,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:47> exception=AttributeError("'dict' object has no attribute 'inputName'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 51, in on_inputmutestatechanged
+    print("{} is now muted".format(eventData.inputName))
+AttributeError: 'dict' object has no attribute 'inputName'
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "LbRK9GqVh1D+hGpncpRcj+TAp/um6X76EYbUitiM87Q=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "6PqEpjSh+f8k6HnkFBdHNhWrWsIdBaxUhzWf/m7L1o4=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "e7a58fb0-4af8-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "e7a58fb0-4af8-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-11' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:47> exception=AttributeError("'dict' object has no attribute 'inputName'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 53, in on_inputmutestatechanged
+    print("{} is now unmuted".format(eventData.inputName))
+AttributeError: 'dict' object has no attribute 'inputName'
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": true,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:47> exception=AttributeError("'dict' object has no attribute 'inputName'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 51, in on_inputmutestatechanged
+    print("{} is now muted".format(eventData.inputName))
+AttributeError: 'dict' object has no attribute 'inputName'
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "tkqa4dLD7kLQiEYNSXuXadLkgg9LEAehFxvbr7+zvDQ=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "HynGtYj+ztEthlRKeW864hcI226c/70IHhMcDjgot8U=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "f62b1154-4af8-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "f62b1154-4af8-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-11' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:47> exception=AttributeError("'dict' object has no attribute 'inputName'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 53, in on_inputmutestatechanged
+    print("{} is now unmuted".format(eventData.inputName))
+AttributeError: 'dict' object has no attribute 'inputName'
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": true,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<on_inputmutestatechanged() done, defined at /home/andreas/Dropbox/OBS/streamdeck-py/main.py:47> exception=AttributeError("'dict' object has no attribute 'inputName'")>
+Traceback (most recent call last):
+  File "/home/andreas/Dropbox/OBS/streamdeck-py/main.py", line 51, in on_inputmutestatechanged
+    print("{} is now muted".format(eventData.inputName))
+AttributeError: 'dict' object has no attribute 'inputName'
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "xNnOMydb+3uTxqfCx+/bgzkwL2SoNWN4dYgMGdKJw+4=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "3wTwSWGa+vwhVJatk43GcLIZr1LnvJz4V1shscFm000=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "08158b88-4af9-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "08158b88-4af9-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "O6dtyqSZWnBVXuc9/McUNq3j1ZcDPtf09LjONs8OudI=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "yLe2u29p2H7P80Flywvko1xfFzsdk6zfbOtFw4WnKuc=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "1024fbb0-4af9-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "1024fbb0-4af9-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": true,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Mic/Aux 2"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": true,
+      "inputName": "Mic/Aux 2"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "E0TKkL5WKupZwRm6Y1VZ9AppbMOFJmoBfH7mH4B8f70=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "ckCJEZfDX1xaf00n0ln3VBHbO6I20wHoCeErBNLmzMQ=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "9c71c5da-4af9-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "9c71c5da-4af9-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "ToggleInputMute",
+    "requestId": "9ebffb0e-4af9-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "inputName": "Mic/Aux"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "9ebffb0e-4af9-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "ToggleInputMute",
+    "responseData": {
+      "inputMuted": false
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "ToggleInputMute",
+    "requestId": "a02af6e2-4af9-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "inputName": "Mic/Aux"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "a02af6e2-4af9-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "ToggleInputMute",
+    "responseData": {
+      "inputMuted": true
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": true,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "ToggleInputMute",
+    "requestId": "a2dddd00-4af9-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "inputName": "Mic/Aux"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "a2dddd00-4af9-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "ToggleInputMute",
+    "responseData": {
+      "inputMuted": false
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputMuted": false,
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputMuteStateChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackEnded"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackEnded"
+  },
+  "op": 5
+}
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "u+oS5ZGBsuoGAeK7HjuWhraeNHQgzlRFFwCr7Sp+r00=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "IT58aUfo2uTwKG/UnmLpOVUE8uNbvbByn1UvxBkw6L0=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "b92452d2-4afa-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "b92452d2-4afa-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackEnded"
+  },
+  "op": 5
+}
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "k63GOCRTn5WWC+ga9uYMzpbUR8JpOyaSa7dWnDXTYWY=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "2DTijB8Sx5lNfktcLDkUV5Q31n6Bdrq61+9zDr6uGMY=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "143a4a78-4afb-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "143a4a78-4afb-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackEnded"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "5723b3b0-4afb-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "5723b3b0-4afb-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "5812d008-4afb-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "5812d008-4afb-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "5812d009-4afb-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Avatar"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "5812d009-4afb-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "5b443bcc-4afb-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Avatar"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "5b443bcc-4afb-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "SetCurrentProgramScene",
+    "requestId": "5b443bcd-4afb-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "sceneName": "Camera"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "5b443bcd-4afb-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "SetCurrentProgramScene"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "A6Vce9v1Sx4JEsIF0N8n7Hx65ZFpaVRdxtugtGmK+kg=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "FI9LQdvc34+yB7J61wg0kitBn8g72DdcCC9Zp9sBlgo=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "675400fa-4afb-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "675400fa-4afb-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackEnded"
+  },
+  "op": 5
+}
+DEBUG:asyncio:Using selector: EpollSelector
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "authentication": {
+      "challenge": "2dVCjUwr1lhclWR6SuQ5+PqSTe7p5QKps5gm+jOr/v0=",
+      "salt": "GAwHzBm1yKJqbqBRW7ZMspsB4nbzt9wdHqjNLjySNHU="
+    },
+    "obsWebSocketVersion": "5.0.1",
+    "rpcVersion": 1
+  },
+  "op": 0
+}
+DEBUG:simpleobsws:Sending Identify message:
+{
+  "op": 1,
+  "d": {
+    "rpcVersion": 1,
+    "authentication": "9Ik5tqd+lBgeLitMEJFNDIZNTH4ZEPvwUSYHtEYyY3o=",
+    "eventSubscriptions": 333
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "negotiatedRpcVersion": 1
+  },
+  "op": 2
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "GetVersion",
+    "requestId": "7795e816-4afb-11ed-ad6d-ef582e30374b"
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "7795e816-4afb-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "GetVersion",
+    "responseData": {
+      "availableRequests": [
+        "OpenSourceProjector",
+        "GetMonitorList",
+        "OpenInputFiltersDialog",
+        "GetStudioModeEnabled",
+        "TriggerMediaInputAction",
+        "SetMediaInputCursor",
+        "ResumeRecord",
+        "PauseRecord",
+        "ToggleRecordPause",
+        "StopRecord",
+        "ToggleRecord",
+        "GetRecordStatus",
+        "GetStreamStatus",
+        "SetOutputSettings",
+        "OpenInputInteractDialog",
+        "StartOutput",
+        "StartStream",
+        "ToggleOutput",
+        "GetOutputList",
+        "GetLastReplayBufferReplay",
+        "StopReplayBuffer",
+        "StartReplayBuffer",
+        "StopVirtualCam",
+        "StartVirtualCam",
+        "OpenVideoMixProjector",
+        "SetSceneItemPrivateSettings",
+        "GetSceneItemBlendMode",
+        "SetSceneItemLocked",
+        "SetSceneItemEnabled",
+        "SetSceneItemTransform",
+        "DuplicateSceneItem",
+        "RemoveSceneItem",
+        "GetSceneItemId",
+        "GetSceneItemPrivateSettings",
+        "GetGroupSceneItemList",
+        "ToggleStream",
+        "GetSceneItemList",
+        "SetSourceFilterEnabled",
+        "SetSourceFilterSettings",
+        "SetSourceFilterIndex",
+        "GetSourceFilter",
+        "SetSourceFilterName",
+        "CreateSourceFilter",
+        "GetSourceFilterDefaultSettings",
+        "TriggerStudioModeTransition",
+        "GetCurrentSceneTransitionCursor",
+        "GetMediaInputStatus",
+        "GetReplayBufferStatus",
+        "GetTransitionKindList",
+        "SetInputAudioTracks",
+        "OffsetMediaInputCursor",
+        "GetInputAudioTracks",
+        "SetInputAudioMonitorType",
+        "GetInputAudioMonitorType",
+        "GetSourceFilterList",
+        "GetSceneTransitionList",
+        "SetInputAudioSyncOffset",
+        "SetInputVolume",
+        "GetInputVolume",
+        "GetSceneItemEnabled",
+        "ToggleInputMute",
+        "SetInputMute",
+        "PressInputPropertiesButton",
+        "GetInputMute",
+        "SaveReplayBuffer",
+        "GetSceneItemTransform",
+        "GetInputAudioSyncOffset",
+        "SetInputSettings",
+        "SetStudioModeEnabled",
+        "GetOutputStatus",
+        "GetInputSettings",
+        "GetCurrentSceneTransition",
+        "GetInputDefaultSettings",
+        "GetVirtualCamStatus",
+        "SetInputName",
+        "GetSpecialInputs",
+        "GetInputList",
+        "SetSceneSceneTransitionOverride",
+        "GetSceneSceneTransitionOverride",
+        "SetSceneName",
+        "RemoveScene",
+        "SetCurrentPreviewScene",
+        "SetCurrentProgramScene",
+        "GetCurrentProgramScene",
+        "ToggleVirtualCam",
+        "SetSceneItemBlendMode",
+        "GetSceneItemLocked",
+        "GetGroupList",
+        "CreateSceneItem",
+        "GetSceneList",
+        "GetInputPropertiesListPropertyItems",
+        "SetSourcePrivateSettings",
+        "GetSourcePrivateSettings",
+        "StartRecord",
+        "GetRecordDirectory",
+        "SetStreamServiceSettings",
+        "GetStreamServiceSettings",
+        "SetTBarPosition",
+        "GetInputAudioBalance",
+        "SetVideoSettings",
+        "SetCurrentSceneTransitionSettings",
+        "CreateInput",
+        "CreateScene",
+        "SetProfileParameter",
+        "GetProfileParameter",
+        "GetVideoSettings",
+        "RemoveProfile",
+        "SetSceneItemIndex",
+        "SetCurrentSceneTransitionDuration",
+        "GetInputKindList",
+        "GetSourceActive",
+        "CreateProfile",
+        "SetCurrentProfile",
+        "GetProfileList",
+        "GetSourceScreenshot",
+        "CreateSceneCollection",
+        "SetCurrentSceneTransition",
+        "SetCurrentSceneCollection",
+        "GetSceneCollectionList",
+        "ToggleReplayBuffer",
+        "SetPersistentData",
+        "GetPersistentData",
+        "RemoveInput",
+        "SaveSourceScreenshot",
+        "Sleep",
+        "OpenInputPropertiesDialog",
+        "SendStreamCaption",
+        "SetInputAudioBalance",
+        "TriggerHotkeyByKeySequence",
+        "StopOutput",
+        "GetSceneItemIndex",
+        "TriggerHotkeyByName",
+        "GetHotkeyList",
+        "CallVendorRequest",
+        "RemoveSourceFilter",
+        "BroadcastCustomEvent",
+        "StopStream",
+        "GetOutputSettings",
+        "GetStats",
+        "GetCurrentPreviewScene",
+        "GetVersion"
+      ],
+      "obsVersion": "28.0.3",
+      "obsWebSocketVersion": "5.0.1",
+      "platform": "ubuntu",
+      "platformDescription": "Ubuntu 20.04.5 LTS",
+      "rpcVersion": 1,
+      "supportedImageFormats": [
+        "bmp",
+        "cur",
+        "ico",
+        "jpeg",
+        "jpg",
+        "pbm",
+        "pgm",
+        "png",
+        "ppm",
+        "xbm",
+        "xpm"
+      ]
+    }
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "TriggerMediaInputAction",
+    "requestId": "7795e817-4afb-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "inputName": "Pudel Tusch",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "7795e817-4afb-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "TriggerMediaInputAction"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackEnded"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "TriggerMediaInputAction",
+    "requestId": "7b6b5b38-4afb-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "inputName": "Pudel Tusch",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "7b6b5b38-4afb-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "TriggerMediaInputAction"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackEnded"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Sending Request message:
+{
+  "op": 6,
+  "d": {
+    "requestType": "TriggerMediaInputAction",
+    "requestId": "7ce26b5a-4afb-11ed-ad6d-ef582e30374b",
+    "requestData": {
+      "inputName": "Pudel Tusch",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    }
+  }
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "requestId": "7ce26b5a-4afb-11ed-ad6d-ef582e30374b",
+    "requestStatus": {
+      "code": 100,
+      "result": true
+    },
+    "requestType": "TriggerMediaInputAction"
+  },
+  "op": 7
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch",
+      "mediaAction": "OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputActionTriggered"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 256,
+    "eventType": "MediaInputPlaybackEnded"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": true,
+      "sceneName": "Effekte"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneCreated"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Leitplanken"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera Only"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera Only"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Leitplanken"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "defaultInputSettings": {
+        "file": "/tmp/log.txt",
+        "format": "%d:%02d:%02d",
+        "hotkey10text": "Hotkey 10 was pressed",
+        "hotkey11text": "Hotkey 11 was pressed",
+        "hotkey12text": "Hotkey 12 was pressed",
+        "hotkey13text": "Hotkey 13 was pressed",
+        "hotkey14text": "Hotkey 14 was pressed",
+        "hotkey1text": "",
+        "hotkey2text": "Hotkey 2 was pressed",
+        "hotkey3text": "Hotkey 3 was pressed",
+        "hotkey4text": "Hotkey 4 was pressed",
+        "hotkey5text": "Hotkey 5 was pressed",
+        "hotkey6text": "Hotkey 6 was pressed",
+        "hotkey7text": "Hotkey 7 was pressed",
+        "hotkey8text": "Hotkey 8 was pressed",
+        "hotkey9text": "Hotkey 9 was pressed",
+        "logabsolutetime": true,
+        "loghotkeyspecifics": true,
+        "logscenechanges": true,
+        "logstreaming": false,
+        "outputformat": "default"
+      },
+      "inputKind": "infowriter",
+      "inputName": "infowriter",
+      "inputSettings": {},
+      "unversionedInputKind": "infowriter"
+    },
+    "eventIntent": 8,
+    "eventType": "InputCreated"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "infowriter"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "sceneName": "Camera + Screen 2"
+    },
+    "eventIntent": 4,
+    "eventType": "CurrentProgramSceneChanged"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "defaultInputSettings": {
+        "capture_window": "",
+        "cut_bot": 0,
+        "cut_left": 0,
+        "cut_right": 0,
+        "cut_top": 0,
+        "exclude_alpha": false,
+        "include_border": false,
+        "show_cursor": true,
+        "swap_redblue": false
+      },
+      "inputKind": "xcomposite_input",
+      "inputName": "Window Capture (Xcomposite)",
+      "inputSettings": {},
+      "unversionedInputKind": "xcomposite_input"
+    },
+    "eventIntent": 8,
+    "eventType": "InputCreated"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "defaultInputSettings": {
+        "linear_alpha": false,
+        "unload": false
+      },
+      "inputKind": "image_source",
+      "inputName": "red-circle",
+      "inputSettings": {},
+      "unversionedInputKind": "image_source"
+    },
+    "eventIntent": 8,
+    "eventType": "InputCreated"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "Camera"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "Avatar"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": true,
+      "sceneName": "LeitplankenG"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "red-circle"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Window Capture (Xcomposite)"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pudel Tusch"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "Leitplanken"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Bar"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Quagilis Logo"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Screen 2 Cropped"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "leitplanken.png"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "boater-bar.jpg"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "K\u00e4nguru Image"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "Camera Only"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Color Source"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Image Slide Show"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Quagilis"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Screen 2"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Logitech C922"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "White"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "hero.png"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Conference"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "The Dude"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Neutral"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Leitplanken 1"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Bibliothek"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Der Eiserne Thron"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Pixar BG"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Distracted Boyfriend"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Antelope C"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "lesly-juarez-EW2cPMEp0mI-unsplash.jpg"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "this-is-fine-scaled-e1586238229666.jpg"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Cinema"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "aufzaehlung"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Applause"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "office"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Leitplanken 2"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Chirp"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "cinema"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "Boaters Bar"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "Camera + Screen 2 cropped"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "Distr Boyfriend"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "Antelope Canyon"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "Pixar"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "Evening"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "This is Fine"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "Bibliothek [S]"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "K\u00e4nguru"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": false,
+      "sceneName": "Camera + Screen 2"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Desktop Audio"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "isGroup": true,
+      "sceneName": "Effekte"
+    },
+    "eventIntent": 4,
+    "eventType": "SceneRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Mic/Aux"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Mic/Aux 2"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventData": {
+      "inputName": "Fokus-Leitplanken"
+    },
+    "eventIntent": 8,
+    "eventType": "InputRemoved"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:Received message:
+{
+  "d": {
+    "eventIntent": 1,
+    "eventType": "ExitStarted"
+  },
+  "op": 5
+}
+DEBUG:simpleobsws:The WebSocket connection was closed. Code: 1001 | Reason: Server stopping.
