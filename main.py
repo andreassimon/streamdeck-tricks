@@ -80,9 +80,21 @@ async def toggle_mute(input_name):
         print("ToggleInputMute failed! Response data: {}".format(ret.responseData))
 
 
+async def replay_media(input_name):
+    request = simpleobsws.Request(
+        requestType='TriggerMediaInputAction',
+        requestData=dict(
+            inputName=input_name,
+            mediaAction='OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART'
+        ))
+    ret = await ws.call(request)
+    if not ret.ok():
+        print("TriggerMediaInputAction failed! Response data: {}".format(ret.responseData))
+
+
 async def console_keys():
     while True:
-        response = await aioconsole.ainput('Scenes: [c]amera, [a]vatar, [l]eitplanken, [m]ute: ')
+        response = await aioconsole.ainput('Scenes: [c]amera, [a]vatar, [l]eitplanken, [m]ute, [t]usch: ')
         if response == 'c':
             await switch_scene('Camera')
         elif response == 'a':
@@ -91,6 +103,8 @@ async def console_keys():
             await switch_scene('Leitplanken')
         elif response == 'm':
             await toggle_mute('Mic/Aux')
+        elif response == 't':
+            await replay_media('Pudel Tusch')
 
 
 def sigint_handler(signum, frame):
