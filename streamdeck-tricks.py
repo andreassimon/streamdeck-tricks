@@ -17,6 +17,11 @@ import logging
 logging.basicConfig(filename="streamdeck-tricks.log", level=logging.DEBUG)
 import asyncio
 import simpleobsws
+import threading
+
+from PIL import Image, ImageDraw, ImageFont
+from StreamDeck.DeviceManager import DeviceManager
+from StreamDeck.ImageHelpers import PILHelper
 
 # Initialize parser
 parser = argparse.ArgumentParser(description="Adding description")
@@ -63,15 +68,21 @@ async def on_inputmutestatechanged(eventData):
 
 
 async def obs_init_websocket():
-    await obs.connect()
-    # ConnectionRefusedError
-    await obs.wait_until_identified()
+    try:
+        await obs.connect()
+        await obs.wait_until_identified()
 
-    request = simpleobsws.Request('GetVersion')  # Build a Request object
+        request = simpleobsws.Request('GetVersion')
 
-    ret = await obs.call(request)  # Perform the request
-    if ret.ok():  # Check if the request succeeded
-        print("GetVersion succeeded! Response data: {}".format(ret.responseData))
+        ret = await obs.call(request)
+
+        if ret.ok():
+            print("GetVersion succeeded! Response data: {}".format(ret.responseData))
+
+    except OSError as error:
+        print('\n\nERROR Connecting')
+        print(error)
+        tray_error(None)
 
 
 async def obs_switch_scene(scene_name):
@@ -181,22 +192,114 @@ def tray_icon(name='tray_icon_error'):
     indicator.set_icon_full("{}/{}.png".format(CURRPATH, name), name)
 
 
-def tray_initialize():
+async def tray_initialize():
     indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
     indicator.set_menu(tray_menu())
     gtk.main()
 
 
+def key_change_callback(deck, key, state):
+    # Print new key state
+    print("Deck {} Key {} = {}".format(deck.id(), key, state), flush=True)
+
+    # # Update the key image based on the new key state.
+    # update_key_image(deck, key, state)
+    #
+    # # Check if the key is changing to the pressed state.
+    # if state:
+    #     key_style = get_key_style(deck, key, state)
+    #
+    #     # When an exit button is pressed, close the application.
+    #     if key_style["name"] == "exit":
+    #         # Use a scoped-with on the deck to ensure we're the only thread
+    #         # using it right now.
+    #         with deck:
+    #             # Reset deck, clearing all button images.
+    #             deck.reset()
+    #
+    #             # Close deck handle, terminating internal worker threads.
+    #             deck.close()
+
+def update_key_image(deck, key, image):
+    # # Determine what icon and label to use on the generated key.
+    # key_style = get_key_style(deck, key, state)
+    #
+    # # Generate the custom key with the requested image and label.
+    # image = render_key_image(deck, key_style["icon"], key_style["font"], key_style["label"])
+
+    # Use a scoped-with on the deck to ensure we're the only thread using it
+    # right now.
+    with deck:
+        # Update requested key with the generated image.
+        deck.set_key_image(key, image)
+
+
+def render_key_image(deck, icon_filename, font_filename = None, label_text = None):
+    # Resize the source image asset to best-fit the dimensions of a single key,
+    # leaving a margin at the bottom so that we can draw the key title
+    # afterwards.
+    icon = Image.open(icon_filename)
+    image = PILHelper.create_scaled_image(deck, icon, margins=[0, 0, 0, 0])
+
+    # # Load a custom TrueType font and use it to overlay the key index, draw key
+    # # label onto the image a few pixels from the bottom of the key.
+    # draw = ImageDraw.Draw(image)
+    # font = ImageFont.truetype(font_filename, 14)
+    # draw.text((image.width / 2, image.height - 5), text=label_text, font=font, anchor="ms", fill="white")
+
+    return PILHelper.to_native_format(deck, image)
+
+
+def streamdeck_initialize():
+    streamdecks = DeviceManager().enumerate()
+
+    print("Found {} Stream Deck(s).\n".format(len(streamdecks)))
+
+    for index, deck in enumerate(streamdecks):
+        # This example only works with devices that have screens.
+        if not deck.is_visual():
+            continue
+
+        deck.open()
+        deck.reset()
+
+        print("Opened '{}' device (serial number: '{}', fw: '{}')".format(
+            deck.deck_type(), deck.get_serial_number(), deck.get_firmware_version()
+        ))
+
+        # Set initial screen brightness to 30%.
+        deck.set_brightness(30)
+
+        # # Set initial key images.
+        # for key in range(deck.key_count()):
+        #     update_key_image(deck, key, False)
+        icon = os.path.join(CURRPATH, 'buttons', 'muted.png')
+        image = render_key_image(deck, icon)
+        update_key_image(deck, 0, image)
+
+        # Register callback function for when a key state changes.
+        deck.set_key_callback(key_change_callback)
+
+        # # Wait until all application threads have terminated (for this example,
+        # # this is when all deck handles are closed).
+        # for t in threading.enumerate():
+        #     try:
+        #         t.join()
+        #     except RuntimeError:
+        #         pass
+
+
 signal.signal(signal.SIGINT, sigint_handler)
 
 if __name__ == "__main__":
-    tray_initialize()
-
+    streamdeck_initialize()
     event_loop = asyncio.get_event_loop()
+    # event_loop.run_until_complete(tray_initialize())
+    # event_loop.create_task(console_keys())
+
     event_loop.run_until_complete(obs_init_websocket())
     # By not specifying an event to listen to, all events are sent to this callback.
     obs.register_event_callback(on_event)
     obs.register_event_callback(on_switchscenes, 'CurrentProgramSceneChanged')
     obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
-    event_loop.create_task(console_keys())
     event_loop.run_forever()
