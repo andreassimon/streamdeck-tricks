@@ -14,8 +14,7 @@ import argparse
 
 import logging
 
-
-logging.basicConfig(filename="main.log", level=logging.DEBUG)
+logging.basicConfig(filename="streamdeck-tricks.log", level=logging.DEBUG)
 import asyncio
 import simpleobsws
 
@@ -35,13 +34,14 @@ INPUTS = (1 << 3)
 OUTPUTS = (1 << 6)
 MEDIA_INPUTS = (1 << 8)
 
-
 parameters = simpleobsws.IdentificationParameters()  # Create an IdentificationParameters object
 parameters.eventSubscriptions = GENERAL | SCENES | INPUTS | OUTPUTS | MEDIA_INPUTS
 
 obs = simpleobsws.WebSocketClient(url=args.obs_ws_url,
                                   password=args.obs_ws_password,
                                   identification_parameters=parameters)  # Every possible argument has been passed, but none are required. See lib code for defaults.
+
+CURRPATH = os.path.dirname(os.path.realpath(__file__))
 
 
 async def on_event(eventType, eventData):
@@ -72,7 +72,6 @@ async def obs_init_websocket():
     ret = await obs.call(request)  # Perform the request
     if ret.ok():  # Check if the request succeeded
         print("GetVersion succeeded! Response data: {}".format(ret.responseData))
-
 
 
 async def obs_switch_scene(scene_name):
@@ -133,6 +132,14 @@ def tray_menu():
     screenshot_tray.connect('activate', tray_screenshot)
     menu.append(screenshot_tray)
 
+    error_tray = gtk.MenuItem(label='Error')
+    error_tray.connect('activate', tray_error)
+    menu.append(error_tray)
+
+    disconnected_tray = gtk.MenuItem(label='Disconnected')
+    disconnected_tray.connect('activate', tray_disconnected)
+    menu.append(disconnected_tray)
+
     exit_tray = gtk.MenuItem(label='Quit')
     exit_tray.connect('activate', quit)
     menu.append(exit_tray)
@@ -142,7 +149,8 @@ def tray_menu():
 
 
 def tray_show_logs(_):
-    os.system("deepin-appstore %U")
+    os.system("gnome-terminal -- less " + CURRPATH + "/streamdeck-tricks.log")
+
 
 def tray_screenshot(_):
     os.system("flameshot gui")
@@ -154,12 +162,26 @@ def quit(_):
     exit(0)
 
 
+indicator = appindicator.Indicator.new(
+    "customtray",
+    CURRPATH + "/tray_icon.png",
+    appindicator.IndicatorCategory.APPLICATION_STATUS
+)
+
+
+def tray_error(_):
+    tray_icon('tray_icon_error')
+
+
+def tray_disconnected(_):
+    tray_icon('tray_icon_disconnected')
+
+
+def tray_icon(name='tray_icon_error'):
+    indicator.set_icon_full("{}/{}.png".format(CURRPATH, name), name)
+
+
 def tray_initialize():
-    indicator = appindicator.Indicator.new(
-        "customtray",
-        "/home/andreas/Dropbox/OBS/streamdeck-py/elgato_logo_icon.png",
-       appindicator.IndicatorCategory.APPLICATION_STATUS
-    )
     indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
     indicator.set_menu(tray_menu())
     gtk.main()
@@ -170,11 +192,11 @@ signal.signal(signal.SIGINT, sigint_handler)
 if __name__ == "__main__":
     tray_initialize()
 
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(obs_init_websocket())
+    event_loop = asyncio.get_event_loop()
+    event_loop.run_until_complete(obs_init_websocket())
     # By not specifying an event to listen to, all events are sent to this callback.
     obs.register_event_callback(on_event)
     obs.register_event_callback(on_switchscenes, 'CurrentProgramSceneChanged')
     obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
-    loop.create_task(console_keys())
-    loop.run_forever()
+    event_loop.create_task(console_keys())
+    event_loop.run_forever()
