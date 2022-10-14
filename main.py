@@ -1,3 +1,11 @@
+import os
+
+import gi
+
+gi.require_version('Gtk', '3.0')
+gi.require_version('AppIndicator3', '0.1')
+from gi.repository import Gtk as gtk, AppIndicator3 as appindicator
+
 import signal
 import aioconsole
 import argparse
@@ -54,6 +62,7 @@ async def on_inputmutestatechanged(eventData):
 
 async def init():
     await ws.connect()
+    # ConnectionRefusedError
     await ws.wait_until_identified()
 
     request = simpleobsws.Request('GetVersion')  # Build a Request object
@@ -108,16 +117,52 @@ async def console_keys():
 
 
 def sigint_handler(signum, frame):
-    print("")
+    quit(None)
+
+
+def tray_menu():
+    menu = gtk.Menu()
+
+    show_logs_tray = gtk.MenuItem(label='Show Logs')
+    show_logs_tray.connect('activate', tray_show_logs)
+    menu.append(show_logs_tray)
+
+    exit_tray = gtk.MenuItem(label='Quit')
+    exit_tray.connect('activate', quit)
+    menu.append(exit_tray)
+
+    menu.show_all()
+    return menu
+
+
+def tray_show_logs(_):
+    os.system("deepin-appstore %U")
+
+
+def quit(_):
+    print("\n\nExit")
+    gtk.main_quit()
     exit(0)
+
+
+def tray_initialize():
+    indicator = appindicator.Indicator.new("customtray", "/home/andreas/Dropbox/OBS/streamdeck-py/elgato_logo_icon.png",
+                                           appindicator.IndicatorCategory.APPLICATION_STATUS)
+    indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
+    indicator.set_menu(tray_menu())
+    gtk.main()
 
 
 signal.signal(signal.SIGINT, sigint_handler)
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(init())
-ws.register_event_callback(on_event)  # By not specifying an event to listen to, all events are sent to this callback.
-ws.register_event_callback(on_switchscenes, 'CurrentProgramSceneChanged')
-ws.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
-loop.create_task(console_keys())
-loop.run_forever()
+if __name__ == "__main__":
+    tray_initialize()
+
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(init())
+    # By not specifying an event to listen to, all events are sent to this callback.
+    ws.register_event_callback(on_event)
+    ws.register_event_callback(on_switchscenes, 'CurrentProgramSceneChanged')
+    ws.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
+    loop.create_task(console_keys())
+    loop.run_forever()
