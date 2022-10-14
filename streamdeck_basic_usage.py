@@ -18,7 +18,7 @@ from StreamDeck.DeviceManager import DeviceManager
 from StreamDeck.ImageHelpers import PILHelper
 
 # Folder location of image assets used by this example.
-ASSETS_PATH = os.path.join(os.path.dirname(__file__), "Assets")
+ASSETS_PATH = os.path.join(os.path.dirname(__file__), "buttons")
 
 
 # Generates a custom tile with run-time generated text and custom image via the
