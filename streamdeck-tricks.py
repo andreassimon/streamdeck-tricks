@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import os
 
 import gi
@@ -37,9 +39,9 @@ MEDIA_INPUTS = (1 << 8)
 parameters = simpleobsws.IdentificationParameters()  # Create an IdentificationParameters object
 parameters.eventSubscriptions = GENERAL | SCENES | INPUTS | OUTPUTS | MEDIA_INPUTS
 
-ws = simpleobsws.WebSocketClient(url=args.obs_ws_url,
-                                 password=args.obs_ws_password,
-                                 identification_parameters=parameters)  # Every possible argument has been passed, but none are required. See lib code for defaults.
+obs = simpleobsws.WebSocketClient(url=args.obs_ws_url,
+                                  password=args.obs_ws_password,
+                                  identification_parameters=parameters)  # Every possible argument has been passed, but none are required. See lib code for defaults.
 
 
 async def on_event(eventType, eventData):
@@ -60,43 +62,43 @@ async def on_inputmutestatechanged(eventData):
         print("{} is now unmuted".format(eventData['inputName']))
 
 
-async def init():
-    await ws.connect()
+async def obs_init_websocket():
+    await obs.connect()
     # ConnectionRefusedError
-    await ws.wait_until_identified()
+    await obs.wait_until_identified()
 
     request = simpleobsws.Request('GetVersion')  # Build a Request object
 
-    ret = await ws.call(request)  # Perform the request
+    ret = await obs.call(request)  # Perform the request
     if ret.ok():  # Check if the request succeeded
         print("GetVersion succeeded! Response data: {}".format(ret.responseData))
 
 
 
-async def switch_scene(scene_name):
+async def obs_switch_scene(scene_name):
     request = simpleobsws.Request(requestType='SetCurrentProgramScene', requestData=dict(sceneName=scene_name))
 
-    ret = await ws.call(request)
+    ret = await obs.call(request)
     if not ret.ok():
         print("SetCurrentProgramScene failed! Response data: {}".format(ret.responseData))
 
 
-async def toggle_mute(input_name):
+async def obs_toggle_mute(input_name):
     request = simpleobsws.Request(requestType='ToggleInputMute', requestData=dict(inputName=input_name))
 
-    ret = await ws.call(request)
+    ret = await obs.call(request)
     if not ret.ok():
         print("ToggleInputMute failed! Response data: {}".format(ret.responseData))
 
 
-async def replay_media(input_name):
+async def obs_replay_media(input_name):
     request = simpleobsws.Request(
         requestType='TriggerMediaInputAction',
         requestData=dict(
             inputName=input_name,
             mediaAction='OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART'
         ))
-    ret = await ws.call(request)
+    ret = await obs.call(request)
     if not ret.ok():
         print("TriggerMediaInputAction failed! Response data: {}".format(ret.responseData))
 
@@ -105,15 +107,15 @@ async def console_keys():
     while True:
         response = await aioconsole.ainput('Scenes: [c]amera, [a]vatar, [l]eitplanken, [m]ute, [t]usch: ')
         if response == 'c':
-            await switch_scene('Camera')
+            await obs_switch_scene('Camera')
         elif response == 'a':
-            await switch_scene('Avatar')
+            await obs_switch_scene('Avatar')
         elif response == 'l':
-            await switch_scene('Leitplanken')
+            await obs_switch_scene('Leitplanken')
         elif response == 'm':
-            await toggle_mute('Mic/Aux')
+            await obs_toggle_mute('Mic/Aux')
         elif response == 't':
-            await replay_media('Pudel Tusch')
+            await obs_replay_media('Pudel Tusch')
 
 
 def sigint_handler(signum, frame):
@@ -127,6 +129,10 @@ def tray_menu():
     show_logs_tray.connect('activate', tray_show_logs)
     menu.append(show_logs_tray)
 
+    screenshot_tray = gtk.MenuItem(label='Screenshot')
+    screenshot_tray.connect('activate', tray_screenshot)
+    menu.append(screenshot_tray)
+
     exit_tray = gtk.MenuItem(label='Quit')
     exit_tray.connect('activate', quit)
     menu.append(exit_tray)
@@ -138,6 +144,9 @@ def tray_menu():
 def tray_show_logs(_):
     os.system("deepin-appstore %U")
 
+def tray_screenshot(_):
+    os.system("flameshot gui")
+
 
 def quit(_):
     print("\n\nExit")
@@ -146,8 +155,11 @@ def quit(_):
 
 
 def tray_initialize():
-    indicator = appindicator.Indicator.new("customtray", "/home/andreas/Dropbox/OBS/streamdeck-py/elgato_logo_icon.png",
-                                           appindicator.IndicatorCategory.APPLICATION_STATUS)
+    indicator = appindicator.Indicator.new(
+        "customtray",
+        "/home/andreas/Dropbox/OBS/streamdeck-py/elgato_logo_icon.png",
+       appindicator.IndicatorCategory.APPLICATION_STATUS
+    )
     indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
     indicator.set_menu(tray_menu())
     gtk.main()
@@ -159,10 +171,10 @@ if __name__ == "__main__":
     tray_initialize()
 
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(init())
+    loop.run_until_complete(obs_init_websocket())
     # By not specifying an event to listen to, all events are sent to this callback.
-    ws.register_event_callback(on_event)
-    ws.register_event_callback(on_switchscenes, 'CurrentProgramSceneChanged')
-    ws.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
+    obs.register_event_callback(on_event)
+    obs.register_event_callback(on_switchscenes, 'CurrentProgramSceneChanged')
+    obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
     loop.create_task(console_keys())
     loop.run_forever()
