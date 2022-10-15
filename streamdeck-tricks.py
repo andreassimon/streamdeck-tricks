@@ -263,7 +263,7 @@ def update_key_image(deck, key, image):
 
     # Use a scoped-with on the deck to ensure we're the only thread using it
     # right now.
-    icon = os.path.join(CURRPATH, 'buttons', image)
+    icon = os.path.join(CURRPATH, 'streamdeck', image)
     image = render_key_image(deck, icon)
 
     with deck:
