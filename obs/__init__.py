@@ -1,0 +1,2 @@
+class OBS:
+    pass

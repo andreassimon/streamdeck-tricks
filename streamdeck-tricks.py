@@ -2,12 +2,6 @@
 
 import os
 
-import gi
-
-gi.require_version('Gtk', '3.0')
-gi.require_version('AppIndicator3', '0.1')
-from gi.repository import Gtk as gtk, AppIndicator3
-
 import signal
 import aioconsole
 import argparse
@@ -22,6 +16,12 @@ import threading
 from PIL import Image, ImageDraw, ImageFont
 from StreamDeck.DeviceManager import DeviceManager
 from StreamDeck.ImageHelpers import PILHelper
+
+from appindicator import AppIndicator
+
+appindicator = AppIndicator()
+from obs import OBS
+from streamdeck import StreamDeck
 
 # Initialize parser
 parser = argparse.ArgumentParser(description="Adding description")
@@ -84,7 +84,6 @@ async def on_inputmutestatechanged(eventData):
             update_key_image(deck, 0, 'unmuted.png')
 
 
-
 async def obs_init_websocket():
     try:
         await obs.connect()
@@ -100,7 +99,7 @@ async def obs_init_websocket():
     except OSError as error:
         print('\n\nERROR Connecting')
         print(error)
-        tray_error(None)
+        appindicator.tray_error(None)
 
 
 async def obs_switch_scene(scene_name):
@@ -150,41 +149,6 @@ def sigint_handler(signum, frame):
     quit(None)
 
 
-def tray_menu():
-    menu = gtk.Menu()
-
-    show_logs_tray = gtk.MenuItem(label='Show Logs')
-    show_logs_tray.connect('activate', tray_show_logs)
-    menu.append(show_logs_tray)
-
-    screenshot_tray = gtk.MenuItem(label='Screenshot')
-    screenshot_tray.connect('activate', tray_screenshot)
-    menu.append(screenshot_tray)
-
-    error_tray = gtk.MenuItem(label='Error')
-    error_tray.connect('activate', tray_error)
-    menu.append(error_tray)
-
-    disconnected_tray = gtk.MenuItem(label='Disconnected')
-    disconnected_tray.connect('activate', tray_disconnected)
-    menu.append(disconnected_tray)
-
-    exit_tray = gtk.MenuItem(label='Quit')
-    exit_tray.connect('activate', quit)
-    menu.append(exit_tray)
-
-    menu.show_all()
-    return menu
-
-
-def tray_show_logs(_):
-    os.system("gnome-terminal -- less " + CURRPATH + "/streamdeck-tricks.log")
-
-
-def tray_screenshot(_):
-    os.system("flameshot gui")
-
-
 def quit(_):
     print("\n\nExit")
     # Wait until all application threads have terminated (for this example,
@@ -195,33 +159,10 @@ def quit(_):
         except RuntimeError:
             pass
 
-    gtk.main_quit()
+    appindicator.exit()
     exit(0)
 
 
-indicator = AppIndicator3.Indicator.new(
-    "customtray",
-    CURRPATH + "/tray_icon.png",
-    AppIndicator3.IndicatorCategory.APPLICATION_STATUS
-)
-
-
-def tray_error(_):
-    tray_icon('tray_icon_error')
-
-
-def tray_disconnected(_):
-    tray_icon('tray_icon_disconnected')
-
-
-def tray_icon(name='tray_icon_error'):
-    indicator.set_icon_full("{}/{}.png".format(CURRPATH, name), name)
-
-
-async def tray_initialize():
-    indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
-    indicator.set_menu(tray_menu())
-    gtk.main()
 
 
 obs_event_loop = asyncio.get_event_loop()
@@ -271,7 +212,7 @@ def update_key_image(deck, key, image):
         deck.set_key_image(key, image)
 
 
-def render_key_image(deck, icon_filename, font_filename = None, label_text = None):
+def render_key_image(deck, icon_filename, font_filename=None, label_text=None):
     # Resize the source image asset to best-fit the dimensions of a single key,
     # leaving a margin at the bottom so that we can draw the key title
     # afterwards.
@@ -319,7 +260,7 @@ async def streamdeck_initialize():
 
 signal.signal(signal.SIGINT, sigint_handler)
 if __name__ == "__main__":
-    # event_loop.run_until_complete(tray_initialize())
+    appindicator.start()
     # event_loop.create_task(console_keys())
 
     obs_event_loop.run_until_complete(obs_init_websocket())
@@ -332,4 +273,3 @@ if __name__ == "__main__":
     streamdeck_event_loop.run_until_complete(streamdeck_initialize())
     obs_event_loop.run_forever()
     # streamdeck_event_loop.run_forever()
-
