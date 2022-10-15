@@ -6,7 +6,7 @@ import gi
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('AppIndicator3', '0.1')
-from gi.repository import Gtk as gtk, AppIndicator3 as appindicator
+from gi.repository import Gtk as gtk, AppIndicator3
 
 import signal
 import aioconsole
@@ -62,9 +62,27 @@ async def on_switchscenes(eventData):
 async def on_inputmutestatechanged(eventData):
     # Data: {'inputMuted': False, 'inputName': 'Mic/Aux'}
     if eventData['inputMuted']:
-        print("{} is now muted".format(eventData['inputName']))
+        print("\n\n{} is now muted".format(eventData['inputName']))
+        streamdecks = DeviceManager().enumerate()
+        for index, deck in enumerate(streamdecks):
+            # This example only works with devices that have screens.
+            if not deck.is_visual():
+                continue
+            print("{} button 0: muted.png".format(deck.id()))
+            print("{} threads active; current: {}".format(threading.active_count(), threading.current_thread().name))
+            update_key_image(deck, 0, 'muted.png')
+
     else:
-        print("{} is now unmuted".format(eventData['inputName']))
+        print("\n\n{} is now unmuted".format(eventData['inputName']))
+        streamdecks = DeviceManager().enumerate()
+        for index, deck in enumerate(streamdecks):
+            # This example only works with devices that have screens.
+            if not deck.is_visual():
+                continue
+            print("{} button 0: unmuted.png".format(deck.id()))
+            print("{} threads active; current: {}".format(threading.active_count(), threading.current_thread().name))
+            update_key_image(deck, 0, 'unmuted.png')
+
 
 
 async def obs_init_websocket():
@@ -77,7 +95,7 @@ async def obs_init_websocket():
         ret = await obs.call(request)
 
         if ret.ok():
-            print("GetVersion succeeded! Response data: {}".format(ret.responseData))
+            logging.debug("GetVersion succeeded! Response data: {}".format(ret.responseData))
 
     except OSError as error:
         print('\n\nERROR Connecting')
@@ -173,10 +191,10 @@ def quit(_):
     exit(0)
 
 
-indicator = appindicator.Indicator.new(
+indicator = AppIndicator3.Indicator.new(
     "customtray",
     CURRPATH + "/tray_icon.png",
-    appindicator.IndicatorCategory.APPLICATION_STATUS
+    AppIndicator3.IndicatorCategory.APPLICATION_STATUS
 )
 
 
@@ -193,15 +211,22 @@ def tray_icon(name='tray_icon_error'):
 
 
 async def tray_initialize():
-    indicator.set_status(appindicator.IndicatorStatus.ACTIVE)
+    indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
     indicator.set_menu(tray_menu())
     gtk.main()
 
 
-def key_change_callback(deck, key, state):
-    # Print new key state
-    print("Deck {} Key {} = {}".format(deck.id(), key, state), flush=True)
+obs_event_loop = asyncio.get_event_loop()
+streamdeck_event_loop = asyncio.get_event_loop()
 
+
+def key_change_callback(deck, key, key_down):
+    # Print new key state
+    print("Deck {} Key {} = {}".format(deck.id(), key, key_down), flush=True)
+    print("{} threads active; current: {}".format(threading.active_count(), threading.current_thread().name))
+    if key == 0 and key_down:
+        asyncio.run_coroutine_threadsafe(obs_toggle_mute('Mic/Aux'), obs_event_loop)
+        update_key_image(deck, key, 'muted.png')
     # # Update the key image based on the new key state.
     # update_key_image(deck, key, state)
     #
@@ -220,6 +245,7 @@ def key_change_callback(deck, key, state):
     #             # Close deck handle, terminating internal worker threads.
     #             deck.close()
 
+
 def update_key_image(deck, key, image):
     # # Determine what icon and label to use on the generated key.
     # key_style = get_key_style(deck, key, state)
@@ -229,6 +255,9 @@ def update_key_image(deck, key, image):
 
     # Use a scoped-with on the deck to ensure we're the only thread using it
     # right now.
+    icon = os.path.join(CURRPATH, 'buttons', image)
+    image = render_key_image(deck, icon)
+
     with deck:
         # Update requested key with the generated image.
         deck.set_key_image(key, image)
@@ -250,7 +279,7 @@ def render_key_image(deck, icon_filename, font_filename = None, label_text = Non
     return PILHelper.to_native_format(deck, image)
 
 
-def streamdeck_initialize():
+async def streamdeck_initialize():
     streamdecks = DeviceManager().enumerate()
 
     print("Found {} Stream Deck(s).\n".format(len(streamdecks)))
@@ -273,9 +302,8 @@ def streamdeck_initialize():
         # # Set initial key images.
         # for key in range(deck.key_count()):
         #     update_key_image(deck, key, False)
-        icon = os.path.join(CURRPATH, 'buttons', 'muted.png')
-        image = render_key_image(deck, icon)
-        update_key_image(deck, 0, image)
+        update_key_image(deck, 0, 'muted.png')
+        update_key_image(deck, 0, 'unmuted.png')
 
         # Register callback function for when a key state changes.
         deck.set_key_callback(key_change_callback)
@@ -290,16 +318,18 @@ def streamdeck_initialize():
 
 
 signal.signal(signal.SIGINT, sigint_handler)
-
 if __name__ == "__main__":
-    streamdeck_initialize()
-    event_loop = asyncio.get_event_loop()
     # event_loop.run_until_complete(tray_initialize())
     # event_loop.create_task(console_keys())
 
-    event_loop.run_until_complete(obs_init_websocket())
+    obs_event_loop.run_until_complete(obs_init_websocket())
+    obs_event_loop.run_until_complete(obs_toggle_mute('Mic/Aux'))
+
     # By not specifying an event to listen to, all events are sent to this callback.
     obs.register_event_callback(on_event)
     obs.register_event_callback(on_switchscenes, 'CurrentProgramSceneChanged')
     obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
-    event_loop.run_forever()
+    streamdeck_event_loop.run_until_complete(streamdeck_initialize())
+    obs_event_loop.run_forever()
+    # streamdeck_event_loop.run_forever()
+
