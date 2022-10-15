@@ -58,12 +58,25 @@ def quit(_):
     exit(0)
 
 
-
+current_deck = None
 signal.signal(signal.SIGINT, sigint_handler)
+
+def toggle_mute(key, key_down):
+    if key_down:
+        obs.obs_toggle_mute('Mic/Aux')
+        key.update_key_image('muted.png')
+    else:
+        key.update_key_image('unmuted.png')
+    # asyncio.run_coroutine_threadsafe(obs_toggle_mute('Mic/Aux'), obs_event_loop)
+
 
 if __name__ == "__main__":
     # event_loop.create_task(console_keys())
     decks = StreamDecks()
+    current_deck = decks.current_deck
+    current_deck.get_key(0).update_key_image('muted.png')
+    current_deck.get_key(0).update_key_image('unmuted.png')
+    current_deck.get_key(0).set_callback(toggle_mute)
     obs.start()
     appindicator = AppIndicator(decks)
     appindicator.start()

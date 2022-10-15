@@ -51,7 +51,7 @@ class OBS:
                                                identification_parameters=parameters)  # Every possible argument has been passed, but none are required. See lib code for defaults.
 
         self.obs_event_loop.run_until_complete(self.obs_init_websocket())
-        self.obs_event_loop.run_until_complete(self.obs_toggle_mute('Mic/Aux'))
+        self.obs_toggle_mute('Mic/Aux')
         # By not specifying an event to listen to, all events are sent to this callback.
         self.obs.register_event_callback(self.on_event)
         self.obs.register_event_callback(self.on_switchscenes, 'CurrentProgramSceneChanged')
@@ -122,14 +122,16 @@ class OBS:
         if not ret.ok():
             print("SetCurrentProgramScene failed! Response data: {}".format(ret.responseData))
 
-
-    async def obs_toggle_mute(self, input_name):
+    def obs_toggle_mute(self, input_name):
         request = simpleobsws.Request(requestType='ToggleInputMute', requestData=dict(inputName=input_name))
 
-        ret = await self.obs.call(request)
-        if not ret.ok():
-            print("ToggleInputMute failed! Response data: {}".format(ret.responseData))
-
+        future = asyncio.run_coroutine_threadsafe(self.obs.call(request), self.obs_event_loop)
+        try:
+            ret = future.result(1)
+            if not ret.ok():
+                print("ToggleInputMute failed! Response data: {}".format(ret.responseData))
+        except Exception as error:
+            logging.info(error)
 
     async def obs_replay_media(self, input_name):
         request = simpleobsws.Request(

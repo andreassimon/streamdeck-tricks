@@ -25,48 +25,19 @@ class StreamDecks:
         return self.streamdecks
 
 
-class StreamDeck:
-
-    def __init__(self, deck):
+class StreamDeckKey:
+    def __init__(self, deck, key):
         self.deck = deck
+        self.key = key
+        self._callback = None
 
-    def initialize(self):
-        # This example only works with devices that have screens.
-        if not self.deck.is_visual():
-            return
+    def set_callback(self, cb):
+        self._callback = cb
 
-        self.deck.open()
-        self.deck.reset()
+    def callback(self, key_down):
+        self._callback(self, key_down)
 
-        print("Opened '{}' device (serial number: '{}', fw: '{}')".format(
-            self.deck_type(), self.get_serial_number(), self.get_firmware_version()
-        ))
-
-        # Set initial screen brightness to 30%.
-        self.deck.set_brightness(30)
-
-        # # Set initial key images.
-        # for key in range(deck.key_count()):
-        #     update_key_image(deck, key, False)
-        self.update_key_image(0, 'muted.png')
-        self.update_key_image(0, 'unmuted.png')
-
-        # Register callback function for when a key state changes.
-        self.deck.set_key_callback(self.key_change_callback)
-
-    def get_streamdeck_label(self):
-        return "{} [S/N {}]".format(self.deck_type(), self.get_serial_number())
-
-    def get_firmware_version(self):
-        return self.deck.get_firmware_version()
-
-    def get_serial_number(self):
-        return self.deck.get_serial_number()
-
-    def deck_type(self):
-        return self.deck.deck_type()
-
-    def update_key_image(self, key, image):
+    def update_key_image(self, image):
         # # Determine what icon and label to use on the generated key.
         # key_style = get_key_style(deck, key, state)
         #
@@ -80,9 +51,7 @@ class StreamDeck:
 
         with self.deck:
             # Update requested key with the generated image.
-            self.deck.set_key_image(key, image)
-
-
+            self.deck.set_key_image(self.key, image)
 
     def render_key_image(self, deck, icon_filename, font_filename=None, label_text=None):
         # Resize the source image asset to best-fit the dimensions of a single key,
@@ -100,13 +69,53 @@ class StreamDeck:
         return PILHelper.to_native_format(deck, image)
 
 
+
+
+
+class StreamDeck:
+
+    def __init__(self, deck):
+        self.deck = deck
+        self.keys = list()
+
+
+    def initialize(self):
+        # This example only works with devices that have screens.
+        if not self.deck.is_visual():
+            return
+
+        self.deck.open()
+        self.deck.reset()
+
+        print("Opened '{}' device (serial number: '{}', fw: '{}')".format(
+            self.deck_type(), self.get_serial_number(), self.get_firmware_version()
+        ))
+
+        self.deck.set_brightness(30)
+
+        for key in range(self.deck.key_count()):
+            self.keys.extend([StreamDeckKey(self.deck, key)])
+
+        # Register callback function for when a key state changes.
+        self.deck.set_key_callback(self.key_change_callback)
+
+    def get_streamdeck_label(self):
+        return "{} [S/N {}]".format(self.deck_type(), self.get_serial_number())
+
+    def get_firmware_version(self):
+        return self.deck.get_firmware_version()
+
+    def get_serial_number(self):
+        return self.deck.get_serial_number()
+
+    def deck_type(self):
+        return self.deck.deck_type()
+
     def key_change_callback(self, deck, key, key_down):
         # Print new key state
         print("Deck {} Key {} = {}".format(deck.id(), key, key_down), flush=True)
         print("{} threads active; current: {}".format(threading.active_count(), threading.current_thread().name))
-        if key == 0 and key_down:
-            # asyncio.run_coroutine_threadsafe(obs_toggle_mute('Mic/Aux'), obs_event_loop)
-            self.update_key_image(key, 'muted.png')
+        self.get_key(key).callback(key_down)
         # # Update the key image based on the new key state.
         # update_key_image(deck, key, state)
         #
@@ -124,4 +133,7 @@ class StreamDeck:
         #
         #             # Close deck handle, terminating internal worker threads.
         #             deck.close()
+
+    def get_key(self, key):
+        return self.keys[key]
 
