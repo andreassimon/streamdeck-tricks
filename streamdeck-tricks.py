@@ -4,7 +4,6 @@ import os
 
 import signal
 import aioconsole
-import argparse
 
 import logging
 
@@ -14,18 +13,8 @@ import threading
 from appindicator import AppIndicator
 appindicator = AppIndicator()
 
-from obs import initialize_obs
+from obs import OBS
 from streamdeck import initialize_decks
-
-# Initialize parser
-parser = argparse.ArgumentParser(description="Adding description")
-parser.add_argument('--obs-ws-url',
-                    default='ws://localhost:4455',
-                    help='The WebSocket of OBS to connect to')
-parser.add_argument('--obs-ws-password',
-                    default='6pNsEcAXBOn0nHrU',
-                    help='The password to connect to the WebSocket of OBS')
-args = parser.parse_args()
 
 CURRPATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -69,5 +58,5 @@ signal.signal(signal.SIGINT, sigint_handler)
 if __name__ == "__main__":
     # event_loop.create_task(console_keys())
     initialize_decks()
-    initialize_obs()
+    OBS()
     appindicator.start()

@@ -1,13 +1,9 @@
+import argparse
 import asyncio
 import logging
 import simpleobsws
+import threading
 
-
-class OBS:
-    pass
-
-
-obs_event_loop = asyncio.get_event_loop()
 
 GENERAL = (1 << 0)
 SCENES = (1 << 2)
@@ -19,24 +15,47 @@ MEDIA_INPUTS = (1 << 8)
 parameters = simpleobsws.IdentificationParameters()  # Create an IdentificationParameters object
 parameters.eventSubscriptions = GENERAL | SCENES | INPUTS | OUTPUTS | MEDIA_INPUTS
 
+# Initialize parser
+parser = argparse.ArgumentParser(description="Adding description")
+parser.add_argument('--obs-ws-url',
+                    default='ws://localhost:4455',
+                    help='The WebSocket of OBS to connect to')
+parser.add_argument('--obs-ws-password',
+                    default='6pNsEcAXBOn0nHrU',
+                    help='The password to connect to the WebSocket of OBS')
+args = parser.parse_args()
+
 obs = simpleobsws.WebSocketClient(url=args.obs_ws_url,
                                   password=args.obs_ws_password,
                                   identification_parameters=parameters)  # Every possible argument has been passed, but none are required. See lib code for defaults.
 
 
-def initialize_obs():
-    obs_event_loop.run_until_complete(obs_init_websocket())
-    obs_event_loop.run_until_complete(obs_toggle_mute('Mic/Aux'))
-    # By not specifying an event to listen to, all events are sent to this callback.
-    obs.register_event_callback(on_event)
-    obs.register_event_callback(on_switchscenes, 'CurrentProgramSceneChanged')
-    obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
-    obs_event_loop.run_forever()
+class OBS:
+
+    def __init__(self):
+        logging.info("Main    : before creating thread")
+        self.obs_event_loop = asyncio.get_event_loop()
+        x = threading.Thread(target=self.obs_thread)
+        logging.info("Main    : before running thread")
+        x.start()
+        logging.info("Main    : wait for the thread to finish")
+        # x.join()
+        logging.info("Main    : all done")
+
+
+    def obs_thread(self):
+        self.obs_event_loop.run_until_complete(obs_init_websocket())
+        self.obs_event_loop.run_until_complete(obs_toggle_mute('Mic/Aux'))
+        # By not specifying an event to listen to, all events are sent to this callback.
+        obs.register_event_callback(on_event)
+        obs.register_event_callback(on_switchscenes, 'CurrentProgramSceneChanged')
+        obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
+        self.obs_event_loop.run_forever()
 
 
 async def on_event(eventType, eventData):
     # Print the event data. Note that `update-type` is also provided in the data
-    # print('New event! Type: {} | Raw Data: {}'.format(eventType, eventData))
+    print('New event! Type: {} | Raw Data: {}'.format(eventType, eventData))
     pass
 
 
@@ -84,7 +103,7 @@ async def obs_init_websocket():
     except OSError as error:
         print('\n\nERROR Connecting')
         print(error)
-        appindicator.tray_error(None)
+        # appindicator.tray_error(None)
 
 
 async def obs_switch_scene(scene_name):
