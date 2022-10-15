@@ -11,7 +11,7 @@ logging.basicConfig(filename="streamdeck-tricks.log", level=logging.DEBUG)
 import threading
 
 from appindicator import AppIndicator
-appindicator = AppIndicator()
+appindicator = None
 
 from obs import OBS
 obs = OBS()
@@ -65,4 +65,5 @@ if __name__ == "__main__":
     # event_loop.create_task(console_keys())
     decks = StreamDecks()
     obs.start()
+    appindicator = AppIndicator(decks)
     appindicator.start()

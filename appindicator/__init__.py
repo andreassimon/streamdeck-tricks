@@ -11,12 +11,13 @@ MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 
 class AppIndicator:
 
-    def __init__(self):
+    def __init__(self, streamdecks):
         self.indicator = AppIndicator3.Indicator.new(
             "customtray",
             MODULE_PATH + "/tray_icon.png",
             AppIndicator3.IndicatorCategory.APPLICATION_STATUS
         )
+        self.streamdecks = streamdecks
         self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
         self.indicator.set_menu(self.tray_menu())
 
@@ -25,6 +26,11 @@ class AppIndicator:
 
     def tray_menu(self):
         menu = gtk.Menu()
+
+        for index, deck in enumerate(self.streamdecks.items()):
+            streamdeck_tray = gtk.MenuItem(label=deck.get_streamdeck_label())
+            # streamdeck_tray.connect('activate', self.tray_show_logs)
+            menu.append(streamdeck_tray)
 
         show_logs_tray = gtk.MenuItem(label='Show Logs')
         show_logs_tray.connect('activate', self.tray_show_logs)

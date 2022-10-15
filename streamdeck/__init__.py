@@ -1,7 +1,5 @@
 import os
 
-import asyncio
-
 from PIL import Image, ImageDraw, ImageFont
 from StreamDeck.DeviceManager import DeviceManager
 from StreamDeck.ImageHelpers import PILHelper
@@ -15,42 +13,60 @@ MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 class StreamDecks:
 
     def __init__(self):
-        self.streamdecks = DeviceManager().enumerate()
+        self.streamdecks = list(map(StreamDeck, DeviceManager().enumerate()))
 
         print("Found {} Stream Deck(s).\n".format(len(self.streamdecks)))
 
-        for index, deck in enumerate(self.streamdecks):
-            StreamDeck().initialize(deck)
+        if len(self.streamdecks) > 0:
+            self.current_deck = self.streamdecks[0]
+            self.current_deck.initialize()
+
+    def items(self):
+        return self.streamdecks
 
 
 class StreamDeck:
 
-    def initialize(self, deck):
+    def __init__(self, deck):
+        self.deck = deck
+
+    def initialize(self):
         # This example only works with devices that have screens.
-        if not deck.is_visual():
+        if not self.deck.is_visual():
             return
 
-        deck.open()
-        deck.reset()
+        self.deck.open()
+        self.deck.reset()
 
         print("Opened '{}' device (serial number: '{}', fw: '{}')".format(
-            deck.deck_type(), deck.get_serial_number(), deck.get_firmware_version()
+            self.deck_type(), self.get_serial_number(), self.get_firmware_version()
         ))
 
         # Set initial screen brightness to 30%.
-        deck.set_brightness(30)
+        self.deck.set_brightness(30)
 
         # # Set initial key images.
         # for key in range(deck.key_count()):
         #     update_key_image(deck, key, False)
-        self.update_key_image(deck, 0, 'muted.png')
-        self.update_key_image(deck, 0, 'unmuted.png')
+        self.update_key_image(0, 'muted.png')
+        self.update_key_image(0, 'unmuted.png')
 
         # Register callback function for when a key state changes.
-        deck.set_key_callback(self.key_change_callback)
+        self.deck.set_key_callback(self.key_change_callback)
 
+    def get_streamdeck_label(self):
+        return "{} [S/N {}]".format(self.deck_type(), self.get_serial_number())
 
-    def update_key_image(self, deck, key, image):
+    def get_firmware_version(self):
+        return self.deck.get_firmware_version()
+
+    def get_serial_number(self):
+        return self.deck.get_serial_number()
+
+    def deck_type(self):
+        return self.deck.deck_type()
+
+    def update_key_image(self, key, image):
         # # Determine what icon and label to use on the generated key.
         # key_style = get_key_style(deck, key, state)
         #
@@ -60,11 +76,11 @@ class StreamDeck:
         # Use a scoped-with on the deck to ensure we're the only thread using it
         # right now.
         icon = os.path.join(MODULE_PATH, image)
-        image = self.render_key_image(deck, icon)
+        image = self.render_key_image(self.deck, icon)
 
-        with deck:
+        with self.deck:
             # Update requested key with the generated image.
-            deck.set_key_image(key, image)
+            self.deck.set_key_image(key, image)
 
 
 
@@ -90,7 +106,7 @@ class StreamDeck:
         print("{} threads active; current: {}".format(threading.active_count(), threading.current_thread().name))
         if key == 0 and key_down:
             # asyncio.run_coroutine_threadsafe(obs_toggle_mute('Mic/Aux'), obs_event_loop)
-            self.update_key_image(deck, key, 'muted.png')
+            self.update_key_image(key, 'muted.png')
         # # Update the key image based on the new key state.
         # update_key_image(deck, key, state)
         #
