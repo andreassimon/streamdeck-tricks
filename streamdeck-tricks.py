@@ -45,14 +45,14 @@ def quit(_):
     obs.exit()
     # Wait until all application threads have terminated (for this example,
     # this is when all deck handles are closed).
-    for t in threading.enumerate():
-        try:
-            print(t.name)
-            t.join()
-            print("Joined {}".format(t.name))
-        except RuntimeError as error:
-            print("{} '{}'".format(error, t.name))
-            pass
+    # for t in threading.enumerate():
+    #     try:
+    #         print("Trying to join '{}'".format(t.name))
+    #         t.join()
+    #         print("Joined {}".format(t.name))
+    #     except RuntimeError as error:
+    #         print("{} '{}'".format(error, t.name))
+    #         pass
 
     appindicator.exit()
     exit(0)
