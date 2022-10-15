@@ -20,7 +20,7 @@ class StreamDecks:
         print("Found {} Stream Deck(s).\n".format(len(self.streamdecks)))
 
         for index, deck in enumerate(self.streamdecks):
-            StreamDeck(deck)
+            StreamDeck().initialize(deck)
 
 
 class StreamDeck:
@@ -59,7 +59,7 @@ class StreamDeck:
 
         # Use a scoped-with on the deck to ensure we're the only thread using it
         # right now.
-        icon = os.path.join(MODULE_PATH, 'streamdeck', image)
+        icon = os.path.join(MODULE_PATH, image)
         image = self.render_key_image(deck, icon)
 
         with deck:
