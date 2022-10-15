@@ -40,6 +40,10 @@ def sigint_handler(signum, frame):
     quit(None)
 
 
+decks = StreamDecks()
+current_deck = decks.current_deck
+
+
 def quit(_):
     print("\n\nExit")
     obs.exit()
@@ -55,53 +59,61 @@ def quit(_):
     #         pass
 
     appindicator.exit()
+    current_deck.exit()
     exit(0)
 
 
 signal.signal(signal.SIGINT, sigint_handler)
 
+
 def toggle_mute(key, key_down):
     if key_down:
-        obs.obs_toggle_mute('Mic/Aux')
+        obs.toggle_mute('Mic/Aux')
 
 
-decks = StreamDecks()
-current_deck = decks.current_deck
-mic_key = current_deck.get_key(0)
+def replay_applause(key, key_down):
+    if key_down:
+        obs.replay_media('Applause')
+
+
+def replay_chirp(key, key_down):
+    if key_down:
+        obs.replay_media('Chirp')
+
+
+def replay_pudel_tusch(key, key_down):
+    if key_down:
+        obs.replay_media('Pudel Tusch')
+
+
+mic_key = current_deck.get_key(14)
 mic_key.update_key_image('muted.png')
 mic_key.update_key_image('unmuted.png')
 mic_key.set_callback(toggle_mute)
 
+current_deck.get_key(10).update_key_image('cheering-crowd.png')
+current_deck.get_key(10).set_callback(replay_applause)
+
+current_deck.get_key(11).update_key_image('steppe.png')
+current_deck.get_key(11).set_callback(replay_chirp)
+
+current_deck.get_key(12).update_key_image('poodle-flourish.png')
+current_deck.get_key(12).set_callback(replay_pudel_tusch)
+
+
 async def on_inputmutestatechanged(eventData):
-    # Data: {'inputMuted': False, 'inputName': 'Mic/Aux'}
+    # eventData: {'inputMuted': False, 'inputName': 'Mic/Aux'}
     if eventData['inputMuted']:
-        print("\n\n{} is now muted".format(eventData['inputName']))
+        # print("\n\n{} is now muted".format(eventData['inputName']))
         mic_key.update_key_image('muted.png')
 
-        # streamdecks = DeviceManager().enumerate()
-        # for index, deck in enumerate(streamdecks):
-        #     # This example only works with devices that have screens.
-        #     if not deck.is_visual():
-        #         continue
-        #     print("{} button 0: muted.png".format(deck.id()))
-        #     print("{} threads active; current: {}".format(threading.active_count(), threading.current_thread().name))
-        #     update_key_image(deck, 0, 'muted.png')
-
     else:
-        print("\n\n{} is now unmuted".format(eventData['inputName']))
+        # print("\n\n{} is now unmuted".format(eventData['inputName']))
         mic_key.update_key_image('unmuted.png')
-        # streamdecks = DeviceManager().enumerate()
-        # for index, deck in enumerate(streamdecks):
-        #     # This example only works with devices that have screens.
-        #     if not deck.is_visual():
-        #         continue
-        #     print("{} button 0: unmuted.png".format(deck.id()))
-        #     print("{} threads active; current: {}".format(threading.active_count(), threading.current_thread().name))
-        #     update_key_image(deck, 0, 'unmuted.png')
 
 
 if __name__ == "__main__":
     obs.start()
     obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
-    appindicator = AppIndicator(decks)
+    appindicator = AppIndicator(decks, quit)
     appindicator.start()

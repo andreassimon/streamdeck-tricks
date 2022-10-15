@@ -52,10 +52,9 @@ class OBS:
                                                password=args.obs_ws_password,
                                                identification_parameters=parameters)  # Every possible argument has been passed, but none are required. See lib code for defaults.
         self.obs_lock.release()
-        print('obs initialized')
 
         self.obs_event_loop.run_until_complete(self.obs_init_websocket())
-        self.obs_toggle_mute('Mic/Aux')
+        self.toggle_mute('Mic/Aux')
         # By not specifying an event to listen to, all events are sent to this callback.
         with self.obs_lock:
             self.obs.register_event_callback(self.on_event)
@@ -64,7 +63,6 @@ class OBS:
         self.obs_event_loop.run_forever()
 
     def register_event_callback(self, callback, event: str = None):
-        print('Try register callback')
         with self.obs_lock:
             self.obs.register_event_callback(callback, event)
 
@@ -106,7 +104,7 @@ class OBS:
         if not ret.ok():
             print("SetCurrentProgramScene failed! Response data: {}".format(ret.responseData))
 
-    def obs_toggle_mute(self, input_name):
+    def toggle_mute(self, input_name):
         request = simpleobsws.Request(requestType='ToggleInputMute', requestData=dict(inputName=input_name))
 
         future = asyncio.run_coroutine_threadsafe(self.obs.call(request), self.obs_event_loop)
@@ -117,14 +115,18 @@ class OBS:
         except Exception as error:
             logging.info(error)
 
-    async def obs_replay_media(self, input_name):
+    def replay_media(self, input_name):
         request = simpleobsws.Request(
             requestType='TriggerMediaInputAction',
             requestData=dict(
                 inputName=input_name,
                 mediaAction='OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART'
             ))
-        ret = await self.obs.call(request)
-        if not ret.ok():
-            print("TriggerMediaInputAction failed! Response data: {}".format(ret.responseData))
+        future = asyncio.run_coroutine_threadsafe(self.obs.call(request), self.obs_event_loop)
+        try:
+            ret = future.result(1)
+            if not ret.ok():
+                print("TriggerMediaInputAction failed! Response data: {}".format(ret.responseData))
+        except Exception as error:
+            logging.info(error)
 

@@ -1,3 +1,4 @@
+import logging
 import os
 
 from PIL import Image, ImageDraw, ImageFont
@@ -35,7 +36,10 @@ class StreamDeckKey:
         self._callback = cb
 
     def callback(self, key_down):
-        self._callback(self, key_down)
+        if self._callback:
+            self._callback(self, key_down)
+        else:
+            logging.info('No callback for key {}'.format(self.key))
 
     def update_key_image(self, image):
         # # Determine what icon and label to use on the generated key.
@@ -112,27 +116,15 @@ class StreamDeck:
         return self.deck.deck_type()
 
     def key_change_callback(self, deck, key, key_down):
-        # Print new key state
-        print("Deck {} Key {} = {}".format(deck.id(), key, key_down), flush=True)
-        print("{} threads active; current: {}".format(threading.active_count(), threading.current_thread().name))
         self.get_key(key).callback(key_down)
-        # # Update the key image based on the new key state.
-        # update_key_image(deck, key, state)
-        #
-        # # Check if the key is changing to the pressed state.
-        # if state:
-        #     key_style = get_key_style(deck, key, state)
-        #
-        #     # When an exit button is pressed, close the application.
-        #     if key_style["name"] == "exit":
-        #         # Use a scoped-with on the deck to ensure we're the only thread
-        #         # using it right now.
-        #         with deck:
-        #             # Reset deck, clearing all button images.
-        #             deck.reset()
-        #
-        #             # Close deck handle, terminating internal worker threads.
-        #             deck.close()
+
+    def exit(self):
+        with self.deck:
+            # Reset deck, clearing all button images.
+            self.deck.reset()
+
+            # Close deck handle, terminating internal worker threads.
+            self.deck.close()
 
     def get_key(self, key):
         return self.keys[key]

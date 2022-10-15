@@ -11,7 +11,7 @@ MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 
 class AppIndicator:
 
-    def __init__(self, streamdecks):
+    def __init__(self, streamdecks, onexit):
         self.indicator = AppIndicator3.Indicator.new(
             "customtray",
             MODULE_PATH + "/tray_icon.png",
@@ -19,12 +19,12 @@ class AppIndicator:
         )
         self.streamdecks = streamdecks
         self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
-        self.indicator.set_menu(self.tray_menu())
+        self.indicator.set_menu(self.tray_menu(onexit))
 
     def exit(self):
         gtk.main_quit()
 
-    def tray_menu(self):
+    def tray_menu(self, onexit):
         menu = gtk.Menu()
 
         for index, deck in enumerate(self.streamdecks.items()):
@@ -49,7 +49,7 @@ class AppIndicator:
         menu.append(disconnected_tray)
 
         exit_tray = gtk.MenuItem(label='Quit')
-        exit_tray.connect('activate', quit)
+        exit_tray.connect('activate', onexit)
         menu.append(exit_tray)
 
         menu.show_all()
