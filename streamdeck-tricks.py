@@ -187,6 +187,14 @@ def tray_screenshot(_):
 
 def quit(_):
     print("\n\nExit")
+    # Wait until all application threads have terminated (for this example,
+    # this is when all deck handles are closed).
+    for t in threading.enumerate():
+        try:
+            t.join()
+        except RuntimeError:
+            pass
+
     gtk.main_quit()
     exit(0)
 
@@ -307,14 +315,6 @@ async def streamdeck_initialize():
 
         # Register callback function for when a key state changes.
         deck.set_key_callback(key_change_callback)
-
-        # # Wait until all application threads have terminated (for this example,
-        # # this is when all deck handles are closed).
-        # for t in threading.enumerate():
-        #     try:
-        #         t.join()
-        #     except RuntimeError:
-        #         pass
 
 
 signal.signal(signal.SIGINT, sigint_handler)
