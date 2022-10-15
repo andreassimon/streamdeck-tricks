@@ -33,9 +33,11 @@ obs = simpleobsws.WebSocketClient(url=args.obs_ws_url,
 class OBS:
 
     def __init__(self):
-        logging.info("Main    : before creating thread")
         self.obs_event_loop = asyncio.get_event_loop()
-        x = threading.Thread(target=self.obs_thread)
+
+    def start(self):
+        logging.info("Main    : before creating thread")
+        x = threading.Thread(target=self.obs_thread, name="OBS-Communication-Thread")
         logging.info("Main    : before running thread")
         x.start()
         logging.info("Main    : wait for the thread to finish")
@@ -51,6 +53,9 @@ class OBS:
         obs.register_event_callback(on_switchscenes, 'CurrentProgramSceneChanged')
         obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
         self.obs_event_loop.run_forever()
+
+    def exit(self):
+        self.obs_event_loop.stop()
 
 
 async def on_event(eventType, eventData):

@@ -14,7 +14,9 @@ from appindicator import AppIndicator
 appindicator = AppIndicator()
 
 from obs import OBS
-from streamdeck import initialize_decks
+obs = OBS()
+
+from streamdeck import StreamDecks
 
 CURRPATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -40,12 +42,16 @@ def sigint_handler(signum, frame):
 
 def quit(_):
     print("\n\nExit")
+    obs.exit()
     # Wait until all application threads have terminated (for this example,
     # this is when all deck handles are closed).
     for t in threading.enumerate():
         try:
+            print(t.name)
             t.join()
-        except RuntimeError:
+            print("Joined {}".format(t.name))
+        except RuntimeError as error:
+            print("{} '{}'".format(error, t.name))
             pass
 
     appindicator.exit()
@@ -57,6 +63,6 @@ signal.signal(signal.SIGINT, sigint_handler)
 
 if __name__ == "__main__":
     # event_loop.create_task(console_keys())
-    initialize_decks()
-    OBS()
+    decks = StreamDecks()
+    obs.start()
     appindicator.start()

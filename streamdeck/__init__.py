@@ -12,13 +12,15 @@ import threading
 MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 
 
-def initialize_decks():
-    streamdecks = DeviceManager().enumerate()
+class StreamDecks:
 
-    print("Found {} Stream Deck(s).\n".format(len(streamdecks)))
+    def __init__(self):
+        self.streamdecks = DeviceManager().enumerate()
 
-    for index, deck in enumerate(streamdecks):
-        StreamDeck(deck)
+        print("Found {} Stream Deck(s).\n".format(len(self.streamdecks)))
+
+        for index, deck in enumerate(self.streamdecks):
+            StreamDeck(deck)
 
 
 class StreamDeck:
