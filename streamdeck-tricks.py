@@ -58,25 +58,50 @@ def quit(_):
     exit(0)
 
 
-current_deck = None
 signal.signal(signal.SIGINT, sigint_handler)
 
 def toggle_mute(key, key_down):
     if key_down:
         obs.obs_toggle_mute('Mic/Aux')
-        key.update_key_image('muted.png')
+
+
+decks = StreamDecks()
+current_deck = decks.current_deck
+mic_key = current_deck.get_key(0)
+mic_key.update_key_image('muted.png')
+mic_key.update_key_image('unmuted.png')
+mic_key.set_callback(toggle_mute)
+
+async def on_inputmutestatechanged(eventData):
+    # Data: {'inputMuted': False, 'inputName': 'Mic/Aux'}
+    if eventData['inputMuted']:
+        print("\n\n{} is now muted".format(eventData['inputName']))
+        mic_key.update_key_image('muted.png')
+
+        # streamdecks = DeviceManager().enumerate()
+        # for index, deck in enumerate(streamdecks):
+        #     # This example only works with devices that have screens.
+        #     if not deck.is_visual():
+        #         continue
+        #     print("{} button 0: muted.png".format(deck.id()))
+        #     print("{} threads active; current: {}".format(threading.active_count(), threading.current_thread().name))
+        #     update_key_image(deck, 0, 'muted.png')
+
     else:
-        key.update_key_image('unmuted.png')
-    # asyncio.run_coroutine_threadsafe(obs_toggle_mute('Mic/Aux'), obs_event_loop)
+        print("\n\n{} is now unmuted".format(eventData['inputName']))
+        mic_key.update_key_image('unmuted.png')
+        # streamdecks = DeviceManager().enumerate()
+        # for index, deck in enumerate(streamdecks):
+        #     # This example only works with devices that have screens.
+        #     if not deck.is_visual():
+        #         continue
+        #     print("{} button 0: unmuted.png".format(deck.id()))
+        #     print("{} threads active; current: {}".format(threading.active_count(), threading.current_thread().name))
+        #     update_key_image(deck, 0, 'unmuted.png')
 
 
 if __name__ == "__main__":
-    # event_loop.create_task(console_keys())
-    decks = StreamDecks()
-    current_deck = decks.current_deck
-    current_deck.get_key(0).update_key_image('muted.png')
-    current_deck.get_key(0).update_key_image('unmuted.png')
-    current_deck.get_key(0).set_callback(toggle_mute)
     obs.start()
+    obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
     appindicator = AppIndicator(decks)
     appindicator.start()

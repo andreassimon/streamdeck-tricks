@@ -32,6 +32,8 @@ class OBS:
     def __init__(self):
         self.obs = None
         self.obs_event_loop = None
+        self.obs_lock = threading.Lock()
+        self.obs_lock.acquire()
 
     def start(self):
         logging.info("Main    : before creating thread")
@@ -49,14 +51,22 @@ class OBS:
         self.obs = simpleobsws.WebSocketClient(url=args.obs_ws_url,
                                                password=args.obs_ws_password,
                                                identification_parameters=parameters)  # Every possible argument has been passed, but none are required. See lib code for defaults.
+        self.obs_lock.release()
+        print('obs initialized')
 
         self.obs_event_loop.run_until_complete(self.obs_init_websocket())
         self.obs_toggle_mute('Mic/Aux')
         # By not specifying an event to listen to, all events are sent to this callback.
-        self.obs.register_event_callback(self.on_event)
-        self.obs.register_event_callback(self.on_switchscenes, 'CurrentProgramSceneChanged')
-        self.obs.register_event_callback(self.on_inputmutestatechanged, 'InputMuteStateChanged')
+        with self.obs_lock:
+            self.obs.register_event_callback(self.on_event)
+            self.obs.register_event_callback(self.on_switchscenes, 'CurrentProgramSceneChanged')
+
         self.obs_event_loop.run_forever()
+
+    def register_event_callback(self, callback, event: str = None):
+        print('Try register callback')
+        with self.obs_lock:
+            self.obs.register_event_callback(callback, event)
 
     async def obs_init_websocket(self):
         try:
@@ -89,32 +99,6 @@ class OBS:
     async def on_switchscenes(self, eventData):
         print('Scene switched to "{}".'.format(eventData['sceneName']))
 
-
-    async def on_inputmutestatechanged(self, eventData):
-        # Data: {'inputMuted': False, 'inputName': 'Mic/Aux'}
-        if eventData['inputMuted']:
-            print("\n\n{} is now muted".format(eventData['inputName']))
-            # streamdecks = DeviceManager().enumerate()
-            # for index, deck in enumerate(streamdecks):
-            #     # This example only works with devices that have screens.
-            #     if not deck.is_visual():
-            #         continue
-            #     print("{} button 0: muted.png".format(deck.id()))
-            #     print("{} threads active; current: {}".format(threading.active_count(), threading.current_thread().name))
-            #     update_key_image(deck, 0, 'muted.png')
-
-        else:
-            print("\n\n{} is now unmuted".format(eventData['inputName']))
-            # streamdecks = DeviceManager().enumerate()
-            # for index, deck in enumerate(streamdecks):
-            #     # This example only works with devices that have screens.
-            #     if not deck.is_visual():
-            #         continue
-            #     print("{} button 0: unmuted.png".format(deck.id()))
-            #     print("{} threads active; current: {}".format(threading.active_count(), threading.current_thread().name))
-            #     update_key_image(deck, 0, 'unmuted.png')
-
-
     async def obs_switch_scene(self, scene_name):
         request = simpleobsws.Request(requestType='SetCurrentProgramScene', requestData=dict(sceneName=scene_name))
 
@@ -143,5 +127,4 @@ class OBS:
         ret = await self.obs.call(request)
         if not ret.ok():
             print("TriggerMediaInputAction failed! Response data: {}".format(ret.responseData))
-
 
