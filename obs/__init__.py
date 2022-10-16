@@ -78,7 +78,6 @@ class OBS:
                 logger.debug("GetVersion succeeded! Response data: {}".format(ret.responseData))
 
         except OSError as error:
-            print(error)
             self.error_callback(OBSInitExeption('ERROR Connecting', error))
 
     def exit(self):

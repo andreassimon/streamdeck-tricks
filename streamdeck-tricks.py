@@ -8,7 +8,6 @@ import aioconsole
 import logging
 
 logging.basicConfig(filename="streamdeck-tricks.log", level=logging.DEBUG)
-import threading
 
 from appindicator import AppIndicator
 
@@ -18,6 +17,7 @@ from obs import OBS
 
 
 def obs_error_callback(error):
+    # TODO: Notify about error message
     print(error)
     appindicator.tray_error(error)
 

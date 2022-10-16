@@ -53,7 +53,6 @@ class AppIndicator:
         os.system("gnome-terminal -- less " + MODULE_PATH + "/../streamdeck-tricks.log")
 
     def tray_error(self, _error):
-        print(_error)
         self.tray_icon('tray_icon_error')
 
     def tray_disconnected(self, _):
