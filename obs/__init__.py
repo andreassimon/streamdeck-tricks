@@ -40,16 +40,20 @@ class OBS:
         self.error_callback = error_callback
 
     def start(self):
+        logger.debug('obs.OBS.start')
         obs_thread = threading.Thread(target=self.obs_thread, name="OBS-Communication-Thread")
         obs_thread.start()
 
     def obs_thread(self):
+        logger.debug('obs_thread started')
         self.obs_event_loop = asyncio.new_event_loop()
         asyncio.set_event_loop(self.obs_event_loop)
 
+        logger.debug('Trying to instantiate simpleobsws.WebSocketClient')
         self.obs = simpleobsws.WebSocketClient(url=args.obs_ws_url,
                                                password=args.obs_ws_password,
-                                               identification_parameters=parameters)  # Every possible argument has been passed, but none are required. See lib code for defaults.
+                                               identification_parameters=parameters)
+        logger.debug('Instantiated simpleobsws.WebSocketClient')
         self.obs_lock.release()
 
         self.obs_event_loop.run_until_complete(self.obs_init_websocket())
@@ -67,7 +71,9 @@ class OBS:
 
     async def obs_init_websocket(self):
         try:
+            logger.debug('trying to connect')
             await self.obs.connect()
+            logger.debug('connection established')
             await self.obs.wait_until_identified()
 
             request = simpleobsws.Request('GetVersion')
@@ -87,19 +93,18 @@ class OBS:
             self.obs_event_loop.stop()
 
     async def on_event(self, eventType, eventData):
-        # Print the event data. Note that `update-type` is also provided in the data
-        print('New event! Type: {} | Raw Data: {}'.format(eventType, eventData))
+        logger.debug('New event! Type: {} | Raw Data: {}'.format(eventType, eventData))
         pass
 
     async def on_switchscenes(self, eventData):
-        print('Scene switched to "{}".'.format(eventData['sceneName']))
+        logger.debug('Scene switched to "{}".'.format(eventData['sceneName']))
 
     async def obs_switch_scene(self, scene_name):
         request = simpleobsws.Request(requestType='SetCurrentProgramScene', requestData=dict(sceneName=scene_name))
 
         ret = await self.obs.call(request)
         if not ret.ok():
-            print("SetCurrentProgramScene failed! Response data: {}".format(ret.responseData))
+            logger.debug("SetCurrentProgramScene failed! Response data: {}".format(ret.responseData))
 
     def toggle_mute(self, input_name):
         if not self.obs:
@@ -113,7 +118,7 @@ class OBS:
         try:
             ret = future.result(1)
             if not ret.ok():
-                print("ToggleInputMute failed! Response data: {}".format(ret.responseData))
+                logger.debug("ToggleInputMute failed! Response data: {}".format(ret.responseData))
         except Exception as error:
             logger.info(error)
 
@@ -133,6 +138,6 @@ class OBS:
         try:
             ret = future.result(1)
             if not ret.ok():
-                print("TriggerMediaInputAction failed! Response data: {}".format(ret.responseData))
+                logger.debug("TriggerMediaInputAction failed! Response data: {}".format(ret.responseData))
         except Exception as error:
             logger.info(error)

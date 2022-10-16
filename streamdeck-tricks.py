@@ -10,6 +10,7 @@ import logging.config
 
 logging.config.fileConfig('logging.conf')
 logging.getLogger('PIL.PngImagePlugin').setLevel('ERROR')
+logging.getLogger('simpleobsws').setLevel('INFO')
 logger = logging.getLogger('streamdeck-tricks')
 
 
@@ -79,7 +80,7 @@ signal.signal(signal.SIGINT, sigint_handler)
 
 def toggle_mute(key, key_down):
     if key_down:
-        obs.toggle_mute('Mic/Aux')
+        obs.toggle_mute('Yeti')
 
 
 def replay_applause(key, key_down):
@@ -133,11 +134,15 @@ async def on_inputmutestatechanged(eventData):
 
 if __name__ == "__main__":
     appindicator = AppIndicator(decks, quit)
+    obs.start()
+    obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
     if len(decks.items()) == 0:
         appindicator.no_decks_found()
+
+    # appindicator.start() MUST COME LAST
+    # because it blocks the main thread so that no actions
+    # after this point will be executed
     try:
         appindicator.start()
     except Exception as error:
         logger.info(error)
-    obs.start()
-    obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
