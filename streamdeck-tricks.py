@@ -8,12 +8,6 @@ import aioconsole
 import logging
 import logging.config
 
-logging.config.fileConfig('logging.conf')
-logging.getLogger('PIL.PngImagePlugin').setLevel('ERROR')
-logging.getLogger('simpleobsws').setLevel('INFO')
-logger = logging.getLogger('streamdeck-tricks')
-
-
 from appindicator import AppIndicator
 
 appindicator = None
@@ -30,7 +24,12 @@ obs = OBS(obs_error_callback)
 
 from streamdeck import StreamDecks
 
-CURRPATH = os.path.dirname(os.path.realpath(__file__))
+MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
+
+logging.config.fileConfig(os.path.join(MODULE_PATH, 'logging.conf'))
+logging.getLogger('PIL.PngImagePlugin').setLevel('ERROR')
+logging.getLogger('simpleobsws').setLevel('INFO')
+logger = logging.getLogger('streamdeck-tricks')
 
 
 async def console_keys():
