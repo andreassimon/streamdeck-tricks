@@ -9,6 +9,7 @@ import logging
 import logging.config
 
 logging.config.fileConfig('logging.conf')
+logging.getLogger('PIL.PngImagePlugin').setLevel('ERROR')
 logger = logging.getLogger('streamdeck-tricks')
 
 
