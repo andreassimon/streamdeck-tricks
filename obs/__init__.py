@@ -4,13 +4,13 @@ import logging
 import simpleobsws
 import threading
 
+logger = logging.getLogger('streamdeck-tricks')
 
 GENERAL = (1 << 0)
 SCENES = (1 << 2)
 INPUTS = (1 << 3)
 OUTPUTS = (1 << 6)
 MEDIA_INPUTS = (1 << 8)
-
 
 parameters = simpleobsws.IdentificationParameters()  # Create an IdentificationParameters object
 parameters.eventSubscriptions = GENERAL | SCENES | INPUTS | OUTPUTS | MEDIA_INPUTS
@@ -26,23 +26,22 @@ parser.add_argument('--obs-ws-password',
 args = parser.parse_args()
 
 
+class OBSInitExeption(Exception):
+    pass
+
 
 class OBS:
 
-    def __init__(self):
+    def __init__(self, error_callback):
         self.obs = None
         self.obs_event_loop = None
         self.obs_lock = threading.Lock()
         self.obs_lock.acquire()
+        self.error_callback = error_callback
 
     def start(self):
-        logging.info("Main    : before creating thread")
-        x = threading.Thread(target=self.obs_thread, name="OBS-Communication-Thread")
-        logging.info("Main    : before running thread")
-        x.start()
-        logging.info("Main    : wait for the thread to finish")
-        # x.join()
-        logging.info("Main    : all done")
+        obs_thread = threading.Thread(target=self.obs_thread, name="OBS-Communication-Thread")
+        obs_thread.start()
 
     def obs_thread(self):
         self.obs_event_loop = asyncio.new_event_loop()
@@ -76,23 +75,22 @@ class OBS:
             ret = await self.obs.call(request)
 
             if ret.ok():
-                logging.debug("GetVersion succeeded! Response data: {}".format(ret.responseData))
+                logger.debug("GetVersion succeeded! Response data: {}".format(ret.responseData))
 
         except OSError as error:
-            print('\n\nERROR Connecting')
             print(error)
-            # appindicator.tray_error(None)
+            self.error_callback(OBSInitExeption('ERROR Connecting', error))
 
     def exit(self):
-        asyncio.run_coroutine_threadsafe(self.obs.disconnect(), self.obs_event_loop)
-        self.obs_event_loop.stop()
-
+        if self.obs:
+            asyncio.run_coroutine_threadsafe(self.obs.disconnect(), self.obs_event_loop)
+        if self.obs_event_loop:
+            self.obs_event_loop.stop()
 
     async def on_event(self, eventType, eventData):
         # Print the event data. Note that `update-type` is also provided in the data
         print('New event! Type: {} | Raw Data: {}'.format(eventType, eventData))
         pass
-
 
     async def on_switchscenes(self, eventData):
         print('Scene switched to "{}".'.format(eventData['sceneName']))
@@ -105,6 +103,11 @@ class OBS:
             print("SetCurrentProgramScene failed! Response data: {}".format(ret.responseData))
 
     def toggle_mute(self, input_name):
+        if not self.obs:
+            logger.error('streamdeck-tricks is not connected to OBS')
+            self.error_callback(OBSInitExeption('ERROR Connecting'))
+            return
+
         request = simpleobsws.Request(requestType='ToggleInputMute', requestData=dict(inputName=input_name))
 
         future = asyncio.run_coroutine_threadsafe(self.obs.call(request), self.obs_event_loop)
@@ -113,9 +116,14 @@ class OBS:
             if not ret.ok():
                 print("ToggleInputMute failed! Response data: {}".format(ret.responseData))
         except Exception as error:
-            logging.info(error)
+            logger.info(error)
 
     def replay_media(self, input_name):
+        if not self.obs:
+            logger.error('streamdeck-tricks is not connected to OBS')
+            self.error_callback(OBSInitExeption('ERROR Connecting'))
+            return
+
         request = simpleobsws.Request(
             requestType='TriggerMediaInputAction',
             requestData=dict(
@@ -128,5 +136,4 @@ class OBS:
             if not ret.ok():
                 print("TriggerMediaInputAction failed! Response data: {}".format(ret.responseData))
         except Exception as error:
-            logging.info(error)
-
+            logger.info(error)

@@ -11,10 +11,18 @@ logging.basicConfig(filename="streamdeck-tricks.log", level=logging.DEBUG)
 import threading
 
 from appindicator import AppIndicator
+
 appindicator = None
 
 from obs import OBS
-obs = OBS()
+
+
+def obs_error_callback(error):
+    print(error)
+    appindicator.tray_error(error)
+
+
+obs = OBS(obs_error_callback)
 
 from streamdeck import StreamDecks
 
@@ -86,10 +94,13 @@ def replay_pudel_tusch(key, key_down):
         obs.replay_media('Pudel Tusch')
 
 
-mic_key = current_deck.get_key(14)
-mic_key.update_key_image('muted.png')
-mic_key.update_key_image('unmuted.png')
-mic_key.set_callback(toggle_mute)
+def take_screenshot(key, key_down):
+    if key_down:
+        os.system("flameshot gui")
+
+
+current_deck.get_key(4).update_key_image('screenshot.png')
+current_deck.get_key(4).set_callback(take_screenshot)
 
 current_deck.get_key(10).update_key_image('cheering-crowd.png')
 current_deck.get_key(10).set_callback(replay_applause)
@@ -99,6 +110,11 @@ current_deck.get_key(11).set_callback(replay_chirp)
 
 current_deck.get_key(12).update_key_image('poodle-flourish.png')
 current_deck.get_key(12).set_callback(replay_pudel_tusch)
+
+mic_key = current_deck.get_key(14)
+mic_key.update_key_image('muted.png')
+mic_key.update_key_image('unmuted.png')
+mic_key.set_callback(toggle_mute)
 
 
 async def on_inputmutestatechanged(eventData):
@@ -113,7 +129,12 @@ async def on_inputmutestatechanged(eventData):
 
 
 if __name__ == "__main__":
+    appindicator = AppIndicator(decks, quit)
+    if len(decks.items()) == 0:
+        appindicator.no_decks_found()
+    try:
+        appindicator.start()
+    except Exception as error:
+        logging.info(error)
     obs.start()
     obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
-    appindicator = AppIndicator(decks, quit)
-    appindicator.start()

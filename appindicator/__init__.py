@@ -2,9 +2,11 @@ import os
 
 import gi
 
-gi.require_version('Gtk', '3.0')
 gi.require_version('AppIndicator3', '0.1')
+gi.require_version('Gtk', '3.0')
+gi.require_version('Pango', '1.0')
 from gi.repository import Gtk as gtk, AppIndicator3
+from gi.repository import Pango
 
 MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -19,7 +21,8 @@ class AppIndicator:
         )
         self.streamdecks = streamdecks
         self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
-        self.indicator.set_menu(self.tray_menu(onexit))
+        self.tray_menu = self.tray_menu(onexit)
+        self.indicator.set_menu(self.tray_menu)
 
     def exit(self):
         gtk.main_quit()
@@ -36,21 +39,12 @@ class AppIndicator:
         show_logs_tray.connect('activate', self.tray_show_logs)
         menu.append(show_logs_tray)
 
-        screenshot_tray = gtk.MenuItem(label='Screenshot')
-        screenshot_tray.connect('activate', self.tray_screenshot)
-        menu.append(screenshot_tray)
-
-        error_tray = gtk.MenuItem(label='Error')
-        error_tray.connect('activate', self.tray_error)
-        menu.append(error_tray)
-
-        disconnected_tray = gtk.MenuItem(label='Disconnected')
-        disconnected_tray.connect('activate', self.tray_disconnected)
-        menu.append(disconnected_tray)
-
         exit_tray = gtk.MenuItem(label='Quit')
         exit_tray.connect('activate', onexit)
         menu.append(exit_tray)
+
+        # no_decks = gtk.MenuItem(label='no decks found')
+        # menu.append(no_decks)
 
         menu.show_all()
         return menu
@@ -58,10 +52,8 @@ class AppIndicator:
     def tray_show_logs(self, _):
         os.system("gnome-terminal -- less " + MODULE_PATH + "/../streamdeck-tricks.log")
 
-    def tray_screenshot(self, _):
-        os.system("flameshot gui")
-
-    def tray_error(self, _):
+    def tray_error(self, _error):
+        print(_error)
         self.tray_icon('tray_icon_error')
 
     def tray_disconnected(self, _):
@@ -72,3 +64,11 @@ class AppIndicator:
 
     def start(self):
         gtk.main()
+
+    def no_decks_found(self):
+        no_decks = gtk.MenuItem(label='[No decks found!]')
+        # no_decks.override_font(Pango.FontDescription.from_string("Cantarell Italic Light 15 `wght`=Bold"))
+
+        self.tray_menu.prepend(no_decks)
+        self.tray_menu.show_all()
+        self.tray_disconnected(None)

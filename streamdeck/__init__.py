@@ -7,8 +7,24 @@ from StreamDeck.ImageHelpers import PILHelper
 
 import threading
 
-
 MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
+
+
+class NullKey:
+
+    def update_key_image(self, _image):
+        pass
+
+    def set_callback(self, _callback):
+        pass
+
+class NullDeck:
+
+    def get_key(self, key):
+        return NullKey()
+
+    def exit(self):
+        pass
 
 
 class StreamDecks:
@@ -21,6 +37,8 @@ class StreamDecks:
         if len(self.streamdecks) > 0:
             self.current_deck = self.streamdecks[0]
             self.current_deck.initialize()
+        else:
+            self.current_deck = NullDeck()
 
     def items(self):
         return self.streamdecks
@@ -73,15 +91,11 @@ class StreamDeckKey:
         return PILHelper.to_native_format(deck, image)
 
 
-
-
-
 class StreamDeck:
 
     def __init__(self, deck):
         self.deck = deck
         self.keys = list()
-
 
     def initialize(self):
         # This example only works with devices that have screens.
@@ -128,4 +142,3 @@ class StreamDeck:
 
     def get_key(self, key):
         return self.keys[key]
-
