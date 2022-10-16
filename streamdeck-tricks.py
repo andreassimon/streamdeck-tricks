@@ -6,8 +6,11 @@ import signal
 import aioconsole
 
 import logging
+import logging.config
 
-logging.basicConfig(filename="streamdeck-tricks.log", level=logging.DEBUG)
+logging.config.fileConfig('logging.conf')
+logger = logging.getLogger('streamdeck-tricks')
+
 
 from appindicator import AppIndicator
 
@@ -18,7 +21,6 @@ from obs import OBS
 
 def obs_error_callback(error):
     # TODO: Notify about error message
-    print(error)
     appindicator.tray_error(error)
 
 
@@ -135,6 +137,6 @@ if __name__ == "__main__":
     try:
         appindicator.start()
     except Exception as error:
-        logging.info(error)
+        logger.info(error)
     obs.start()
     obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
