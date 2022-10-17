@@ -14,6 +14,8 @@ MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 
 
 class Countdown:
+    INSTANCE = None
+
     def __init__(self):
         self.countdown_process = None
 
@@ -33,7 +35,8 @@ class Countdown:
                                            cwd=MODULE_PATH,
                                            env={"TERM": "screen-256color"})
 
-    def prompt_for_minutes(self):
+    @staticmethod
+    def prompt_for_minutes():
         dialog = CountdownPromptDialog()
         response = dialog.run()
         if response == Gtk.ResponseType.OK:
@@ -47,11 +50,17 @@ class Countdown:
         if self.countdown_process:
             self.countdown_process.terminate()
 
+    @classmethod
+    def instance(cls):
+        if not cls.INSTANCE:
+            cls.INSTANCE = Countdown()
+        return cls.INSTANCE
+
 
 class AppIndicator:
 
     def __init__(self, streamdecks, onexit):
-        self.countdown = Countdown()
+        self.countdown = Countdown.instance()
         self.indicator = AppIndicator3.Indicator.new(
             "customtray",
             MODULE_PATH + "/tray_icon.png",

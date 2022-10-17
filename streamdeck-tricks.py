@@ -150,15 +150,12 @@ async def on_inputmutestatechanged(eventData):
 
 async def on_CurrentProgramSceneChanged(eventData):
     # eventData: {'sceneName': 'Camera'}
-    print('on_CurrentProgramSceneChanged')
     render_Camera_active = False
     render_Pause_active = False
     if eventData['sceneName'] == 'Camera':
-        print('Switch to Camera button')
         render_Camera_active = True
 
     if eventData['sceneName'] == 'Pause':
-        print('Switch to Pause button')
         render_Pause_active = True
 
     scene_camera_key.set_render_active(render_Camera_active)
