@@ -1,12 +1,14 @@
 import os
-from subprocess import call, Popen
+from subprocess import Popen
+
 import gi
+
+from appindicator.CountdownPromptDialog import CountdownPromptDialog, prompt_for_minutes
 
 gi.require_version('AppIndicator3', '0.1')
 gi.require_version('Gtk', '3.0')
 gi.require_version('Pango', '1.0')
 from gi.repository import Gtk as gtk, AppIndicator3
-from gi.repository import Pango
 
 MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -46,12 +48,12 @@ class AppIndicator:
         pavucontrol_tray.connect('activate', self.tray_pavucontrol)
         menu.append(pavucontrol_tray)
 
-        countdown_to_28_10_22_tray = gtk.MenuItem(label='Countdown bis 28.10.2022')
+        countdown_to_28_10_22_tray = gtk.MenuItem(label='Pause bis 28.10.2022')
         countdown_to_28_10_22_tray.connect('activate', self.tray_countdown_to_28_10_22)
         menu.append(countdown_to_28_10_22_tray)
 
-        countdown_10min = gtk.MenuItem(label='Countdown 10 Minuten')
-        countdown_10min.connect('activate', self.tray_countdown_10min)
+        countdown_10min = gtk.MenuItem(label='Pause für ...')
+        countdown_10min.connect('activate', self.tray_countdown_minutes)
         menu.append(countdown_10min)
 
         exit_tray = gtk.MenuItem(label='Quit')
@@ -69,10 +71,12 @@ class AppIndicator:
             self.countdown_process.terminate()
         self.countdown_process = Popen(['/bin/bash', './countdown-with-weeks.bash', '-d', "Oct 28 2022 15:00"], cwd=MODULE_PATH, env={"TERM": "screen-256color"})
 
-    def tray_countdown_10min(self, _):
+    def tray_countdown_minutes(self, _):
         if self.countdown_process:
             self.countdown_process.terminate()
-        self.countdown_process = Popen(['/bin/bash', './countdown-with-hours.bash', '-m', '10'], cwd=MODULE_PATH, env={"TERM": "screen-256color"})
+        minutes = prompt_for_minutes()
+        if int(minutes) > 0:
+            self.countdown_process = Popen(['/bin/bash', './countdown-with-hours.bash', '-m', minutes], cwd=MODULE_PATH, env={"TERM": "screen-256color"})
 
     def tray_show_logs(self, _):
         os.system("gnome-terminal -- less " + MODULE_PATH + "/../streamdeck-tricks.log")
