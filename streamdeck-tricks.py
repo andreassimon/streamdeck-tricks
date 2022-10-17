@@ -8,7 +8,7 @@ import aioconsole
 import logging
 import logging.config
 
-from appindicator import AppIndicator
+from appindicator import AppIndicator, Countdown
 
 appindicator = None
 
@@ -109,6 +109,7 @@ def switch_scene_Camera(key, key_down):
 
 def switch_scene_Pause(key, key_down):
     if key_down:
+        # TODO appindicator.countdown_some_minutes()
         obs.switch_scene('Pause')
 
 

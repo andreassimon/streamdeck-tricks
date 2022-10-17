@@ -1,9 +1,9 @@
 import os
-from subprocess import Popen
 
 import gi
 
-from appindicator.CountdownPromptDialog import CountdownPromptDialog
+from appindicator import CountdownPromptDialog
+from appindicator.Countdown import Countdown
 
 gi.require_version('AppIndicator3', '0.1')
 gi.require_version('Gtk', '3.0')
@@ -11,50 +11,6 @@ gi.require_version('Pango', '1.0')
 from gi.repository import Gtk, AppIndicator3
 
 MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
-
-
-class Countdown:
-    INSTANCE = None
-
-    def __init__(self):
-        self.countdown_process = None
-
-    def to_28_10_22(self, _=None):
-        if self.countdown_process:
-            self.countdown_process.terminate()
-        self.countdown_process = Popen(['/bin/bash', './countdown-with-weeks.bash', '-d', "Oct 28 2022 15:00"],
-                                       cwd=MODULE_PATH,
-                                       env={"TERM": "screen-256color"})
-
-    def some_minutes(self, _=None):
-        if self.countdown_process:
-            self.countdown_process.terminate()
-        minutes = self.prompt_for_minutes()
-        if int(minutes) > 0:
-            self.countdown_process = Popen(['/bin/bash', './countdown-with-hours.bash', '-m', minutes],
-                                           cwd=MODULE_PATH,
-                                           env={"TERM": "screen-256color"})
-
-    @staticmethod
-    def prompt_for_minutes():
-        dialog = CountdownPromptDialog()
-        response = dialog.run()
-        if response == Gtk.ResponseType.OK:
-            minutes = dialog.minutes.get_text()
-        else:
-            minutes = -1
-        dialog.destroy()
-        return minutes
-
-    def exit(self):
-        if self.countdown_process:
-            self.countdown_process.terminate()
-
-    @classmethod
-    def instance(cls):
-        if not cls.INSTANCE:
-            cls.INSTANCE = Countdown()
-        return cls.INSTANCE
 
 
 class AppIndicator:
@@ -96,7 +52,7 @@ class AppIndicator:
         menu.append(countdown_to_28_10_22_tray)
 
         countdown_10min = Gtk.MenuItem(label='Pause für ...')
-        countdown_10min.connect('activate', self.countdown.some_minutes)
+        countdown_10min.connect('activate', self.countdown_some_minutes)
         menu.append(countdown_10min)
 
         exit_tray = Gtk.MenuItem(label='Quit')
@@ -108,6 +64,9 @@ class AppIndicator:
 
         menu.show_all()
         return menu
+
+    def countdown_some_minutes(self, _=None):
+        self.countdown.some_minutes()
 
     def tray_show_logs(self, _):
         os.system("gnome-terminal -- less " + MODULE_PATH + "/../streamdeck-tricks.log")
