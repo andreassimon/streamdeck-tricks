@@ -47,6 +47,7 @@ class StreamDecks:
 
 class StreamDeckKey:
     def __init__(self, deck, key):
+        self.icon = None
         self.render_active = False
         self.deck = deck
         self.key = key
@@ -61,7 +62,11 @@ class StreamDeckKey:
         else:
             logging.info('No callback for key {}'.format(self.key))
 
-    def update_key_image(self, image):
+    def set_render_active(self, render_active):
+        self.render_active = render_active
+        self.update_key_image()
+
+    def set_key_image(self, image):
         # # Determine what icon and label to use on the generated key.
         # key_style = get_key_style(deck, key, state)
         #
@@ -70,29 +75,35 @@ class StreamDeckKey:
 
         # Use a scoped-with on the deck to ensure we're the only thread using it
         # right now.
-        icon = os.path.join(MODULE_PATH, image)
-        image = self.render_key_image(self.deck, icon)
+        self.icon = os.path.join(MODULE_PATH, image)
+        self.update_key_image()
+
+    def update_key_image(self):
+        image = self.render_key_image(self.icon, self.render_active)
 
         with self.deck:
             # Update requested key with the generated image.
             self.deck.set_key_image(self.key, image)
 
-    def render_key_image(self, deck, icon_filename, font_filename=None, label_text=None):
+    def render_key_image(self, icon_filename, render_active):
+        # font_filename = None
+        # label_text = None
+
         # Resize the source image asset to best-fit the dimensions of a single key,
         # leaving a margin at the bottom so that we can draw the key title
         # afterwards.
         icon = Image.open(icon_filename)
-        image = PILHelper.create_scaled_image(deck, icon, margins=[0, 0, 0, 0])
+        image = PILHelper.create_scaled_image(self.deck, icon, margins=[0, 0, 0, 0])
 
         # # Load a custom TrueType font and use it to overlay the key index, draw key
         # # label onto the image a few pixels from the bottom of the key.
         # font = ImageFont.truetype(font_filename, 14)
         # draw.text((image.width / 2, image.height - 5), text=label_text, font=font, anchor="ms", fill="white")
-        if self.render_active:
+        if render_active:
             draw = ImageDraw.Draw(image)
             draw.rectangle(((0, 0), (72, 72)), outline="#ff0000", width=5)
 
-        return PILHelper.to_native_format(deck, image)
+        return PILHelper.to_native_format(self.deck, image)
 
 
 class StreamDeck:

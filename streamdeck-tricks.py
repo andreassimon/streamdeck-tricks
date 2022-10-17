@@ -102,24 +102,25 @@ def take_screenshot(key, key_down):
         os.system("flameshot gui")
 
 
-current_deck.get_key(0).update_key_image('screenshot.png')
+current_deck.get_key(0).set_key_image('screenshot.png')
 current_deck.get_key(0).set_callback(take_screenshot)
 
-current_deck.get_key(2).render_active = True
-current_deck.get_key(2).update_key_image('scene-camera.png')
-current_deck.get_key(3).update_key_image('scene-paused.png')
+scene_camera_key = current_deck.get_key(2)
+scene_camera_key.set_key_image('scene-camera.png')
+scene_Pause_key = current_deck.get_key(3)
+scene_Pause_key.set_key_image('scene-paused.png')
 
 mic_key = current_deck.get_key(10)
-mic_key.update_key_image('Yeti-unmuted.png')
+mic_key.set_key_image('Yeti-unmuted.png')
 mic_key.set_callback(toggle_mute)
 
-current_deck.get_key(12).update_key_image('cheering-crowd.png')
+current_deck.get_key(12).set_key_image('cheering-crowd.png')
 current_deck.get_key(12).set_callback(replay_applause)
 
-current_deck.get_key(13).update_key_image('cricket.png')
+current_deck.get_key(13).set_key_image('cricket.png')
 current_deck.get_key(13).set_callback(replay_chirp)
 
-current_deck.get_key(14).update_key_image('poodle-flourish.png')
+current_deck.get_key(14).set_key_image('poodle-flourish.png')
 current_deck.get_key(14).set_callback(replay_pudel_tusch)
 
 
@@ -127,17 +128,35 @@ async def on_inputmutestatechanged(eventData):
     # eventData: {'inputMuted': False, 'inputName': 'Mic/Aux'}
     if eventData['inputMuted']:
         # print("\n\n{} is now muted".format(eventData['inputName']))
-        mic_key.update_key_image('Yeti-muted.png')
+        mic_key.set_key_image('Yeti-muted.png')
 
     else:
         # print("\n\n{} is now unmuted".format(eventData['inputName']))
-        mic_key.update_key_image('Yeti-unmuted.png')
+        mic_key.set_key_image('Yeti-unmuted.png')
+
+
+async def on_CurrentProgramSceneChanged(eventData):
+    # eventData: {'sceneName': 'Camera'}
+    print('on_CurrentProgramSceneChanged')
+    render_Camera_active = False
+    render_Pause_active = False
+    if eventData['sceneName'] == 'Camera':
+        print('Switch to Camera button')
+        render_Camera_active = True
+
+    if eventData['sceneName'] == 'Pause':
+        print('Switch to Pause button')
+        render_Pause_active = True
+
+    scene_camera_key.set_render_active(render_Camera_active)
+    scene_Pause_key.set_render_active(render_Pause_active)
 
 
 if __name__ == "__main__":
     appindicator = AppIndicator(decks, quit)
     obs.start()
     obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
+    obs.register_event_callback(on_CurrentProgramSceneChanged, 'CurrentProgramSceneChanged')
     if len(decks.items()) == 0:
         appindicator.no_decks_found()
 
