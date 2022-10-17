@@ -39,6 +39,10 @@ class AppIndicator:
         show_logs_tray.connect('activate', self.tray_show_logs)
         menu.append(show_logs_tray)
 
+        pavucontrol_tray = gtk.MenuItem(label='Pulse Audio Volume Controls')
+        pavucontrol_tray.connect('activate', self.tray_pavucontrol)
+        menu.append(pavucontrol_tray)
+
         exit_tray = gtk.MenuItem(label='Quit')
         exit_tray.connect('activate', onexit)
         menu.append(exit_tray)
@@ -51,6 +55,9 @@ class AppIndicator:
 
     def tray_show_logs(self, _):
         os.system("gnome-terminal -- less " + MODULE_PATH + "/../streamdeck-tricks.log")
+
+    def tray_pavucontrol(self, _):
+        os.system("pavucontrol")
 
     def tray_error(self, _error):
         self.tray_icon('tray_icon_error')
