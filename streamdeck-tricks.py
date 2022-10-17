@@ -106,7 +106,7 @@ current_deck.get_key(0).update_key_image('screenshot.png')
 current_deck.get_key(0).set_callback(take_screenshot)
 
 mic_key = current_deck.get_key(10)
-mic_key.update_key_image('unmuted.png')
+mic_key.update_key_image('Yeti-unmuted.png')
 mic_key.set_callback(toggle_mute)
 
 current_deck.get_key(12).update_key_image('cheering-crowd.png')
@@ -123,11 +123,11 @@ async def on_inputmutestatechanged(eventData):
     # eventData: {'inputMuted': False, 'inputName': 'Mic/Aux'}
     if eventData['inputMuted']:
         # print("\n\n{} is now muted".format(eventData['inputName']))
-        mic_key.update_key_image('muted.png')
+        mic_key.update_key_image('Yeti-muted.png')
 
     else:
         # print("\n\n{} is now unmuted".format(eventData['inputName']))
-        mic_key.update_key_image('unmuted.png')
+        mic_key.update_key_image('Yeti-unmuted.png')
 
 
 if __name__ == "__main__":
