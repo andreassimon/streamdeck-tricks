@@ -1,5 +1,5 @@
 import os
-
+from subprocess import call, Popen
 import gi
 
 gi.require_version('AppIndicator3', '0.1')
@@ -14,6 +14,7 @@ MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 class AppIndicator:
 
     def __init__(self, streamdecks, onexit):
+        self.countdown_process = None
         self.indicator = AppIndicator3.Indicator.new(
             "customtray",
             MODULE_PATH + "/tray_icon.png",
@@ -25,6 +26,8 @@ class AppIndicator:
         self.indicator.set_menu(self.tray_menu)
 
     def exit(self):
+        if self.countdown_process:
+            self.countdown_process.terminate()
         gtk.main_quit()
 
     def tray_menu(self, onexit):
@@ -43,6 +46,14 @@ class AppIndicator:
         pavucontrol_tray.connect('activate', self.tray_pavucontrol)
         menu.append(pavucontrol_tray)
 
+        countdown_to_28_10_22_tray = gtk.MenuItem(label='Countdown bis 28.10.2022')
+        countdown_to_28_10_22_tray.connect('activate', self.tray_countdown_to_28_10_22)
+        menu.append(countdown_to_28_10_22_tray)
+
+        countdown_10min = gtk.MenuItem(label='Countdown 10 Minuten')
+        countdown_10min.connect('activate', self.tray_countdown_10min)
+        menu.append(countdown_10min)
+
         exit_tray = gtk.MenuItem(label='Quit')
         exit_tray.connect('activate', onexit)
         menu.append(exit_tray)
@@ -52,6 +63,16 @@ class AppIndicator:
 
         menu.show_all()
         return menu
+
+    def tray_countdown_to_28_10_22(self, _):
+        if self.countdown_process:
+            self.countdown_process.terminate()
+        self.countdown_process = Popen(['/bin/bash', './countdown.bash', '-d', "Oct 28 2022 15:00"], cwd=MODULE_PATH, env={"TERM": "screen-256color"})
+
+    def tray_countdown_10min(self, _):
+        if self.countdown_process:
+            self.countdown_process.terminate()
+        self.countdown_process = Popen(['/bin/bash', './countdown.bash', '-m', '10'], cwd=MODULE_PATH, env={"TERM": "screen-256color"})
 
     def tray_show_logs(self, _):
         os.system("gnome-terminal -- less " + MODULE_PATH + "/../streamdeck-tricks.log")
