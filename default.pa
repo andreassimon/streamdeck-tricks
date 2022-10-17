@@ -1,0 +1,33 @@
+# Save to ~/.config/pulse/default.pa
+# include the default.pa pulseaudio config file
+.include /etc/pulse/default.pa
+
+# null sink
+.ifexists module-null-sink.so
+# load-module module-null-sink sink_name=Source
+load-module module-null-sink sink_name=teams_sink sink_properties=device.description=Teams_Sink
+.endif
+
+# virtual source
+.ifexists module-virtual-source.so
+load-module module-virtual-source source_name=teams_mic master=teams_sink.monitor source_properties=device.description=Teams_Mic
+.endif
+
+.ifexists module-combine-sink
+load-module module-combine-sink sink_name=monitored_teams_sink slaves=teams_sink,alsa_output.usb-0b0e_Jabra_Link_370_3050755440B5-00.iec958-stereo
+.endif
+
+#Remap source
+#While the null sink automatically includes a "monitor" source, many programs know to exclude monitors when listing microphones. To work around that, the module-remap-source #module lets us clone that source to another one not labeled as being a monitor:
+
+# .ifexists module-remap-source.so
+# load-module module-remap-source master=virtmic.monitor source_name=virtmic source_properties=device.description=Virtual_Microphone
+# .endif
+
+#Add loopback to hear 
+# .ifexists module-loopback.so
+# pactl load-module module-loopback latency_msec=1
+# .endif
+
+#configure loop back in pulseaudio manager. This will be needed to do each time sorry. (Once you setup it should remember)
+

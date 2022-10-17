@@ -2,6 +2,8 @@ Setup
 =====
 
  - https://python-elgato-streamdeck.readthedocs.io/
+ - Configure Pulse Audio:
+    `ln -s $(pwd)/default.pa ~/.config/pulse/default.pa`
 
 Libraries
 =========
