@@ -102,13 +102,26 @@ def take_screenshot(key, key_down):
         os.system("flameshot gui")
 
 
+def switch_scene_Camera(key, key_down):
+    if key_down:
+        obs.switch_scene('Camera')
+
+
+def switch_scene_Pause(key, key_down):
+    if key_down:
+        obs.switch_scene('Pause')
+
+
 current_deck.get_key(0).set_key_image('screenshot.png')
 current_deck.get_key(0).set_callback(take_screenshot)
 
 scene_camera_key = current_deck.get_key(2)
 scene_camera_key.set_key_image('scene-camera.png')
+scene_camera_key.set_callback(switch_scene_Camera)
+
 scene_Pause_key = current_deck.get_key(3)
 scene_Pause_key.set_key_image('scene-paused.png')
+scene_Pause_key.set_callback(switch_scene_Pause)
 
 mic_key = current_deck.get_key(10)
 mic_key.set_key_image('Yeti-unmuted.png')

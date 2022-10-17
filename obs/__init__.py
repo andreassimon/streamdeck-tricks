@@ -99,12 +99,16 @@ class OBS:
     async def on_switchscenes(self, eventData):
         logger.debug('Scene switched to "{}".'.format(eventData['sceneName']))
 
-    async def obs_switch_scene(self, scene_name):
+    def switch_scene(self, scene_name):
         request = simpleobsws.Request(requestType='SetCurrentProgramScene', requestData=dict(sceneName=scene_name))
 
-        ret = await self.obs.call(request)
-        if not ret.ok():
-            logger.debug("SetCurrentProgramScene failed! Response data: {}".format(ret.responseData))
+        future = asyncio.run_coroutine_threadsafe(self.obs.call(request), self.obs_event_loop)
+        try:
+            ret = future.result(1)
+            if not ret.ok():
+                logger.debug("SetCurrentProgramScene failed! Response data: {}".format(ret.responseData))
+        except Exception as error:
+            logger.info(error)
 
     def toggle_mute(self, input_name):
         if not self.obs:
