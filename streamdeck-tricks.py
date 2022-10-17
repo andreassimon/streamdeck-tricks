@@ -102,22 +102,21 @@ def take_screenshot(key, key_down):
         os.system("flameshot gui")
 
 
-current_deck.get_key(4).update_key_image('screenshot.png')
-current_deck.get_key(4).set_callback(take_screenshot)
+current_deck.get_key(0).update_key_image('screenshot.png')
+current_deck.get_key(0).set_callback(take_screenshot)
 
-current_deck.get_key(10).update_key_image('cheering-crowd.png')
-current_deck.get_key(10).set_callback(replay_applause)
-
-current_deck.get_key(11).update_key_image('steppe.png')
-current_deck.get_key(11).set_callback(replay_chirp)
-
-current_deck.get_key(12).update_key_image('poodle-flourish.png')
-current_deck.get_key(12).set_callback(replay_pudel_tusch)
-
-mic_key = current_deck.get_key(14)
-mic_key.update_key_image('muted.png')
+mic_key = current_deck.get_key(10)
 mic_key.update_key_image('unmuted.png')
 mic_key.set_callback(toggle_mute)
+
+current_deck.get_key(12).update_key_image('cheering-crowd.png')
+current_deck.get_key(12).set_callback(replay_applause)
+
+current_deck.get_key(13).update_key_image('cricket.png')
+current_deck.get_key(13).set_callback(replay_chirp)
+
+current_deck.get_key(14).update_key_image('poodle-flourish.png')
+current_deck.get_key(14).set_callback(replay_pudel_tusch)
 
 
 async def on_inputmutestatechanged(eventData):
