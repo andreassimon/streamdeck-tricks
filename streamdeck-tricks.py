@@ -105,6 +105,7 @@ def take_screenshot(key, key_down):
 current_deck.get_key(0).update_key_image('screenshot.png')
 current_deck.get_key(0).set_callback(take_screenshot)
 
+current_deck.get_key(2).render_active = True
 current_deck.get_key(2).update_key_image('scene-camera.png')
 current_deck.get_key(3).update_key_image('scene-paused.png')
 

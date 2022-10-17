@@ -18,6 +18,7 @@ class NullKey:
     def set_callback(self, _callback):
         pass
 
+
 class NullDeck:
 
     def get_key(self, key):
@@ -46,6 +47,7 @@ class StreamDecks:
 
 class StreamDeckKey:
     def __init__(self, deck, key):
+        self.render_active = False
         self.deck = deck
         self.key = key
         self._callback = None
@@ -84,9 +86,11 @@ class StreamDeckKey:
 
         # # Load a custom TrueType font and use it to overlay the key index, draw key
         # # label onto the image a few pixels from the bottom of the key.
-        # draw = ImageDraw.Draw(image)
         # font = ImageFont.truetype(font_filename, 14)
         # draw.text((image.width / 2, image.height - 5), text=label_text, font=font, anchor="ms", fill="white")
+        if self.render_active:
+            draw = ImageDraw.Draw(image)
+            draw.rectangle(((0, 0), (72, 72)), outline="#ff0000", width=5)
 
         return PILHelper.to_native_format(deck, image)
 
