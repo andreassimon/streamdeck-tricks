@@ -1,1 +1,3 @@
 *.log
+/appindicator/countdown-with-hours.txt
+/appindicator/countdown-with-weeks.txt

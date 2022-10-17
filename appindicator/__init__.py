@@ -67,12 +67,12 @@ class AppIndicator:
     def tray_countdown_to_28_10_22(self, _):
         if self.countdown_process:
             self.countdown_process.terminate()
-        self.countdown_process = Popen(['/bin/bash', './countdown.bash', '-d', "Oct 28 2022 15:00"], cwd=MODULE_PATH, env={"TERM": "screen-256color"})
+        self.countdown_process = Popen(['/bin/bash', './countdown-with-weeks.bash', '-d', "Oct 28 2022 15:00"], cwd=MODULE_PATH, env={"TERM": "screen-256color"})
 
     def tray_countdown_10min(self, _):
         if self.countdown_process:
             self.countdown_process.terminate()
-        self.countdown_process = Popen(['/bin/bash', './countdown.bash', '-m', '10'], cwd=MODULE_PATH, env={"TERM": "screen-256color"})
+        self.countdown_process = Popen(['/bin/bash', './countdown-with-hours.bash', '-m', '10'], cwd=MODULE_PATH, env={"TERM": "screen-256color"})
 
     def tray_show_logs(self, _):
         os.system("gnome-terminal -- less " + MODULE_PATH + "/../streamdeck-tricks.log")

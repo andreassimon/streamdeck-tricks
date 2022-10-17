@@ -13,7 +13,7 @@ now=`date +%s`
 if [ "$1" = "-d" ] ; then
 	until=`date -d "$2" +%s`
 	sec_rem=`expr $until - $now`
-	echo "-d"
+	# echo "-d"
 	if [ $sec_rem -lt 1 ]; then
 		echo "$2 is already history !"
 	fi
@@ -23,13 +23,13 @@ if [ "$1" = "-m" ] ; then
 	until=`expr 60 \* $2`
 	until=`expr $until + $now`
 	sec_rem=`expr $until - $now`
-	echo "-m"
+	# echo "-m"
 	if [ $sec_rem -lt 1 ]; then
 		echo "$2 is already history !"
 	fi
 fi
 
-format=${3:=%d Woche %d Tage %d:%02d:%02d}
+format=${3:-%d Woche %d Tage %d:%02d:%02d}
 
 _R=0
 _C=7
@@ -59,7 +59,7 @@ while [ $sec_rem -gt 0 ]; do
 	# echo "Hours:   " $hours
 	# echo "Days:    " $days
 	# echo "Weeks:   " $weeks
-	printf "$format" $weeks $days $hours $minutes $seconds > countdown.txt
+	printf "$format" $weeks $days $hours $minutes $seconds > countdown-with-weeks.txt
 
 	# echo -n "["
   #
