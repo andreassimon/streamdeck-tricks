@@ -32,30 +32,15 @@ logging.getLogger('simpleobsws').setLevel('INFO')
 logger = logging.getLogger('streamdeck-tricks')
 
 
-async def console_keys():
-    while True:
-        response = await aioconsole.ainput('Scenes: [c]amera, [a]vatar, [l]eitplanken, [m]ute, [t]usch: ')
-        if response == 'c':
-            await obs_switch_scene('Camera')
-        elif response == 'a':
-            await obs_switch_scene('Avatar')
-        elif response == 'l':
-            await obs_switch_scene('Leitplanken')
-        elif response == 'm':
-            await obs_toggle_mute('Mic/Aux')
-        elif response == 't':
-            await obs_replay_media('Pudel Tusch')
-
-
 def sigint_handler(signum, frame):
-    quit(None)
+    quit()
 
 
 decks = StreamDecks()
 current_deck = decks.current_deck
 
 
-def quit(_):
+def quit(_=None):
     print("\n\nExit")
     obs.exit()
     # Wait until all application threads have terminated (for this example,
