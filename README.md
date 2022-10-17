@@ -15,7 +15,7 @@ It provides an AppIndicator for administration and user feedback:
 
 ![](README-AppIndicator.jpg)
 
-Thanks to Lorna Jane for inspiration.
+Thanks to [Lorna Jane](https://github.com/lornajane/streamdeck-tricks) [Mitchel](https://opensource.com/article/20/12/stream-deck) for inspiration.
 For me, Python was more approachable than Go.
 
 Setup
