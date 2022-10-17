@@ -3,17 +3,6 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-def prompt_for_minutes():
-    dialog = CountdownPromptDialog()
-    response = dialog.run()
-    if response == Gtk.ResponseType.OK:
-        minutes = dialog.minutes.get_text()
-    else:
-        minutes = -1
-    dialog.destroy()
-    return minutes
-
-
 class CountdownPromptDialog(Gtk.Dialog):
     def __init__(self):
         super().__init__(title="Pause für", flags=0)
