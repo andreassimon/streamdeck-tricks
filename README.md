@@ -1,3 +1,23 @@
+What this is
+============
+
+This is my personal tooling for videoconferencing on Ubuntu.
+It features Stream Deck to control OBS and some little shell functionality.
+It is built in Python and a reasonable amount of Bash.
+
+![](README-StreamDeck.jpg)
+
+It provides additional sinks, sources and connections in Pulse Audio to support monitored audio output to Teams.
+
+![](README-Sound.jpg)
+
+It provides an AppIndicator for administration and user feedback:
+
+![](README-AppIndicator.jpg)
+
+Thanks to Lorna Jane for inspiration.
+For me, Python was more approachable than Go.
+
 Setup
 =====
 
@@ -8,10 +28,12 @@ Setup
 
 Libraries
 =========
- - Python Gtk
+ - The [PyGObject](https://pygobject.readthedocs.io) Gtk wrapper
    - https://lazka.github.io/pgi-docs/
    - https://python-gtk-3-tutorial.readthedocs.io/
- - https://python-elgato-streamdeck.readthedocs.io/
+ - The [streamdeck](https://github.com/abcminiuser/python-elgato-streamdeck) library
+   - https://python-elgato-streamdeck.readthedocs.io/
+ - The [simpleobsws](https://github.com/IRLToolkit/simpleobsws) library to connect to OBS via its WebSocket interface.
 
 Resources
 =========
