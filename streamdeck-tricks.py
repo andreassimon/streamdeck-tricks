@@ -93,7 +93,7 @@ def switch_scene_Pause(key, key_down):
         obs.switch_scene('Pause')
 
 
-current_deck.get_key(0).set_key_image('screenshot.png')
+current_deck.get_key(0).set_key_image('flameshot.png')
 current_deck.get_key(0).set_callback(take_screenshot)
 
 scene_camera_key = current_deck.get_key(2)
