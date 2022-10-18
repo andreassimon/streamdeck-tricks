@@ -8,7 +8,7 @@ from appindicator.Countdown import Countdown
 gi.require_version('AppIndicator3', '0.1')
 gi.require_version('Gtk', '3.0')
 gi.require_version('Pango', '1.0')
-from gi.repository import Gtk, AppIndicator3
+from gi.repository import GLib, Gtk, AppIndicator3
 
 MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -66,7 +66,7 @@ class AppIndicator:
         return menu
 
     def countdown_some_minutes(self, _=None):
-        self.countdown.some_minutes()
+        GLib.idle_add(self.countdown.some_minutes)
 
     def tray_show_logs(self, _):
         os.system("gnome-terminal -- less " + MODULE_PATH + "/../streamdeck-tricks.log")
