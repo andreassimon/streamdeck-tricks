@@ -77,6 +77,39 @@ class StreamDeckKey:
         # right now.
         self.icon = os.path.join(MODULE_PATH, image)
         self.update_key_image()
+        return self
+
+    def execute_command(self, command):
+        def execute_command_callback(key, key_down):
+            if key_down:
+                os.system(command)
+
+        self.set_callback(execute_command_callback)
+        return self
+
+    def switch_scene(self, obs, scene_name):
+        def switch_scene_callback(key, key_down):
+            if key_down:
+                obs.switch_scene(scene_name)
+
+        self.set_callback(switch_scene_callback)
+        return self
+
+    def replay_media(self, obs, media_name):
+        def replay_media_callback(key, key_down):
+            if key_down:
+                obs.replay_media(media_name)
+
+        self.set_callback(replay_media_callback)
+        return self
+
+    def toggle_mute(self, obs, mic_name):
+        def toggle_mute_callback(key, key_down):
+            if key_down:
+                obs.toggle_mute(mic_name)
+
+        self.set_callback(toggle_mute_callback)
+        return self
 
     def update_key_image(self):
         image = self.render_key_image(self.icon, self.render_active)
@@ -84,6 +117,8 @@ class StreamDeckKey:
         with self.deck:
             # Update requested key with the generated image.
             self.deck.set_key_image(self.key, image)
+
+        return self
 
     def render_key_image(self, icon_filename, render_active):
         # font_filename = None

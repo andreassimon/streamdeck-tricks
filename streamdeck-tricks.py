@@ -57,34 +57,17 @@ def quit(_=None):
 signal.signal(signal.SIGINT, sigint_handler)
 
 
-def toggle_mute(key, key_down):
-    if key_down:
-        obs.toggle_mute('Yeti')
+current_deck.get_key(0)\
+    .set_key_image('flameshot.png')\
+    .execute_command('flameshot gui')
 
+scene_camera_key = current_deck.get_key(2)
+scene_camera_key \
+    .set_key_image('scene-camera.png')\
+    .switch_scene(obs, 'Camera')
 
-def replay_applause(key, key_down):
-    if key_down:
-        obs.replay_media('Applause')
-
-
-def replay_chirp(key, key_down):
-    if key_down:
-        obs.replay_media('Chirp')
-
-
-def replay_pudel_tusch(key, key_down):
-    if key_down:
-        obs.replay_media('Pudel Tusch')
-
-
-def take_screenshot(key, key_down):
-    if key_down:
-        os.system("flameshot gui")
-
-
-def switch_scene_Camera(key, key_down):
-    if key_down:
-        obs.switch_scene('Camera')
+scene_Pause_key = current_deck.get_key(3)
+scene_Pause_key.set_key_image('scene-paused.png')
 
 
 def switch_scene_Pause(key, key_down):
@@ -93,29 +76,32 @@ def switch_scene_Pause(key, key_down):
         obs.switch_scene('Pause')
 
 
-current_deck.get_key(0).set_key_image('flameshot.png')
-current_deck.get_key(0).set_callback(take_screenshot)
-
-scene_camera_key = current_deck.get_key(2)
-scene_camera_key.set_key_image('scene-camera.png')
-scene_camera_key.set_callback(switch_scene_Camera)
-
-scene_Pause_key = current_deck.get_key(3)
-scene_Pause_key.set_key_image('scene-paused.png')
 scene_Pause_key.set_callback(switch_scene_Pause)
 
+
+current_deck.get_key(7)\
+    .set_key_image('signal-desktop.png')\
+    .execute_command('signal-desktop')
+current_deck.get_key(8)\
+    .set_key_image('threema.png')\
+    .execute_command("/usr/bin/chromium-browser --profile-directory=Default --app-id=hfcfobejdjlbgbkfiipblolhafdlkhfl")
+
 mic_key = current_deck.get_key(10)
-mic_key.set_key_image('Yeti-unmuted.png')
-mic_key.set_callback(toggle_mute)
+mic_key\
+    .set_key_image('Yeti-unmuted.png')\
+    .toggle_mute(obs, 'Yeti')
 
-current_deck.get_key(12).set_key_image('cheering-crowd.png')
-current_deck.get_key(12).set_callback(replay_applause)
+current_deck.get_key(12)\
+    .set_key_image('cheering-crowd.png')\
+    .replay_media(obs, 'Applause')
 
-current_deck.get_key(13).set_key_image('cricket.png')
-current_deck.get_key(13).set_callback(replay_chirp)
+current_deck.get_key(13)\
+    .set_key_image('cricket.png')\
+    .replay_media(obs, 'Chirp')
 
-current_deck.get_key(14).set_key_image('poodle-flourish.png')
-current_deck.get_key(14).set_callback(replay_pudel_tusch)
+current_deck.get_key(14)\
+    .set_key_image('poodle-flourish.png')\
+    .replay_media(obs, 'Pudel Tusch')
 
 
 async def on_inputmutestatechanged(eventData):
