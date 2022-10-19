@@ -79,6 +79,9 @@ def switch_scene_Pause(key, key_down):
 scene_Pause_key.set_callback(switch_scene_Pause)
 
 
+current_deck.get_key(5)\
+    .set_key_image('thunderbird.png')\
+    .execute_command('thunderbird')
 current_deck.get_key(6)\
     .set_key_image('teams.png')\
     .execute_command('teams')
