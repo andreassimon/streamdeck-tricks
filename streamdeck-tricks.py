@@ -85,6 +85,9 @@ current_deck.get_key(7)\
 current_deck.get_key(8)\
     .set_key_image('threema.png')\
     .execute_command("/usr/bin/chromium-browser --profile-directory=Default --app-id=hfcfobejdjlbgbkfiipblolhafdlkhfl")
+current_deck.get_key(9)\
+    .set_key_image('whatsie.png')\
+    .execute_command('env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/whatsie_whatsie.desktop /snap/bin/whatsie --show-window')
 
 mic_key = current_deck.get_key(10)
 mic_key\
