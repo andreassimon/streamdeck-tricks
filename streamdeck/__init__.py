@@ -1,11 +1,10 @@
 import logging
 import os
+import subprocess
 
 from PIL import Image, ImageDraw, ImageFont
 from StreamDeck.DeviceManager import DeviceManager
 from StreamDeck.ImageHelpers import PILHelper
-
-import threading
 
 MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -82,7 +81,7 @@ class StreamDeckKey:
     def execute_command(self, command):
         def execute_command_callback(key, key_down):
             if key_down:
-                os.system(command)
+                subprocess.Popen(command)
 
         self.set_callback(execute_command_callback)
         return self

@@ -79,15 +79,18 @@ def switch_scene_Pause(key, key_down):
 scene_Pause_key.set_callback(switch_scene_Pause)
 
 
+current_deck.get_key(6)\
+    .set_key_image('teams.png')\
+    .execute_command('teams')
 current_deck.get_key(7)\
     .set_key_image('signal-desktop.png')\
     .execute_command('signal-desktop')
 current_deck.get_key(8)\
     .set_key_image('threema.png')\
-    .execute_command("/usr/bin/chromium-browser --profile-directory=Default --app-id=hfcfobejdjlbgbkfiipblolhafdlkhfl")
+    .execute_command(['/usr/bin/chromium-browser', '--profile-directory=Default', '--app-id=hfcfobejdjlbgbkfiipblolhafdlkhfl'])
 current_deck.get_key(9)\
     .set_key_image('whatsie.png')\
-    .execute_command('env BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/whatsie_whatsie.desktop /snap/bin/whatsie --show-window')
+    .execute_command(['env', 'BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/whatsie_whatsie.desktop', '/snap/bin/whatsie', '--show-window'])
 
 mic_key = current_deck.get_key(10)
 mic_key\
