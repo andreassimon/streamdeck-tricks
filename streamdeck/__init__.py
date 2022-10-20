@@ -7,6 +7,7 @@ from StreamDeck.DeviceManager import DeviceManager
 from StreamDeck.ImageHelpers import PILHelper
 
 MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
+logger = logging.getLogger('streamdeck-tricks')
 
 
 class NullKey:
@@ -81,7 +82,10 @@ class StreamDeckKey:
     def execute_command(self, command):
         def execute_command_callback(key, key_down):
             if key_down:
-                subprocess.Popen(command)
+                try:
+                    subprocess.Popen(command)
+                except:
+                    logger.exception('Exception when executing `%s`', command)
 
         self.set_callback(execute_command_callback)
         return self

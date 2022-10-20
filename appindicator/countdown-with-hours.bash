@@ -53,7 +53,7 @@ while [ $sec_rem -gt 0 ]; do
 	days=`expr $interval % 604800 / 86400`
 	interval=`expr $interval - $hours`
 	weeks=`expr $interval / 604800`
-	printf "$format" $hours $minutes $seconds > countdown-with-hours.txt
+	printf "$format" $hours $minutes $seconds > /tmp/countdown-with-hours.txt
 
 	# echo -n "["
   #

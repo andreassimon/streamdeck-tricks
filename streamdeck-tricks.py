@@ -59,7 +59,7 @@ signal.signal(signal.SIGINT, sigint_handler)
 
 current_deck.get_key(0)\
     .set_key_image('flameshot.png')\
-    .execute_command('flameshot gui')
+    .execute_command(['flameshot', 'gui'])
 
 scene_camera_key = current_deck.get_key(2)
 scene_camera_key \
@@ -80,11 +80,11 @@ scene_Pause_key.set_callback(switch_scene_Pause)
 
 
 current_deck.get_key(5)\
-    .set_key_image('thunderbird.png')\
-    .execute_command('thunderbird')
-current_deck.get_key(6)\
     .set_key_image('teams.png')\
     .execute_command('teams')
+current_deck.get_key(6)\
+    .set_key_image('thunderbird.png')\
+    .execute_command('thunderbird')
 current_deck.get_key(7)\
     .set_key_image('signal-desktop.png')\
     .execute_command('signal-desktop')

@@ -59,7 +59,7 @@ while [ $sec_rem -gt 0 ]; do
 	# echo "Hours:   " $hours
 	# echo "Days:    " $days
 	# echo "Weeks:   " $weeks
-	printf "$format" $weeks $days $hours $minutes $seconds > countdown-with-weeks.txt
+	printf "$format" $weeks $days $hours $minutes $seconds > /tmp/countdown-with-weeks.txt
 
 	# echo -n "["
   #
