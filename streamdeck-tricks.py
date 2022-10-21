@@ -79,6 +79,11 @@ def switch_scene_Pause(key, key_down):
 
 scene_Pause_key.set_callback(switch_scene_Pause)
 
+scene_kaenguru_key = current_deck.get_key(4)
+scene_kaenguru_key \
+    .set_key_image('kaenguru.png')\
+    .switch_scene(obs, 'Känguru')
+
 
 current_deck.get_key(5)\
     .set_key_image('teams.png')\
@@ -128,14 +133,19 @@ async def on_inputmutestatechanged(eventData):
 async def on_CurrentProgramSceneChanged(eventData):
     # eventData: {'sceneName': 'Camera'}
     render_Camera_active = False
+    render_Kaenguru_active = False
     render_Pause_active = False
     if eventData['sceneName'] == 'Camera':
         render_Camera_active = True
+
+    if eventData['sceneName'] == 'Känguru':
+        render_Kaenguru_active = True
 
     if eventData['sceneName'] == 'Pause':
         render_Pause_active = True
 
     scene_camera_key.set_render_active(render_Camera_active)
+    scene_kaenguru_key.set_render_active(render_Kaenguru_active)
     scene_Pause_key.set_render_active(render_Pause_active)
 
 
