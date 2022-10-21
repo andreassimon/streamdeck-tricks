@@ -35,6 +35,27 @@ Libraries
    - https://python-elgato-streamdeck.readthedocs.io/
  - The [simpleobsws](https://github.com/IRLToolkit/simpleobsws) library to connect to OBS via its WebSocket interface.
 
+Pulse Audio
+===========
+
+    pactl list sink-inputs | less
+
+ - https://github.com/mk-fg/python-pulse-control
+   - https://freedesktop.org/software/pulseaudio/doxygen/introspect_8h.html
+ - https://pypi.org/project/pulsectl-asyncio/
+ 
+ 
+Window Management
+=================
+
+https://stackoverflow.com/questions/288512/resizing-a-window-to-a-set-size-in-linux
+
+http://www.sweb.cz/tripie/utils/wmctrl/
+
+    wmctrl -l
+    wmctrl -r Firefox -b toggle,maximized_horz
+    wmctrl -r "push-service – KundenDfueSuchMapping.java [hellas-gateway]" -e 0,0,0,1280,720
+
 Resources
 =========
  - https://docs.python.org/3/howto/logging.html
