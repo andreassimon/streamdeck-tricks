@@ -2,6 +2,7 @@
 
 import logging.config
 import os
+from pulse import configure_pulse
 import signal
 
 from obs import OBS
@@ -139,7 +140,7 @@ async def on_CurrentProgramSceneChanged(eventData):
 
 
 if __name__ == "__main__":
-    appindicator = AppIndicator(decks, quit)
+    appindicator = AppIndicator(configure_pulse, decks, quit)
     obs.start()
     obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
     obs.register_event_callback(on_CurrentProgramSceneChanged, 'CurrentProgramSceneChanged')

@@ -1,5 +1,4 @@
 import os
-
 import gi
 
 from appindicator import CountdownPromptDialog
@@ -15,7 +14,8 @@ MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 
 class AppIndicator:
 
-    def __init__(self, streamdecks, onexit):
+    def __init__(self, configure_pulse, streamdecks, onexit):
+        self.configure_pulse = configure_pulse
         self.countdown = Countdown.instance()
         self.indicator = AppIndicator3.Indicator.new(
             "customtray",
@@ -43,9 +43,17 @@ class AppIndicator:
         show_logs_tray.connect('activate', self.tray_show_logs)
         menu.append(show_logs_tray)
 
+        menu.append(Gtk.SeparatorMenuItem())
+
         pavucontrol_tray = Gtk.MenuItem(label='Pulse Audio Volume Controls')
         pavucontrol_tray.connect('activate', self.tray_pavucontrol)
         menu.append(pavucontrol_tray)
+
+        pulse_autoconfig_tray = Gtk.MenuItem(label='Pulse Audio autoconfig')
+        pulse_autoconfig_tray.connect('activate', self.tray_pulse_autoconfig)
+        menu.append(pulse_autoconfig_tray)
+
+        menu.append(Gtk.SeparatorMenuItem())
 
         countdown_to_28_10_22_tray = Gtk.MenuItem(label='Pause bis 28.10.2022')
         countdown_to_28_10_22_tray.connect('activate', self.countdown.to_28_10_22)
@@ -73,6 +81,9 @@ class AppIndicator:
 
     def tray_pavucontrol(self, _):
         os.system("pavucontrol")
+
+    def tray_pulse_autoconfig(self, _):
+        self.configure_pulse()
 
     def tray_error(self, _error):
         self.tray_icon('tray_icon_error')
