@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+import base64
 import logging.config
 import os
 from pulse import configure_pulse
@@ -106,6 +107,38 @@ mic_key\
     .set_key_image('Yeti-unmuted.png')\
     .toggle_mute(obs, 'Yeti')
 
+chroma_key_setup_key = current_deck.get_key(11)
+
+def decode_base64(encoded_string):
+    encoded_bytes = encoded_string.encode("ascii")
+    decoded_bytes = base64.b64decode(encoded_bytes)
+    return decoded_bytes
+def setup_chroma_key(key):
+    print('\n\n>>> GET SCREENSHOT')
+    obs.disable_source_filter("Logitech C922", "Chroma Key")
+    response = obs.get_source_screenshot("Logitech C922")
+    obs.enable_source_filter("Logitech C922", "Chroma Key")
+    # with open("get_source_screenshot.txt", "w") as file:
+    #     file.write(response)
+
+    image = decode_base64(response)
+    with open("get_source_screenshot.png", "wb") as file:
+        file.write(image)
+
+    # show_window(image)
+    # record_clicks
+    # calculate_extreme_values()
+    # calculate_key_color()
+    # calculate_similarity()
+    # obs.set_key_color()
+    # obs.set_similarity()
+    print('\n\n<<< GET SCREENSHOT')
+
+
+chroma_key_setup_key\
+    .set_key_image('chroma-key.png')\
+    .on_key_down(setup_chroma_key)
+
 current_deck.get_key(12)\
     .set_key_image('cheering-crowd.png')\
     .replay_media(obs, 'Applause')
@@ -163,4 +196,4 @@ if __name__ == "__main__":
     try:
         appindicator.start()
     except Exception as error:
-        logger.info(error)
+        logger.exception('appindicator.start()')

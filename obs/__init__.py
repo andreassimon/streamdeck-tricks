@@ -54,9 +54,9 @@ class OBS:
                                                password=args.obs_ws_password,
                                                identification_parameters=parameters)
         logger.debug('Instantiated simpleobsws.WebSocketClient')
-        self.obs_lock.release()
 
         self.obs_event_loop.run_until_complete(self.obs_init_websocket())
+        self.obs_lock.release()
         self.toggle_mute('Mic/Aux')
         # By not specifying an event to listen to, all events are sent to this callback.
         with self.obs_lock:
@@ -108,7 +108,29 @@ class OBS:
             if not ret.ok():
                 logger.debug("SetCurrentProgramScene failed! Response data: {}".format(ret.responseData))
         except Exception as error:
-            logger.info(error)
+            logger.exception("SetCurrentProgramScene")
+
+    def get_source_screenshot(self, source_name):
+        request = simpleobsws.Request(requestType='GetSourceScreenshot', requestData=dict(
+            sourceName=source_name,
+            imageFormat="png",
+            imageFilePath="/home/andreas/Dropbox/OBS/streamdeck-py/screenshot.png"
+        ))
+        return self.execute_request(request)['imageData'][22:]
+
+    def execute_request(self, request):
+        with self.obs_lock:
+            future = asyncio.run_coroutine_threadsafe(self.obs.call(request), self.obs_event_loop)
+            try:
+                ret = future.result(5)
+                if not ret.ok():
+                    logger.debug("{} failed! Response data: {}".format(request.requestType, ret.responseData))
+                else:
+                    logger.debug("{} succeeded! Response data: {}".format(request.requestType, ret.responseData))
+                return ret.responseData
+            except:
+                logger.exception(request.requestType)
+
 
     def toggle_mute(self, input_name):
         if not self.obs:
@@ -124,7 +146,7 @@ class OBS:
             if not ret.ok():
                 logger.debug("ToggleInputMute failed! Response data: {}".format(ret.responseData))
         except Exception as error:
-            logger.info(error)
+            logger.exception('ToggleInputMute')
 
     def replay_media(self, input_name):
         if not self.obs:
@@ -144,4 +166,26 @@ class OBS:
             if not ret.ok():
                 logger.debug("TriggerMediaInputAction failed! Response data: {}".format(ret.responseData))
         except Exception as error:
-            logger.info(error)
+            logger.exception('TriggerMediaInputAction')
+
+    def disable_source_filter(self, source_name, filter_name):
+        self.set_source_filter_enabled(source_name, filter_name, False)
+
+    def enable_source_filter(self, source_name, filter_name):
+        self.set_source_filter_enabled(source_name, filter_name, True)
+
+    def set_source_filter_enabled(self, source_name, filter_name, filter_enabled):
+        return self.execute_request(simpleobsws.Request(requestType='SetSourceFilterEnabled', requestData=dict(
+            sourceName=source_name,
+            filterName=filter_name,
+            filterEnabled=filter_enabled
+        )))
+
+    def set_source_filter_settings(self, source_name, filter_name, filter_settings=None):
+        if filter_settings is None:
+            filter_settings = dict()
+        return self.execute_request(simpleobsws.Request(requestType='SetSourceFilterSettings', requestData=dict(
+            sourceName=source_name,
+            filterName=filter_name,
+            filterSettings=filter_settings
+        )))

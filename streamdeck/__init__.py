@@ -56,6 +56,14 @@ class StreamDeckKey:
     def set_callback(self, cb):
         self._callback = cb
 
+    def on_key_down(self, callback):
+        def on_key_down_callback(key, key_down):
+            if key_down:
+                callback(key)
+
+        self.set_callback(on_key_down_callback)
+        return self
+
     def callback(self, key_down):
         if self._callback:
             self._callback(self, key_down)
