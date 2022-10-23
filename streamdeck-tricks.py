@@ -7,14 +7,12 @@ from pulse import configure_pulse
 import signal
 
 from obs import OBS
-from appindicator import AppIndicator
-
-appindicator = None
+from appindicator import StreamDeckTricksGtk
 
 
 def obs_error_callback(error):
     # TODO: Notify about error message
-    appindicator.tray_error(error)
+    streamdeck_tricks_gtk.show_error(error)
 
 
 obs = OBS(obs_error_callback)
@@ -51,7 +49,7 @@ def quit(_=None):
     #         print("{} '{}'".format(error, t.name))
     #         pass
 
-    appindicator.exit()
+    streamdeck_tricks_gtk.exit()
     current_deck.exit()
     exit(0)
 
@@ -74,7 +72,7 @@ scene_Pause_key.set_key_image('scene-paused.png')
 
 def switch_scene_Pause(key, key_down):
     if key_down:
-        appindicator.countdown_some_minutes()
+        streamdeck_tricks_gtk.countdown_some_minutes()
         obs.switch_scene('Pause')
 
 
@@ -183,17 +181,18 @@ async def on_CurrentProgramSceneChanged(eventData):
 
 
 if __name__ == "__main__":
-    appindicator = AppIndicator(configure_pulse, decks, quit)
+    streamdeck_tricks_gtk = StreamDeckTricksGtk(configure_pulse, decks, quit)
+
     obs.start()
     obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')
     obs.register_event_callback(on_CurrentProgramSceneChanged, 'CurrentProgramSceneChanged')
     if len(decks.items()) == 0:
-        appindicator.no_decks_found()
+        streamdeck_tricks_gtk.no_decks_found()
 
-    # appindicator.start() MUST COME LAST
+    # streamdeck_tricks_gtk.start() MUST COME LAST
     # because it blocks the main thread so that no actions
     # after this point will be executed
     try:
-        appindicator.start()
+        streamdeck_tricks_gtk.start()
     except Exception as error:
-        logger.exception('appindicator.start()')
+        logger.exception('streamdeck_tricks_gtk.start()')

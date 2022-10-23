@@ -57,7 +57,7 @@ class OBS:
 
         self.obs_event_loop.run_until_complete(self.obs_init_websocket())
         self.obs_lock.release()
-        self.toggle_mute('Mic/Aux')
+        # self.toggle_mute('Mic/Aux')
         # By not specifying an event to listen to, all events are sent to this callback.
         with self.obs_lock:
             self.obs.register_event_callback(self.on_event)
