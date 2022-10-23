@@ -34,3 +34,9 @@ class StreamDeckTricksGtk:
 
     def no_decks_found(self):
         self.appindicator.no_decks_found()
+
+    def determine_green_values_in(self, image):
+        # show_window(image)
+        # record_clicks
+        # calculate_extreme_values()
+

@@ -123,9 +123,7 @@ def setup_chroma_key(key):
     with open("get_source_screenshot.png", "wb") as file:
         file.write(image)
 
-    # show_window(image)
-    # record_clicks
-    # calculate_extreme_values()
+    green_values = streamdeck_tricks_gtk.determine_green_values_in(image)
     # calculate_key_color()
     # calculate_similarity()
     # obs.set_key_color()
