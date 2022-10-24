@@ -16,8 +16,8 @@ MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 
 class StreamDeckTricksGtk:
 
-    def __init__(self, configure_pulse, decks, quit):
-        self.appindicator = AppIndicator(configure_pulse, decks, quit)
+    def __init__(self, configure_pulse, decks, quit, setup_chroma_key):
+        self.appindicator = AppIndicator(configure_pulse, decks, quit, setup_chroma_key)
 
     def start(self):
         Gtk.main()
@@ -36,9 +36,9 @@ class StreamDeckTricksGtk:
     def no_decks_found(self):
         self.appindicator.no_decks_found()
 
-    def determine_green_values_in(self, image, chroma_key_found):
+    def determine_green_values_in(self, take_screenshot, chroma_key_found):
         def show_color_picker():
-            win = KeyColorPicker(chroma_key_found)
+            win = KeyColorPicker(chroma_key_found, take_screenshot=take_screenshot)
             win.connect("destroy", win.destroy)
             win.show_all()
         GLib.idle_add(show_color_picker)

@@ -21,7 +21,7 @@ import numpy as np
 
 
 class KeyColorPicker(Gtk.Window):
-    def __init__(self, chroma_key_found):
+    def __init__(self, chroma_key_found, take_screenshot):
         super().__init__(title="Select Green Values")
         self.chroma_key_found = chroma_key_found
         self.canvas = None
@@ -36,9 +36,9 @@ class KeyColorPicker(Gtk.Window):
 
         self.event_box = Gtk.EventBox.new()
 
-        self.pixbuf = GdkPixbuf.Pixbuf.new_from_file(
-            '/home/andreas/Dropbox/OBS/streamdeck-py/get_source_screenshot.png')
-        self.pimage = Image.open('/home/andreas/Dropbox/OBS/streamdeck-py/get_source_screenshot.png')
+        screenshot_png = take_screenshot()
+        self.pixbuf = GdkPixbuf.Pixbuf.new_from_file(screenshot_png)
+        self.pimage = Image.open(screenshot_png)
         # self.scrolled_window = None
 
         # https: // pillow.readthedocs.io / en / stable / reference / Image.html  # PIL.Image.frombytes
@@ -125,9 +125,12 @@ class KeyColorPicker(Gtk.Window):
 
 
 if __name__ == "__main__":
+    def take_screenshot():
+        return '/home/andreas/Dropbox/OBS/streamdeck-py/get_source_screenshot.png'
+
     def chroma_key_found(key_color, radius):
         print("Chroma Key Found: {} {}".format(key_color, radius))
-    win = KeyColorPicker(chroma_key_found)
+    win = KeyColorPicker(chroma_key_found, take_screenshot)
     win.connect("destroy", Gtk.main_quit)
     win.show_all()
     Gtk.main()

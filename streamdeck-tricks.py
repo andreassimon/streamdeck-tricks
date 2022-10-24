@@ -106,39 +106,28 @@ mic_key \
     .set_key_image('Yeti-unmuted.png') \
     .toggle_mute(obs, 'Yeti')
 
-chroma_key_setup_key = current_deck.get_key(11)
+def setup_chroma_key(_streamdeck_key):
+    def take_screenshot():
+        def decode_base64(encoded_string):
+            encoded_bytes = encoded_string.encode("ascii")
+            decoded_bytes = base64.b64decode(encoded_bytes)
+            return decoded_bytes
 
+        obs.disable_source_filter("Logitech C922", "Chroma Key")
+        response = obs.get_source_screenshot("Logitech C922")
+        obs.enable_source_filter("Logitech C922", "Chroma Key")
 
-def decode_base64(encoded_string):
-    encoded_bytes = encoded_string.encode("ascii")
-    decoded_bytes = base64.b64decode(encoded_bytes)
-    return decoded_bytes
+        image = decode_base64(response)
+        with open("get_source_screenshot.png", "wb") as file:
+            file.write(image)
 
-
-def setup_chroma_key(key):
-    obs.disable_source_filter("Logitech C922", "Chroma Key")
-    response = obs.get_source_screenshot("Logitech C922")
-    obs.enable_source_filter("Logitech C922", "Chroma Key")
-    # with open("get_source_screenshot.txt", "w") as file:
-    #     file.write(response)
-
-    image = decode_base64(response)
-    with open("get_source_screenshot.png", "wb") as file:
-        file.write(image)
+        return "get_source_screenshot.png"
 
     def chroma_key_found(key_color, radius):
         obs.set_chroma_key_properties(key_color, radius)
 
-    green_values = streamdeck_tricks_gtk.determine_green_values_in(image, chroma_key_found)
-    # calculate_key_color()
-    # calculate_similarity()
-    # obs.set_key_color()
-    # obs.set_similarity()
+    streamdeck_tricks_gtk.determine_green_values_in(take_screenshot, chroma_key_found)
 
-
-chroma_key_setup_key \
-    .set_key_image('chroma-key.png') \
-    .on_key_down(setup_chroma_key)
 
 current_deck.get_key(12) \
     .set_key_image('cheering-crowd.png') \
@@ -184,7 +173,7 @@ async def on_CurrentProgramSceneChanged(eventData):
 
 
 if __name__ == "__main__":
-    streamdeck_tricks_gtk = StreamDeckTricksGtk(configure_pulse, decks, quit)
+    streamdeck_tricks_gtk = StreamDeckTricksGtk(configure_pulse, decks, quit, setup_chroma_key)
 
     obs.start()
     obs.register_event_callback(on_inputmutestatechanged, 'InputMuteStateChanged')

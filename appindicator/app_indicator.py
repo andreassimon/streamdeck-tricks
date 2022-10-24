@@ -9,7 +9,7 @@ MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 
 class AppIndicator:
 
-    def __init__(self, configure_pulse, streamdecks, onexit):
+    def __init__(self, configure_pulse, streamdecks, onexit, setup_chroma_key):
         self.configure_pulse = configure_pulse
         self.countdown = Countdown.instance()
         self.indicator = AppIndicator3.Indicator.new(
@@ -19,14 +19,14 @@ class AppIndicator:
         )
         self.streamdecks = streamdecks
         self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
-        self.tray_menu = self.tray_menu(onexit)
+        self.tray_menu = self.tray_menu(onexit, setup_chroma_key)
         self.indicator.set_menu(self.tray_menu)
 
     def exit(self):
         self.countdown.exit()
         Gtk.main_quit()
 
-    def tray_menu(self, onexit):
+    def tray_menu(self, onexit, setup_chroma_key):
         menu = Gtk.Menu()
 
         for index, deck in enumerate(self.streamdecks.items()):
@@ -37,6 +37,10 @@ class AppIndicator:
         show_logs_tray = Gtk.MenuItem(label='Show Logs')
         show_logs_tray.connect('activate', self.tray_show_logs)
         menu.append(show_logs_tray)
+        
+        chroma_key_tray = Gtk.MenuItem(label='Setup Chroma Key')
+        chroma_key_tray.connect('activate', setup_chroma_key)
+        menu.append(chroma_key_tray)
 
         menu.append(Gtk.SeparatorMenuItem())
 
