@@ -1,5 +1,7 @@
 import gi
 
+from appindicator.smallestenclosingcircle import make_circle
+
 gi.require_version('Gdk', '3.0')
 gi.require_version('GdkPixbuf', '2.0')
 gi.require_version("Gtk", "3.0")
@@ -11,15 +13,21 @@ from matplotlib.backends.backend_gtk3agg import (
     FigureCanvasGTK3Agg as FigureCanvas)
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
+from matplotlib.patches import Circle, Wedge, Polygon
+from matplotlib.collections import PatchCollection
+
 import numpy as np
 
 
+
 class KeyColorPicker(Gtk.Window):
-    def __init__(self):
+    def __init__(self, chroma_key_found):
         super().__init__(title="Select Green Values")
+        self.chroma_key_found = chroma_key_found
         self.clicked_pixels = list()
         self.greens = list()
         self.blues = list()
+        self.green_blues = list()
 
         self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.add(self.box)
@@ -56,7 +64,7 @@ class KeyColorPicker(Gtk.Window):
 
         self.box.pack_start(self.color, True, True, 0)
 
-    def scatter_plot(self, x, y):
+    def scatter_plot(self, x, y, circle):
         if self.canvas:
             self.box.remove(self.canvas)
 
@@ -64,10 +72,19 @@ class KeyColorPicker(Gtk.Window):
         self.subplot = self.figure.add_subplot()
         self.subplot.set_xlim(0, 255)
         self.subplot.set_ylim(0, 255)
+        self.subplot.set_box_aspect(1)
         # t = np.arange(0.0, 3.0, 0.01)
         # s = np.sin(2*np.pi*t)
         # subplot.plot(t, s)
         self.subplot.scatter(x, y)
+        self.subplot.scatter(circle[0], circle[1], c='#ff0000')
+        patches = []
+        patches.append(Circle((circle[0], circle[1]), circle[2]))
+
+        p = PatchCollection(patches, alpha=0.4)
+        # p.set_array(colors)
+        self.subplot.add_collection(p)
+
         # plt.show()
         # self.scrolled_window = Gtk.ScrolledWindow()
         # A scrolled window border goes outside the scrollbars and viewport
@@ -83,14 +100,22 @@ class KeyColorPicker(Gtk.Window):
         self.clicked_pixels.append(clicked_pixel)
         self.greens.append(clicked_pixel[1])
         self.blues.append(clicked_pixel[2])
+        self.green_blues.append((clicked_pixel[1], clicked_pixel[2]))
         print("{} {}".format(self.pimage.mode, clicked_pixel))
         print(self.clicked_pixels)
         print(self.greens)
         print(self.blues)
+        print(self.green_blues)
+
+        circle = make_circle(self.green_blues)
+        print(circle)
+
+        self.chroma_key_found((int(0), int(circle[0]), int(circle[1])), int(circle[2]))
+
         self.color.set_rgba(
             Gdk.RGBA(clicked_pixel[0] / 255, clicked_pixel[1] / 255, clicked_pixel[2] / 255, clicked_pixel[3] / 255))
 
-        self.scatter_plot(self.greens, self.blues)
+        self.scatter_plot(self.greens, self.blues, circle)
 
 
 
@@ -102,7 +127,9 @@ class KeyColorPicker(Gtk.Window):
 
 
 if __name__ == "__main__":
-    win = KeyColorPicker()
+    def chroma_key_found(key_color, radius):
+        print("Chroma Key Found: {} {}".format(key_color, radius))
+    win = KeyColorPicker(chroma_key_found)
     win.connect("destroy", Gtk.main_quit)
     win.show_all()
     Gtk.main()
