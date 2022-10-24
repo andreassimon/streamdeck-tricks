@@ -14,18 +14,34 @@ from gi.repository import Gtk
 from matplotlib.backends.backend_gtk3agg import (
     FigureCanvasGTK3Agg as FigureCanvas)
 from matplotlib.figure import Figure
+import matplotlib.pyplot as plt
 import numpy as np
 
 win = Gtk.Window()
 win.connect("delete-event", Gtk.main_quit)
-win.set_default_size(400, 300)
+win.set_default_size(800 + 2*10, 600 + 2*10)
 win.set_title("Embedding in GTK3")
+
+
+# Fixing random state for reproducibility
+np.random.seed(19680801)
+
+N = 50
+x = np.random.rand(N) * 255
+y = np.random.rand(N) * 255
+colors = np.random.rand(N)
+area = (30 * np.random.rand(N))**2  # 0 to 15 point radii
+
 
 fig = Figure(figsize=(5, 4), dpi=100)
 subplot = fig.add_subplot()
-t = np.arange(0.0, 3.0, 0.01)
-s = np.sin(2*np.pi*t)
-subplot.plot(t, s)
+# t = np.arange(0.0, 3.0, 0.01)
+# s = np.sin(2*np.pi*t)
+# subplot.plot(t, s)
+
+subplot.scatter(x, y)
+# plt.show()
+
 
 scrolled_window = Gtk.ScrolledWindow()
 win.add(scrolled_window)
