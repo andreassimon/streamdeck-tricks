@@ -4,6 +4,7 @@ import gi
 from appindicator import CountdownPromptDialog
 from appindicator.Countdown import Countdown
 from appindicator.app_indicator import AppIndicator
+from appindicator.key_color_picker import KeyColorPicker
 
 gi.require_version('AppIndicator3', '0.1')
 gi.require_version('Gtk', '3.0')
@@ -35,8 +36,10 @@ class StreamDeckTricksGtk:
     def no_decks_found(self):
         self.appindicator.no_decks_found()
 
-    def determine_green_values_in(self, image):
-        # show_window(image)
-        # record_clicks
-        # calculate_extreme_values()
+    def determine_green_values_in(self, image, chroma_key_found):
+        def show_color_picker():
+            win = KeyColorPicker(chroma_key_found)
+            win.connect("destroy", win.destroy)
+            win.show_all()
+        GLib.idle_add(show_color_picker)
 

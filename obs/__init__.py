@@ -118,6 +118,10 @@ class OBS:
         ))
         return self.execute_request(request)['imageData'][22:]
 
+    def execute_generic_request(self, request_type, request_data):
+        request = simpleobsws.Request(requestType=request_type, requestData=request_data)
+        return self.execute_request(request)
+
     def execute_request(self, request):
         with self.obs_lock:
             future = asyncio.run_coroutine_threadsafe(self.obs.call(request), self.obs_event_loop)
@@ -126,10 +130,43 @@ class OBS:
                 if not ret.ok():
                     logger.debug("{} failed! Response data: {}".format(request.requestType, ret.responseData))
                 else:
-                    logger.debug("{} succeeded! Response data: {}".format(request.requestType, ret.responseData))
+                    pass  # logger.debug("{} succeeded! Response data: {}".format(request.requestType, ret.responseData))
                 return ret.responseData
             except:
                 logger.exception(request.requestType)
+
+    def set_chroma_key_properties(self, key_color, radius):
+        # print(obs.execute_generic_request(request_type='GetSourceFilterList', request_data=dict(
+        #     sourceName="Logitech C922"
+        # )))
+        # {
+        #     'filterEnabled': False,
+        #     'filterIndex': 1,
+        #     'filterKind': 'chroma_key_filter',
+        #     'filterName': 'Chroma Key',
+        #     'filterSettings': {
+        #         'brightness': 0.0,
+        #         'contrast': 0.0,
+        #         'gamma': 0.0,
+        #         'key_color': 4286289740,   === (76, 151, 123)
+        #         'key_color_type': 'custom',
+        #         'opacity': 100,
+        #         'similarity': 1,
+        #         'smoothness': 80,
+        #         'spill': 100
+        #     }
+        # },
+        print("Chroma Key Found: {} {}".format(key_color, radius))
+        alpha = 255
+        red, green, blue = key_color
+        self.execute_request(simpleobsws.Request(requestType='SetSourceFilterSettings', requestData=dict(
+            sourceName='Logitech C922',
+            filterName='Chroma Key',
+            filterSettings={
+            'key_color': alpha*256*256*256+blue*256*256+green*256+red,
+            'similarity': radius
+        }
+        )))
 
 
     def toggle_mute(self, input_name):

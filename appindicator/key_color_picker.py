@@ -24,20 +24,21 @@ class KeyColorPicker(Gtk.Window):
     def __init__(self, chroma_key_found):
         super().__init__(title="Select Green Values")
         self.chroma_key_found = chroma_key_found
-        self.clicked_pixels = list()
-        self.greens = list()
-        self.blues = list()
-        self.green_blues = list()
+        self.canvas = None
+
 
         self.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         self.add(self.box)
+
+        reset_button = Gtk.Button("Reset")
+        reset_button.connect("clicked", self.reset_values)
+        self.box.pack_start(reset_button, True, True, 0)
 
         self.event_box = Gtk.EventBox.new()
 
         self.pixbuf = GdkPixbuf.Pixbuf.new_from_file(
             '/home/andreas/Dropbox/OBS/streamdeck-py/get_source_screenshot.png')
         self.pimage = Image.open('/home/andreas/Dropbox/OBS/streamdeck-py/get_source_screenshot.png')
-        self.canvas = None
         # self.scrolled_window = None
 
         # https: // pillow.readthedocs.io / en / stable / reference / Image.html  # PIL.Image.frombytes
@@ -49,20 +50,19 @@ class KeyColorPicker(Gtk.Window):
 
         self.box.pack_start(self.event_box, True, True, 0)
 
-        # Fixing random state for reproducibility
-        np.random.seed(19680801)
-
-        N = 50
-        x = np.random.rand(N) * 255
-        y = np.random.rand(N) * 255
-
-        # self.scatter_plot(x, y)
-
         self.color = Gtk.ColorButton.new_with_rgba(Gdk.RGBA(0 / 255, 140 / 255, 141 / 255, 255 / 255))
         self.color.set_rgba(Gdk.RGBA(1, 0, 0, 1))
         self.color.set_rgba(Gdk.RGBA(0, 1, 0, 1))
-
         self.box.pack_start(self.color, True, True, 0)
+
+        self.reset_values()
+
+    def reset_values(self, _event=None):
+        self.clicked_pixels = list()
+        self.greens = list()
+        self.blues = list()
+        self.green_blues = list()
+        self.scatter_plot(self.greens, self.blues, None)
 
     def scatter_plot(self, x, y, circle):
         if self.canvas:
@@ -77,13 +77,14 @@ class KeyColorPicker(Gtk.Window):
         # s = np.sin(2*np.pi*t)
         # subplot.plot(t, s)
         self.subplot.scatter(x, y)
-        self.subplot.scatter(circle[0], circle[1], c='#ff0000')
-        patches = []
-        patches.append(Circle((circle[0], circle[1]), circle[2]))
+        if circle:
+            self.subplot.scatter(circle[0], circle[1], c='#ff0000')
+            patches = []
+            patches.append(Circle((circle[0], circle[1]), circle[2]))
 
-        p = PatchCollection(patches, alpha=0.4)
-        # p.set_array(colors)
-        self.subplot.add_collection(p)
+            p = PatchCollection(patches, alpha=0.4)
+            # p.set_array(colors)
+            self.subplot.add_collection(p)
 
         # plt.show()
         # self.scrolled_window = Gtk.ScrolledWindow()
@@ -101,14 +102,8 @@ class KeyColorPicker(Gtk.Window):
         self.greens.append(clicked_pixel[1])
         self.blues.append(clicked_pixel[2])
         self.green_blues.append((clicked_pixel[1], clicked_pixel[2]))
-        print("{} {}".format(self.pimage.mode, clicked_pixel))
-        print(self.clicked_pixels)
-        print(self.greens)
-        print(self.blues)
-        print(self.green_blues)
 
         circle = make_circle(self.green_blues)
-        print(circle)
 
         self.chroma_key_found((int(0), int(circle[0]), int(circle[1])), int(circle[2]))
 
@@ -124,6 +119,9 @@ class KeyColorPicker(Gtk.Window):
 
     def on_button2_clicked(self, widget):
         print("Goodbye")
+
+    def destroy(self, _=None):
+        super().destroy()
 
 
 if __name__ == "__main__":

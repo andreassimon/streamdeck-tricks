@@ -56,14 +56,13 @@ def quit(_=None):
 
 signal.signal(signal.SIGINT, sigint_handler)
 
-
-current_deck.get_key(0)\
-    .set_key_image('flameshot.png')\
+current_deck.get_key(0) \
+    .set_key_image('flameshot.png') \
     .execute_command(['flameshot', 'gui'])
 
 scene_camera_key = current_deck.get_key(2)
 scene_camera_key \
-    .set_key_image('scene-camera.png')\
+    .set_key_image('scene-camera.png') \
     .switch_scene(obs, 'Camera')
 
 scene_Pause_key = current_deck.get_key(3)
@@ -80,39 +79,43 @@ scene_Pause_key.set_callback(switch_scene_Pause)
 
 scene_kaenguru_key = current_deck.get_key(4)
 scene_kaenguru_key \
-    .set_key_image('kaenguru.png')\
+    .set_key_image('kaenguru.png') \
     .switch_scene(obs, 'Känguru')
 
-
-current_deck.get_key(5)\
-    .set_key_image('teams.png')\
+current_deck.get_key(5) \
+    .set_key_image('teams.png') \
     .execute_command('teams')
-current_deck.get_key(6)\
-    .set_key_image('thunderbird.png')\
+current_deck.get_key(6) \
+    .set_key_image('thunderbird.png') \
     .execute_command('thunderbird')
-current_deck.get_key(7)\
-    .set_key_image('signal-desktop.png')\
+current_deck.get_key(7) \
+    .set_key_image('signal-desktop.png') \
     .execute_command('signal-desktop')
-current_deck.get_key(8)\
-    .set_key_image('threema.png')\
-    .execute_command(['/usr/bin/chromium-browser', '--profile-directory=Default', '--app-id=hfcfobejdjlbgbkfiipblolhafdlkhfl'])
-current_deck.get_key(9)\
-    .set_key_image('whatsie.png')\
-    .execute_command(['env', 'BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/whatsie_whatsie.desktop', '/snap/bin/whatsie', '--show-window'])
+current_deck.get_key(8) \
+    .set_key_image('threema.png') \
+    .execute_command(
+    ['/usr/bin/chromium-browser', '--profile-directory=Default', '--app-id=hfcfobejdjlbgbkfiipblolhafdlkhfl'])
+current_deck.get_key(9) \
+    .set_key_image('whatsie.png') \
+    .execute_command(
+    ['env', 'BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/whatsie_whatsie.desktop', '/snap/bin/whatsie',
+     '--show-window'])
 
 mic_key = current_deck.get_key(10)
-mic_key\
-    .set_key_image('Yeti-unmuted.png')\
+mic_key \
+    .set_key_image('Yeti-unmuted.png') \
     .toggle_mute(obs, 'Yeti')
 
 chroma_key_setup_key = current_deck.get_key(11)
+
 
 def decode_base64(encoded_string):
     encoded_bytes = encoded_string.encode("ascii")
     decoded_bytes = base64.b64decode(encoded_bytes)
     return decoded_bytes
+
+
 def setup_chroma_key(key):
-    print('\n\n>>> GET SCREENSHOT')
     obs.disable_source_filter("Logitech C922", "Chroma Key")
     response = obs.get_source_screenshot("Logitech C922")
     obs.enable_source_filter("Logitech C922", "Chroma Key")
@@ -123,28 +126,30 @@ def setup_chroma_key(key):
     with open("get_source_screenshot.png", "wb") as file:
         file.write(image)
 
-    green_values = streamdeck_tricks_gtk.determine_green_values_in(image)
+    def chroma_key_found(key_color, radius):
+        obs.set_chroma_key_properties(key_color, radius)
+
+    green_values = streamdeck_tricks_gtk.determine_green_values_in(image, chroma_key_found)
     # calculate_key_color()
     # calculate_similarity()
     # obs.set_key_color()
     # obs.set_similarity()
-    print('\n\n<<< GET SCREENSHOT')
 
 
-chroma_key_setup_key\
-    .set_key_image('chroma-key.png')\
+chroma_key_setup_key \
+    .set_key_image('chroma-key.png') \
     .on_key_down(setup_chroma_key)
 
-current_deck.get_key(12)\
-    .set_key_image('cheering-crowd.png')\
+current_deck.get_key(12) \
+    .set_key_image('cheering-crowd.png') \
     .replay_media(obs, 'Applause')
 
-current_deck.get_key(13)\
-    .set_key_image('cricket.png')\
+current_deck.get_key(13) \
+    .set_key_image('cricket.png') \
     .replay_media(obs, 'Chirp')
 
-current_deck.get_key(14)\
-    .set_key_image('poodle-flourish.png')\
+current_deck.get_key(14) \
+    .set_key_image('poodle-flourish.png') \
     .replay_media(obs, 'Pudel Tusch')
 
 
