@@ -10,13 +10,50 @@ MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 logger = logging.getLogger('streamdeck-tricks')
 
 
+def execute_command(command):
+    def execute_command_callback(key):
+        try:
+            subprocess.Popen(command)
+        except:
+            logger.exception('Exception when executing `%s`', command)
+
+    return execute_command_callback
+
+
+def switch_scene(obs, scene_name):
+    def switch_scene_callback(key):
+        obs.switch_scene(scene_name)
+
+    return switch_scene_callback
+
+
+def replay_media(obs, media_name):
+    def replay_media_callback(key):
+        obs.replay_media(media_name)
+
+    return replay_media_callback
+
+
+def toggle_mute(obs, mic_name):
+    def toggle_mute_callback(key):
+        obs.toggle_mute(mic_name)
+
+    return toggle_mute_callback
+
+
 class NullKey:
 
     def update_key_image(self, _image):
         pass
 
+    def set_key_image(self, _key_image):
+        return self
+
+    def on_key_down(self, _callback):
+        return self
+
     def set_callback(self, _callback):
-        pass
+        return self
 
 
 class NullDeck:
@@ -85,41 +122,6 @@ class StreamDeckKey:
         # right now.
         self.icon = os.path.join(MODULE_PATH, image)
         self.update_key_image()
-        return self
-
-    def execute_command(self, command):
-        def execute_command_callback(key, key_down):
-            if key_down:
-                try:
-                    subprocess.Popen(command)
-                except:
-                    logger.exception('Exception when executing `%s`', command)
-
-        self.set_callback(execute_command_callback)
-        return self
-
-    def switch_scene(self, obs, scene_name):
-        def switch_scene_callback(key, key_down):
-            if key_down:
-                obs.switch_scene(scene_name)
-
-        self.set_callback(switch_scene_callback)
-        return self
-
-    def replay_media(self, obs, media_name):
-        def replay_media_callback(key, key_down):
-            if key_down:
-                obs.replay_media(media_name)
-
-        self.set_callback(replay_media_callback)
-        return self
-
-    def toggle_mute(self, obs, mic_name):
-        def toggle_mute_callback(key, key_down):
-            if key_down:
-                obs.toggle_mute(mic_name)
-
-        self.set_callback(toggle_mute_callback)
         return self
 
     def update_key_image(self):

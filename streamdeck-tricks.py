@@ -17,7 +17,7 @@ def obs_error_callback(error):
 
 obs = OBS(obs_error_callback)
 
-from streamdeck import StreamDecks
+from streamdeck import StreamDecks, switch_scene, execute_command, toggle_mute, replay_media
 
 MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -58,12 +58,12 @@ signal.signal(signal.SIGINT, sigint_handler)
 
 current_deck.get_key(0) \
     .set_key_image('flameshot.png') \
-    .execute_command(['flameshot', 'gui'])
+    .on_key_down(execute_command(['flameshot', 'gui']))
 
 scene_camera_key = current_deck.get_key(2)
 scene_camera_key \
     .set_key_image('scene-camera.png') \
-    .switch_scene(obs, 'Camera')
+    .on_key_down(switch_scene(obs, 'Camera'))
 
 scene_Pause_key = current_deck.get_key(3)
 scene_Pause_key.set_key_image('scene-paused.png')
@@ -80,31 +80,31 @@ scene_Pause_key.set_callback(switch_scene_Pause)
 scene_kaenguru_key = current_deck.get_key(4)
 scene_kaenguru_key \
     .set_key_image('kaenguru.png') \
-    .switch_scene(obs, 'Känguru')
+    .on_key_down(switch_scene(obs, 'Känguru'))
 
 current_deck.get_key(5) \
     .set_key_image('teams.png') \
-    .execute_command('teams')
+    .on_key_down(execute_command('teams'))
 current_deck.get_key(6) \
     .set_key_image('thunderbird.png') \
-    .execute_command('thunderbird')
+    .on_key_down(execute_command('thunderbird'))
 current_deck.get_key(7) \
     .set_key_image('signal-desktop.png') \
-    .execute_command('signal-desktop')
+    .on_key_down(execute_command('signal-desktop'))
 current_deck.get_key(8) \
     .set_key_image('threema.png') \
-    .execute_command(
-    ['/usr/bin/chromium-browser', '--profile-directory=Default', '--app-id=hfcfobejdjlbgbkfiipblolhafdlkhfl'])
+    .on_key_down(execute_command(
+    ['/usr/bin/chromium-browser', '--profile-directory=Default', '--app-id=hfcfobejdjlbgbkfiipblolhafdlkhfl']))
 current_deck.get_key(9) \
     .set_key_image('whatsie.png') \
-    .execute_command(
+    .on_key_down(execute_command(
     ['env', 'BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/whatsie_whatsie.desktop', '/snap/bin/whatsie',
-     '--show-window'])
+     '--show-window']))
 
 mic_key = current_deck.get_key(10)
 mic_key \
     .set_key_image('Yeti-unmuted.png') \
-    .toggle_mute(obs, 'Yeti')
+    .on_key_down(toggle_mute(obs, 'Yeti'))
 
 def setup_chroma_key(_streamdeck_key):
     def take_screenshot():
@@ -131,15 +131,15 @@ def setup_chroma_key(_streamdeck_key):
 
 current_deck.get_key(12) \
     .set_key_image('cheering-crowd.png') \
-    .replay_media(obs, 'Applause')
+    .on_key_down(replay_media(obs, 'Applause'))
 
 current_deck.get_key(13) \
     .set_key_image('cricket.png') \
-    .replay_media(obs, 'Chirp')
+    .on_key_down(replay_media(obs, 'Chirp'))
 
 current_deck.get_key(14) \
     .set_key_image('poodle-flourish.png') \
-    .replay_media(obs, 'Pudel Tusch')
+    .on_key_down(replay_media(obs, 'Pudel Tusch'))
 
 
 async def on_inputmutestatechanged(eventData):
