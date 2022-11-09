@@ -56,101 +56,81 @@ def quit(_=None):
 
 signal.signal(signal.SIGINT, sigint_handler)
 
-current_deck.get_key(0) \
-    .set_key_image('flameshot.png') \
-    .on_key_down(execute_command(['flameshot', 'gui']))
+class ObsPage:
+    def __init__(self, deck):
+        self.streamdeck = deck
+        self.streamdeck.get_key(0) \
+            .set_key_image('flameshot.png') \
+            .on_key_down(execute_command(['flameshot', 'gui']))
 
-scene_camera_key = current_deck.get_key(2)
-scene_camera_key \
-    .set_key_image('scene-camera.png') \
-    .on_key_down(switch_scene(obs, 'Camera'))
+        self.scene_camera_key = self.streamdeck.get_key(2)
+        self.scene_camera_key \
+            .set_key_image('scene-camera.png') \
+            .on_key_down(switch_scene(obs, 'Camera'))
 
-scene_Pause_key = current_deck.get_key(3)
-scene_Pause_key.set_key_image('scene-paused.png')
+        self.scene_Pause_key = self.streamdeck.get_key(3)
+        self.scene_Pause_key.set_key_image('scene-paused.png')
 
-
-def switch_scene_Pause(key, key_down):
-    if key_down:
-        streamdeck_tricks_gtk.countdown_some_minutes()
-        obs.switch_scene('Pause')
-
-
-scene_Pause_key.set_callback(switch_scene_Pause)
-
-scene_kaenguru_key = current_deck.get_key(4)
-scene_kaenguru_key \
-    .set_key_image('kaenguru.png') \
-    .on_key_down(switch_scene(obs, 'Känguru'))
-
-current_deck.get_key(5) \
-    .set_key_image('teams.png') \
-    .on_key_down(execute_command('teams'))
-current_deck.get_key(6) \
-    .set_key_image('thunderbird.png') \
-    .on_key_down(execute_command('thunderbird'))
-current_deck.get_key(7) \
-    .set_key_image('signal-desktop.png') \
-    .on_key_down(execute_command('signal-desktop'))
-current_deck.get_key(8) \
-    .set_key_image('threema.png') \
-    .on_key_down(execute_command(
-    ['/usr/bin/chromium-browser', '--profile-directory=Default', '--app-id=hfcfobejdjlbgbkfiipblolhafdlkhfl']))
-current_deck.get_key(9) \
-    .set_key_image('whatsie.png') \
-    .on_key_down(execute_command(
-    ['env', 'BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/whatsie_whatsie.desktop', '/snap/bin/whatsie',
-     '--show-window']))
-
-mic_key = current_deck.get_key(10)
-mic_key \
-    .set_key_image('Yeti-unmuted.png') \
-    .on_key_down(toggle_mute(obs, 'Yeti'))
-
-def setup_chroma_key(_streamdeck_key):
-    def take_screenshot():
-        def decode_base64(encoded_string):
-            encoded_bytes = encoded_string.encode("ascii")
-            decoded_bytes = base64.b64decode(encoded_bytes)
-            return decoded_bytes
-
-        obs.disable_source_filter("Logitech C922", "Chroma Key")
-        response = obs.get_source_screenshot("Logitech C922")
-        obs.enable_source_filter("Logitech C922", "Chroma Key")
-
-        image = decode_base64(response)
-        with open("get_source_screenshot.png", "wb") as file:
-            file.write(image)
-
-        return "get_source_screenshot.png"
-
-    def chroma_key_found(key_color, radius):
-        obs.set_chroma_key_properties(key_color, radius)
-
-    streamdeck_tricks_gtk.determine_green_values_in(take_screenshot, chroma_key_found)
+        def switch_scene_Pause(key, key_down):
+            if key_down:
+                streamdeck_tricks_gtk.countdown_some_minutes()
+                obs.switch_scene('Pause')
 
 
-current_deck.get_key(12) \
-    .set_key_image('cheering-crowd.png') \
-    .on_key_down(replay_media(obs, 'Applause'))
+        self.scene_Pause_key.set_callback(switch_scene_Pause)
 
-current_deck.get_key(13) \
-    .set_key_image('cricket.png') \
-    .on_key_down(replay_media(obs, 'Chirp'))
+        self.scene_kaenguru_key = self.streamdeck.get_key(4)
+        self.scene_kaenguru_key \
+            .set_key_image('kaenguru.png') \
+            .on_key_down(switch_scene(obs, 'Känguru'))
 
-current_deck.get_key(14) \
-    .set_key_image('poodle-flourish.png') \
-    .on_key_down(replay_media(obs, 'Pudel Tusch'))
+        self.streamdeck.get_key(5) \
+            .set_key_image('teams.png') \
+            .on_key_down(execute_command('teams'))
+        self.streamdeck.get_key(6) \
+            .set_key_image('thunderbird.png') \
+            .on_key_down(execute_command('thunderbird'))
+        self.streamdeck.get_key(7) \
+            .set_key_image('signal-desktop.png') \
+            .on_key_down(execute_command('signal-desktop'))
+        self.streamdeck.get_key(8) \
+            .set_key_image('threema.png') \
+            .on_key_down(execute_command(
+            ['/usr/bin/chromium-browser', '--profile-directory=Default', '--app-id=hfcfobejdjlbgbkfiipblolhafdlkhfl']))
+        self.streamdeck.get_key(9) \
+            .set_key_image('whatsie.png') \
+            .on_key_down(execute_command(
+            ['env', 'BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/whatsie_whatsie.desktop', '/snap/bin/whatsie',
+             '--show-window']))
 
+        self.mic_key = self.streamdeck.get_key(10)
+        self.mic_key \
+            .set_key_image('Yeti-unmuted.png') \
+            .on_key_down(toggle_mute(obs, 'Yeti'))
+
+        self.streamdeck.get_key(12) \
+            .set_key_image('cheering-crowd.png') \
+            .on_key_down(replay_media(obs, 'Applause'))
+
+        self.streamdeck.get_key(13) \
+            .set_key_image('cricket.png') \
+            .on_key_down(replay_media(obs, 'Chirp'))
+
+        self.streamdeck.get_key(14) \
+            .set_key_image('poodle-flourish.png') \
+            .on_key_down(replay_media(obs, 'Pudel Tusch'))
+
+obs_page = ObsPage(current_deck)
 
 async def on_inputmutestatechanged(eventData):
     # eventData: {'inputMuted': False, 'inputName': 'Mic/Aux'}
     if eventData['inputMuted']:
         # print("\n\n{} is now muted".format(eventData['inputName']))
-        mic_key.set_key_image('Yeti-muted.png')
+        obs_page.mic_key.set_key_image('Yeti-muted.png')
 
     else:
         # print("\n\n{} is now unmuted".format(eventData['inputName']))
-        mic_key.set_key_image('Yeti-unmuted.png')
+        obs_page.mic_key.set_key_image('Yeti-unmuted.png')
 
 
 async def on_CurrentProgramSceneChanged(eventData):
@@ -167,12 +147,35 @@ async def on_CurrentProgramSceneChanged(eventData):
     if eventData['sceneName'] == 'Pause':
         render_Pause_active = True
 
-    scene_camera_key.set_render_active(render_Camera_active)
-    scene_kaenguru_key.set_render_active(render_Kaenguru_active)
-    scene_Pause_key.set_render_active(render_Pause_active)
+    obs_page.scene_camera_key.set_render_active(render_Camera_active)
+    obs_page.scene_kaenguru_key.set_render_active(render_Kaenguru_active)
+    obs_page.scene_Pause_key.set_render_active(render_Pause_active)
 
 
 if __name__ == "__main__":
+    def setup_chroma_key(_streamdeck_key):
+        def take_screenshot():
+            def decode_base64(encoded_string):
+                encoded_bytes = encoded_string.encode("ascii")
+                decoded_bytes = base64.b64decode(encoded_bytes)
+                return decoded_bytes
+
+            obs.disable_source_filter("Logitech C922", "Chroma Key")
+            response = obs.get_source_screenshot("Logitech C922")
+            obs.enable_source_filter("Logitech C922", "Chroma Key")
+
+            image = decode_base64(response)
+            with open("get_source_screenshot.png", "wb") as file:
+                file.write(image)
+
+            return "get_source_screenshot.png"
+
+        def chroma_key_found(key_color, radius):
+            obs.set_chroma_key_properties(key_color, radius)
+
+        streamdeck_tricks_gtk.determine_green_values_in(take_screenshot, chroma_key_found)
+
+
     streamdeck_tricks_gtk = StreamDeckTricksGtk(configure_pulse, decks, quit, setup_chroma_key)
 
     obs.start()
