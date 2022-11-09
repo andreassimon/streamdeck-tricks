@@ -17,7 +17,7 @@ def obs_error_callback(error):
 
 obs = OBS(obs_error_callback)
 
-from streamdeck import StreamDecks, switch_scene, execute_command, toggle_mute, replay_media
+from streamdeck import StreamDecks, switch_scene, execute_command, toggle_mute, replay_media, switch_to_page
 
 MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -56,33 +56,37 @@ def quit(_=None):
 
 signal.signal(signal.SIGINT, sigint_handler)
 
-class ObsPage:
+
+class HomePage:
     def __init__(self, deck):
         self.streamdeck = deck
+        self.streamdeck.reset()
+
         self.streamdeck.get_key(0) \
+            .set_key_image('focused-work.png') \
+            .on_key_down(switch_to_page(FocusedWorkPage, deck))
+        self.streamdeck.get_key(1) \
+            .set_key_image('obs-to-teams.png') \
+            .on_key_down(switch_to_page(ObsToTeamsPage, deck))
+
+    def on_inputmutestatechanged(self, eventData):
+        pass
+
+    def on_CurrentProgramSceneChanged(self, eventData):
+        pass
+
+
+class FocusedWorkPage:
+    def __init__(self, deck):
+        self.streamdeck = deck
+        self.streamdeck.reset()
+
+        self.streamdeck.get_key(0) \
+            .set_key_image('back.png') \
+            .on_key_down(switch_to_page(HomePage, deck))
+        self.streamdeck.get_key(1) \
             .set_key_image('flameshot.png') \
             .on_key_down(execute_command(['flameshot', 'gui']))
-
-        self.scene_camera_key = self.streamdeck.get_key(2)
-        self.scene_camera_key \
-            .set_key_image('scene-camera.png') \
-            .on_key_down(switch_scene(obs, 'Camera'))
-
-        self.scene_Pause_key = self.streamdeck.get_key(3)
-        self.scene_Pause_key.set_key_image('scene-paused.png')
-
-        def switch_scene_Pause(key, key_down):
-            if key_down:
-                streamdeck_tricks_gtk.countdown_some_minutes()
-                obs.switch_scene('Pause')
-
-
-        self.scene_Pause_key.set_callback(switch_scene_Pause)
-
-        self.scene_kaenguru_key = self.streamdeck.get_key(4)
-        self.scene_kaenguru_key \
-            .set_key_image('kaenguru.png') \
-            .on_key_down(switch_scene(obs, 'Känguru'))
 
         self.streamdeck.get_key(5) \
             .set_key_image('teams.png') \
@@ -100,8 +104,52 @@ class ObsPage:
         self.streamdeck.get_key(9) \
             .set_key_image('whatsie.png') \
             .on_key_down(execute_command(
-            ['env', 'BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/whatsie_whatsie.desktop', '/snap/bin/whatsie',
+            ['env', 'BAMF_DESKTOP_FILE_HINT=/var/lib/snapd/desktop/applications/whatsie_whatsie.desktop',
+             '/snap/bin/whatsie',
              '--show-window']))
+
+    def on_inputmutestatechanged(self, eventData):
+        pass
+
+    def on_CurrentProgramSceneChanged(self, eventData):
+        pass
+
+
+class ObsToTeamsPage:
+    def __init__(self, deck):
+        self.streamdeck = deck
+        self.streamdeck.reset()
+
+        self.streamdeck.get_key(0) \
+            .set_key_image('back.png') \
+            .on_key_down(switch_to_page(HomePage, deck))
+
+        self.scene_camera_key = self.streamdeck.get_key(2)
+        self.scene_camera_key \
+            .set_key_image('scene-camera.png') \
+            .on_key_down(switch_scene(obs, 'Camera'))
+
+        self.scene_Pause_key = self.streamdeck.get_key(3)
+        self.scene_Pause_key.set_key_image('scene-paused.png')
+
+        def switch_scene_Pause(key, key_down):
+            if key_down:
+                streamdeck_tricks_gtk.countdown_some_minutes()
+                obs.switch_scene('Pause')
+
+        self.scene_Pause_key.set_callback(switch_scene_Pause)
+
+        self.scene_kaenguru_key = self.streamdeck.get_key(4)
+        self.scene_kaenguru_key \
+            .set_key_image('kaenguru.png') \
+            .on_key_down(switch_scene(obs, 'Känguru'))
+
+        self.streamdeck.get_key(5) \
+            .set_key_image('flameshot.png') \
+            .on_key_down(execute_command(['flameshot', 'gui']))
+        self.streamdeck.get_key(6) \
+            .set_key_image('teams.png') \
+            .on_key_down(execute_command('teams'))
 
         self.mic_key = self.streamdeck.get_key(10)
         self.mic_key \
@@ -120,36 +168,46 @@ class ObsPage:
             .set_key_image('poodle-flourish.png') \
             .on_key_down(replay_media(obs, 'Pudel Tusch'))
 
-obs_page = ObsPage(current_deck)
+    def on_inputmutestatechanged(self, eventData):
+        # eventData: {'inputMuted': False, 'inputName': 'Mic/Aux'}
+        if eventData['inputMuted']:
+            # print("\n\n{} is now muted".format(eventData['inputName']))
+            self.mic_key.set_key_image('Yeti-muted.png')
+
+        else:
+            # print("\n\n{} is now unmuted".format(eventData['inputName']))
+            self.mic_key.set_key_image('Yeti-unmuted.png')
+
+    def on_CurrentProgramSceneChanged(self, eventData):
+        # eventData: {'sceneName': 'Camera'}
+        render_Camera_active = False
+        render_Kaenguru_active = False
+        render_Pause_active = False
+        if eventData['sceneName'] == 'Camera':
+            render_Camera_active = True
+
+        if eventData['sceneName'] == 'Känguru':
+            render_Kaenguru_active = True
+
+        if eventData['sceneName'] == 'Pause':
+            render_Pause_active = True
+
+        self.scene_camera_key.set_render_active(render_Camera_active)
+        self.scene_kaenguru_key.set_render_active(render_Kaenguru_active)
+        self.scene_Pause_key.set_render_active(render_Pause_active)
+
+
+current_page = HomePage(current_deck)
+
 
 async def on_inputmutestatechanged(eventData):
     # eventData: {'inputMuted': False, 'inputName': 'Mic/Aux'}
-    if eventData['inputMuted']:
-        # print("\n\n{} is now muted".format(eventData['inputName']))
-        obs_page.mic_key.set_key_image('Yeti-muted.png')
-
-    else:
-        # print("\n\n{} is now unmuted".format(eventData['inputName']))
-        obs_page.mic_key.set_key_image('Yeti-unmuted.png')
+    current_page.on_inputmutestatechanged(eventData)
 
 
 async def on_CurrentProgramSceneChanged(eventData):
     # eventData: {'sceneName': 'Camera'}
-    render_Camera_active = False
-    render_Kaenguru_active = False
-    render_Pause_active = False
-    if eventData['sceneName'] == 'Camera':
-        render_Camera_active = True
-
-    if eventData['sceneName'] == 'Känguru':
-        render_Kaenguru_active = True
-
-    if eventData['sceneName'] == 'Pause':
-        render_Pause_active = True
-
-    obs_page.scene_camera_key.set_render_active(render_Camera_active)
-    obs_page.scene_kaenguru_key.set_render_active(render_Kaenguru_active)
-    obs_page.scene_Pause_key.set_render_active(render_Pause_active)
+    current_page.on_CurrentProgramSceneChanged(eventData)
 
 
 if __name__ == "__main__":

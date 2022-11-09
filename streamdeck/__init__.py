@@ -10,6 +10,13 @@ MODULE_PATH = os.path.dirname(os.path.realpath(__file__))
 logger = logging.getLogger('streamdeck-tricks')
 
 
+def switch_to_page(page_class, deck):
+    def switch_to_page_callback(_key):
+        page_class(deck)
+
+    return switch_to_page_callback
+
+
 def execute_command(command):
     def execute_command_callback(key):
         try:
@@ -179,6 +186,9 @@ class StreamDeck:
 
         # Register callback function for when a key state changes.
         self.deck.set_key_callback(self.key_change_callback)
+
+    def reset(self):
+        self.deck.reset()
 
     def get_streamdeck_label(self):
         return "{} [S/N {}]".format(self.deck_type(), self.get_serial_number())
